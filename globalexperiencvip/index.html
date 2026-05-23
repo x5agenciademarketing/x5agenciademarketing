@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Global Experience VIP — Concierge de viajes y experiencias premium. Itinerarios a medida, acceso exclusivo y hospitalidad de alto nivel para viajeros exigentes.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Global Experience VIP | Experiencias de lujo a medida">
+  <meta property="og:description" content="Curaduría personalizada, acceso preferencial y logística impecable para viajes, eventos y momentos extraordinarios.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:url" content="https://x5agenciademarketing.lat/globalexperiencvip/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=80">
+  <link rel="canonical" href="https://x5agenciademarketing.lat/globalexperiencvip/">
+  <title>Global Experience VIP | Experiencias premium a medida</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231a1814'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='14' font-weight='600' fill='%23c9a962' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Design tokens ─── */
+    :root {
+      --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --font-body: "Outfit", system-ui, sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --nav-height: 76px;
+      --container: min(1180px, calc(100% - 2.5rem));
+      --section-gap: clamp(5rem, 12vw, 8rem);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0c0b0a;
+      --bg-elevated: #141210;
+      --bg-card: #1a1814;
+      --bg-muted: #221f1a;
+      --text: #f4f0e8;
+      --text-muted: #a39e92;
+      --text-subtle: #6d6860;
+      --accent: #c9a962;
+      --accent-soft: rgba(201, 169, 98, 0.14);
+      --accent-hover: #ddc07a;
+      --teal: #5a8f8a;
+      --border: rgba(244, 240, 232, 0.08);
+      --border-strong: rgba(244, 240, 232, 0.14);
+      --shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+      --hero-overlay: linear-gradient(105deg, rgba(12, 11, 10, 0.94) 0%, rgba(12, 11, 10, 0.72) 48%, rgba(12, 11, 10, 0.35) 100%);
+      --nav-bg: rgba(12, 11, 10, 0.72);
+    }
+
+    [data-theme="light"] {
+      --bg: #f7f4ef;
+      --bg-elevated: #fffdf9;
+      --bg-card: #ffffff;
+      --bg-muted: #ebe6dc;
+      --text: #1a1814;
+      --text-muted: #5c574f;
+      --text-subtle: #8a847a;
+      --accent: #9a7b3c;
+      --accent-soft: rgba(154, 123, 60, 0.12);
+      --accent-hover: #7d6330;
+      --teal: #4a7571;
+      --border: rgba(26, 24, 20, 0.08);
+      --border-strong: rgba(26, 24, 20, 0.14);
+      --shadow: 0 24px 64px rgba(26, 24, 20, 0.08);
+      --hero-overlay: linear-gradient(105deg, rgba(247, 244, 239, 0.95) 0%, rgba(247, 244, 239, 0.82) 48%, rgba(247, 244, 239, 0.5) 100%);
+      --nav-bg: rgba(247, 244, 239, 0.88);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; color: inherit; }
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .container { width: var(--container); margin-inline: auto; }
+    .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      max-width: 18ch;
+    }
+    .section-lead {
+      margin-top: 1.25rem;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 52ch;
+      font-weight: 300;
+    }
+
+    /* ─── Skip link ─── */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      z-index: 9999;
+      padding: 0.75rem 1.25rem;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* ─── Header ─── */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      transition: background 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+    .header.is-scrolled {
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-color: var(--border);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+    .header__inner {
+      width: var(--container);
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .logo span { color: var(--accent); font-weight: 500; }
+    .nav { display: flex; align-items: center; gap: 2rem; }
+    .nav__list {
+      display: flex;
+      gap: clamp(1rem, 2.5vw, 2rem);
+      list-style: none;
+    }
+    .nav__link {
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.25s var(--ease);
+    }
+    .nav__link:hover { color: var(--text); }
+    .header__actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: transparent;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .theme-toggle:hover { border-color: var(--border-strong); background: var(--accent-soft); }
+    .theme-toggle svg { width: 18px; height: 18px; stroke: var(--text-muted); }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+    [data-theme="light"] .icon-sun { display: none; }
+    [data-theme="light"] .icon-moon { display: block; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.6rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s var(--ease), background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn--primary {
+      background: var(--accent);
+      color: #0c0b0a;
+    }
+    .btn--primary:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 12px 32px var(--accent-soft);
+    }
+    .btn--ghost {
+      background: transparent;
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+    }
+    .btn--ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .btn--whatsapp {
+      background: #25d366;
+      color: #fff;
+    }
+    .btn--whatsapp:hover { background: #1fb855; }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: transparent;
+      cursor: pointer;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--text);
+      transition: transform 0.3s var(--ease), opacity 0.3s;
+    }
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ─── Hero ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      align-items: end;
+      padding-top: var(--nav-height);
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    .hero__bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--hero-overlay);
+    }
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      width: var(--container);
+      margin-inline: auto;
+      padding: clamp(3rem, 8vh, 6rem) 0 clamp(4rem, 10vh, 7rem);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    @media (min-width: 900px) {
+      .hero__content {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: end;
+      }
+    }
+    .hero__headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.75rem, 7vw, 4.75rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 14ch;
+    }
+    .hero__headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero__sub {
+      margin-top: 1.5rem;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      color: var(--text-muted);
+      max-width: 42ch;
+      line-height: 1.7;
+    }
+    .hero__ctas {
+      margin-top: 2.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .hero__aside {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    @media (min-width: 900px) {
+      .hero__aside { align-items: flex-end; text-align: right; }
+    }
+    .trust-strip {
+      display: grid;
+      gap: 1.25rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    @media (min-width: 600px) {
+      .trust-strip { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    }
+    .trust-item__label {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .trust-item__text {
+      margin-top: 0.35rem;
+      font-size: 0.85rem;
+      color: var(--text-subtle);
+      line-height: 1.5;
+    }
+    .hero-stat {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 400;
+      line-height: 1;
+      color: var(--accent);
+    }
+    .hero-stat span {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      margin-top: 0.5rem;
+    }
+
+    /* ─── Sections common ─── */
+    section { padding-block: var(--section-gap); }
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Qué hacemos ─── */
+    .about { background: var(--bg-elevated); }
+    .about__grid {
+      margin-top: 4rem;
+      display: grid;
+      gap: 1px;
+      background: var(--border);
+    }
+    @media (min-width: 768px) {
+      .about__grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        grid-template-rows: auto auto;
+      }
+    }
+    .about__cell {
+      background: var(--bg-elevated);
+      padding: clamp(2rem, 4vw, 3rem);
+      position: relative;
+    }
+    .about__cell--featured {
+      grid-row: span 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 320px;
+      background: var(--bg-muted);
+    }
+    @media (min-width: 768px) {
+      .about__cell--featured { min-height: 100%; }
+    }
+    .about__cell--featured::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80") center/cover;
+      opacity: 0.35;
+    }
+    [data-theme="light"] .about__cell--featured::before { opacity: 0.25; }
+    .about__cell--featured > * { position: relative; z-index: 1; }
+    .about__num {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 400;
+      color: var(--accent);
+      opacity: 0.35;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .about__cell h3 {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    .about__cell p { color: var(--text-muted); font-size: 0.95rem; font-weight: 300; }
+
+    /* ─── Experiencias ─── */
+    .experiences__layout {
+      margin-top: 4rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+    @media (min-width: 900px) {
+      .experiences__layout {
+        grid-template-columns: repeat(12, 1fr);
+        grid-auto-rows: minmax(200px, auto);
+      }
+    }
+    .exp-card {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-card);
+      transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+    }
+    .exp-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+    }
+    .exp-card__media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .exp-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease);
+    }
+    .exp-card:hover .exp-card__media img { transform: scale(1.04); }
+    .exp-card__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(12, 11, 10, 0.92) 0%, rgba(12, 11, 10, 0.4) 55%, transparent 100%);
+    }
+    [data-theme="light"] .exp-card__media::after {
+      background: linear-gradient(to top, rgba(26, 24, 20, 0.88) 0%, rgba(26, 24, 20, 0.35) 55%, transparent 100%);
+    }
+    .exp-card__body {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .exp-card__tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .exp-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .exp-card p {
+      font-size: 0.9rem;
+      color: rgba(244, 240, 232, 0.75);
+      font-weight: 300;
+      max-width: 36ch;
+    }
+    .exp-card__detail {
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.9;
+    }
+    .exp-card--wide { grid-column: span 7; min-height: 340px; }
+    .exp-card--tall { grid-column: span 5; min-height: 340px; }
+    .exp-card--half { grid-column: span 6; }
+    .exp-card--third { grid-column: span 4; }
+    @media (max-width: 899px) {
+      .exp-card--wide, .exp-card--tall, .exp-card--half, .exp-card--third { grid-column: span 1; }
+    }
+
+    /* ─── Beneficios ─── */
+    .benefits {
+      background: var(--bg-muted);
+      position: relative;
+      overflow: hidden;
+    }
+    .benefits::before {
+      content: "VIP";
+      position: absolute;
+      right: -5%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(12rem, 25vw, 22rem);
+      font-weight: 600;
+      color: var(--accent);
+      opacity: 0.04;
+      pointer-events: none;
+      line-height: 1;
+    }
+    .benefits__wrap {
+      display: grid;
+      gap: 4rem;
+    }
+    @media (min-width: 900px) {
+      .benefits__wrap { grid-template-columns: 0.9fr 1.1fr; align-items: start; }
+    }
+    .benefits__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .benefit-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      transition: padding-left 0.4s var(--ease);
+    }
+    .benefit-row:hover { padding-left: 0.5rem; }
+    .benefit-row__index {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--accent);
+      min-width: 2ch;
+    }
+    .benefit-row h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+    .benefit-row p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* ─── Proceso ─── */
+    .process__steps {
+      margin-top: 4rem;
+      display: grid;
+      gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      .process__steps { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    }
+    .process-step {
+      position: relative;
+      padding-top: 3rem;
+    }
+    .process-step::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    .process-step__num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 1.25rem;
+    }
+    .process-step h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+    .process-step p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* ─── Testimonios ─── */
+    .testimonials { background: var(--bg-elevated); }
+    .testimonials__grid {
+      margin-top: 4rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .testimonials__grid { grid-template-columns: 1.4fr 1fr 1fr; }
+    }
+    .testimonial {
+      padding: 2rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      display: flex;
+      flex-direction: column;
+    }
+    .testimonial--featured {
+      padding: 2.5rem;
+      background: var(--bg-muted);
+    }
+    .testimonial__quote {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.45;
+      flex: 1;
+      color: var(--text);
+    }
+    .testimonial--featured .testimonial__quote { font-size: 1.65rem; }
+    .testimonial__author {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .testimonial__name {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .testimonial__role {
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      margin-top: 0.2rem;
+    }
+    .trust-badge {
+      margin-top: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .trust-badge__item strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--accent);
+    }
+    .trust-badge__item span {
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Contacto / CTA ─── */
+    .contact {
+      position: relative;
+      padding-block: var(--section-gap);
+    }
+    .contact__panel {
+      display: grid;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-card);
+      box-shadow: var(--shadow);
+    }
+    @media (min-width: 900px) {
+      .contact__panel { grid-template-columns: 1fr 1.1fr; }
+    }
+    .contact__copy {
+      padding: clamp(2.5rem, 5vw, 4rem);
+      background: var(--bg-muted);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .contact__copy .section-title { max-width: none; }
+    .contact__channels {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact__channel {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: color 0.25s;
+    }
+    .contact__channel:hover { color: var(--accent); }
+    .contact__form-wrap {
+      padding: clamp(2.5rem, 5vw, 4rem);
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      margin-bottom: 0.5rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: border-color 0.25s;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-subtle); opacity: 0.7; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+    .form-row {
+      display: grid;
+      gap: 1.25rem;
+    }
+    @media (min-width: 600px) {
+      .form-row { grid-template-columns: 1fr 1fr; }
+    }
+    .form-note {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+    }
+    .form-success {
+      display: none;
+      padding: 2rem;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+    .form-success.is-shown { display: block; }
+    #contact-form.is-hidden { display: none; }
+
+    /* ─── CTA band ─── */
+    .cta-band {
+      padding-block: clamp(4rem, 10vw, 6rem);
+      text-align: left;
+      border-top: 1px solid var(--border);
+    }
+    .cta-band__inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .cta-band h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 500;
+      max-width: 16ch;
+      line-height: 1.1;
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      padding: 3rem 0 2rem;
+      border-top: 1px solid var(--border);
+      background: var(--bg-elevated);
+    }
+    .footer__grid {
+      display: grid;
+      gap: 2.5rem;
+    }
+    @media (min-width: 768px) {
+      .footer__grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+    }
+    .footer__brand p {
+      margin-top: 1rem;
+      font-size: 0.88rem;
+      color: var(--text-subtle);
+      max-width: 28ch;
+      font-weight: 300;
+    }
+    .footer h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      margin-bottom: 1rem;
+    }
+    .footer ul { list-style: none; }
+    .footer li { margin-bottom: 0.5rem; }
+    .footer a {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      transition: color 0.25s;
+    }
+    .footer a:hover { color: var(--accent); }
+    .footer__social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .footer__bottom {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+    }
+
+    /* ─── Floating WhatsApp ─── */
+    .wa-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 900;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s;
+    }
+    .wa-float:hover {
+      transform: scale(1.06);
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.45);
+    }
+    .wa-float svg { width: 28px; height: 28px; fill: currentColor; }
+
+    /* ─── Mobile nav ─── */
+    @media (max-width: 1024px) {
+      .nav__list, .header__actions .btn--nav-cta { display: none; }
+      .menu-toggle { display: flex; }
+      .nav.is-open {
+        display: flex;
+        position: fixed;
+        inset: var(--nav-height) 0 0 0;
+        background: var(--bg);
+        flex-direction: column;
+        padding: 2rem;
+        border-top: 1px solid var(--border);
+      }
+      .nav.is-open .nav__list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .nav.is-open .nav__link { font-size: 1rem; }
+      .nav.is-open .header__actions {
+        margin-top: auto;
+        flex-direction: column;
+        width: 100%;
+      }
+      .nav.is-open .header__actions .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+  <header class="header" id="header" role="banner">
+    <div class="header__inner">
+      <a href="#inicio" class="logo" aria-label="Global Experience VIP — Inicio">
+        Global <span>Experience</span> VIP
+      </a>
+      <nav class="nav" id="nav" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a href="#inicio" class="nav__link">Inicio</a></li>
+          <li><a href="#experiencias" class="nav__link">Experiencias</a></li>
+          <li><a href="#servicios" class="nav__link">Servicios</a></li>
+          <li><a href="#beneficios" class="nav__link">Beneficios</a></li>
+          <li><a href="#testimonios" class="nav__link">Testimonios</a></li>
+          <li><a href="#contacto" class="nav__link">Contacto</a></li>
+        </ul>
+        <div class="header__actions">
+          <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/></svg>
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/></svg>
+          </button>
+          <a href="#contacto" class="btn btn--primary btn--nav-cta">Solicitar experiencia</a>
+        </div>
+      </nav>
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1920&q=85"
+          alt=""
+          width="1920"
+          height="1080"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="hero__content">
+        <div class="hero__main reveal">
+          <p class="eyebrow">Concierge internacional · Experiencias a medida</p>
+          <h1 class="hero__headline" id="hero-title">
+            Donde el acceso y el detalle definen <em>cada viaje</em>
+          </h1>
+          <p class="hero__sub">
+            Diseñamos itinerarios, eventos y momentos VIP con la precisión de un equipo dedicado.
+            Sin improvisación: solo hospitalidad de alto nivel, aliados selectos y ejecución impecable.
+          </p>
+          <div class="hero__ctas">
+            <a href="#contacto" class="btn btn--primary">Solicitar propuesta</a>
+            <a href="https://wa.me/573000000000?text=Hola%2C%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20sus%20experiencias%20VIP." class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp</a>
+          </div>
+          <div class="trust-strip" role="list">
+            <div class="trust-item" role="listitem">
+              <p class="trust-item__label">Curaduría 1:1</p>
+              <p class="trust-item__text">Un asesor senior acompaña tu solicitud de principio a fin.</p>
+            </div>
+            <div class="trust-item" role="listitem">
+              <p class="trust-item__label">Red global</p>
+              <p class="trust-item__text">Hoteles, venues y operadores con estándar internacional verificado.</p>
+            </div>
+            <div class="trust-item" role="listitem">
+              <p class="trust-item__label">Discreción total</p>
+              <p class="trust-item__text">Confidencialidad y protocolo en cada coordinación.</p>
+            </div>
+          </div>
+        </div>
+        <aside class="hero__aside reveal" style="transition-delay: 0.15s">
+          <div>
+            <p class="hero-stat">24<span>horas de respuesta inicial</span></p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Qué hacemos -->
+    <section class="about" id="servicios" aria-labelledby="about-title">
+      <div class="container reveal">
+        <p class="eyebrow">Qué hacemos</p>
+        <h2 class="section-title" id="about-title">Una concierge que piensa como tú viajas</h2>
+        <p class="section-lead">
+          Global Experience VIP une logística de alto nivel con sensibilidad editorial:
+          cada propuesta nace de escuchar con atención y traducirla en una experiencia con identidad propia.
+        </p>
+        <div class="about__grid">
+          <article class="about__cell about__cell--featured">
+            <p class="eyebrow" style="margin-bottom: auto">Nuestra esencia</p>
+            <h3>Hospitalidad sin margen de error</h3>
+            <p>Coordinamos viajes premium, accesos exclusivos y servicios lifestyle con el mismo rigor que exiges en tu agenda profesional.</p>
+          </article>
+          <article class="about__cell">
+            <span class="about__num" aria-hidden="true">01</span>
+            <h3>Viajes personalizados</h3>
+            <p>Itinerarios privados, traslados ejecutivos, suites y rutas diseñadas según tu ritmo, preferencias y nivel de intimidad.</p>
+          </article>
+          <article class="about__cell">
+            <span class="about__num" aria-hidden="true">02</span>
+            <h3>Eventos y accesos</h3>
+            <p>Entradas preferenciales, hospitality en venues selectos y experiencias culturales o deportivas con trato preferencial.</p>
+          </article>
+          <article class="about__cell">
+            <span class="about__num" aria-hidden="true">03</span>
+            <h3>Concierge dedicado</h3>
+            <p>Reservas, cambios de último minuto y atención continua. Un interlocutor, no un call center.</p>
+          </article>
+          <article class="about__cell">
+            <span class="about__num" aria-hidden="true">04</span>
+            <h3>Corporativo y personal</h3>
+            <p>Retiros ejecutivos, viajes de incentivo o celebraciones íntimas: misma exigencia, distinto contexto.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiencias -->
+    <section class="experiences" id="experiencias" aria-labelledby="exp-title">
+      <div class="container">
+        <div class="reveal">
+          <p class="eyebrow">Experiencias destacadas</p>
+          <h2 class="section-title" id="exp-title">Momentos que no se encuentran en un catálogo</h2>
+          <p class="section-lead">Seleccionamos escenarios donde el servicio, el entorno y el acceso convergen en algo memorable.</p>
+        </div>
+        <div class="experiences__layout">
+          <article class="exp-card exp-card--wide reveal">
+            <div class="exp-card__media">
+              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=80" alt="Suite de hotel de lujo con vista panorámica" loading="lazy" width="900" height="600">
+            </div>
+            <div class="exp-card__body">
+              <span class="exp-card__tag">Hospitality</span>
+              <h3>Estancias de autor</h3>
+              <p>Hoteles boutique, villas privadas y programas de beneficios en cadenas icónicas, negociados para ti.</p>
+              <span class="exp-card__detail">Check-in preferencial · Upgrades sujetos a disponibilidad</span>
+            </div>
+          </article>
+          <article class="exp-card exp-card--tall reveal" style="transition-delay: 0.08s">
+            <div class="exp-card__media">
+              <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&q=80" alt="Evento exclusivo con iluminación ambiental" loading="lazy" width="700" height="900">
+            </div>
+            <div class="exp-card__body">
+              <span class="exp-card__tag">Eventos</span>
+              <h3>Acceso reservado</h3>
+              <p>Galas, premieres, festivales y hospitality en palcos o áreas VIP.</p>
+              <span class="exp-card__detail">Invitaciones curadas · Protocolo incluido</span>
+            </div>
+          </article>
+          <article class="exp-card exp-card--half reveal">
+            <div class="exp-card__media">
+              <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=700&q=80" alt="Ambiente nocturno premium en ciudad" loading="lazy" width="700" height="500">
+            </div>
+            <div class="exp-card__body">
+              <span class="exp-card__tag">Nightlife</span>
+              <h3>Noches con nombre propio</h3>
+              <p>Mesas en clubs selectos, afters privados y rutas nocturnas con seguridad coordinada.</p>
+              <span class="exp-card__detail">Sin colas · Trato preferencial</span>
+            </div>
+          </article>
+          <article class="exp-card exp-card--half reveal" style="transition-delay: 0.08s">
+            <div class="exp-card__media">
+              <img src="https://images.unsplash.com/photo-1567899378495-7b90a6bb8c96?w=700&q=80" alt="Yate de lujo navegando en aguas turquesas" loading="lazy" width="700" height="500">
+            </div>
+            <div class="exp-card__body">
+              <span class="exp-card__tag">Mar &amp; aire</span>
+              <h3>Charters y yates</h3>
+              <p>Jornadas en mar abierto, helicópteros y aviación privada con operadores certificados.</p>
+              <span class="exp-card__detail">Tripulación y catering a medida</span>
+            </div>
+          </article>
+          <article class="exp-card exp-card--third reveal">
+            <div class="exp-card__media">
+              <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&q=80" alt="Viajero contemplando destino premium" loading="lazy" width="500" height="400">
+            </div>
+            <div class="exp-card__body">
+              <span class="exp-card__tag">Destinos</span>
+              <h3>Turismo premium</h3>
+              <p>Rutas culturales, naturaleza y ciudades icónicas con guías y logística de nivel.</p>
+              <span class="exp-card__detail">Ritmo personalizado</span>
+            </div>
+          </article>
+          <article class="exp-card exp-card--third reveal" style="transition-delay: 0.06s">
+            <div class="exp-card__media">
+              <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=500&q=80" alt="Reunión ejecutiva en espacio corporativo elegante" loading="lazy" width="500" height="400">
+            </div>
+            <div class="exp-card__body">
+              <span class="exp-card__tag">Corporativo</span>
+              <h3>Programas ejecutivos</h3>
+              <p>Incentivos, roadshows y experiencias de marca para equipos de alto rendimiento.</p>
+              <span class="exp-card__detail">ROI en experiencia</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="benefits" id="beneficios" aria-labelledby="benefits-title">
+      <div class="container benefits__wrap">
+        <div class="reveal">
+          <p class="eyebrow">Por qué nos eligen</p>
+          <h2 class="section-title" id="benefits-title">Lo que distingue a quien viaja sin delegar el detalle</h2>
+          <p class="section-lead" style="margin-top: 1.25rem">
+            No vendemos paquetes. Construimos relaciones de confianza con clientes que valoran el tiempo, la discreción y la ejecución.
+          </p>
+        </div>
+        <ul class="benefits__list reveal" style="transition-delay: 0.1s">
+          <li class="benefit-row">
+            <span class="benefit-row__index" aria-hidden="true">I</span>
+            <div>
+              <h3>Atención verdaderamente personalizada</h3>
+              <p>Conocemos tus preferencias, restricciones y estándares. Cada solicitud parte de un historial, no de cero.</p>
+            </div>
+          </li>
+          <li class="benefit-row">
+            <span class="benefit-row__index" aria-hidden="true">II</span>
+            <div>
+              <h3>Red de aliados verificados</h3>
+              <p>Hoteles, operadores y venues con los que trabajamos de forma recurrente y bajo acuerdos preferenciales.</p>
+            </div>
+          </li>
+          <li class="benefit-row">
+            <span class="benefit-row__index" aria-hidden="true">III</span>
+            <div>
+              <h3>Ejecución impecable</h3>
+              <p>Timeline claro, confirmaciones por escrito y un equipo disponible antes, durante y después del viaje.</p>
+            </div>
+          </li>
+          <li class="benefit-row">
+            <span class="benefit-row__index" aria-hidden="true">IV</span>
+            <div>
+              <h3>Confidencialidad absoluta</h3>
+              <p>Protocolos de privacidad en reservas, traslados y eventos de alto perfil.</p>
+            </div>
+          </li>
+          <li class="benefit-row">
+            <span class="benefit-row__index" aria-hidden="true">V</span>
+            <div>
+              <h3>Acceso que no está en abierto</h3>
+              <p>Invitaciones, mesas y experiencias negociadas por relación directa, no por volumen masivo.</p>
+            </div>
+          </li>
+          <li class="benefit-row">
+            <span class="benefit-row__index" aria-hidden="true">VI</span>
+            <div>
+              <h3>Acompañamiento end-to-end</h3>
+              <p>Desde la primera conversación hasta el cierre del viaje: un solo equipo responsable.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Proceso -->
+    <section class="process" id="proceso" aria-labelledby="process-title">
+      <div class="container reveal">
+        <p class="eyebrow">Cómo trabajamos</p>
+        <h2 class="section-title" id="process-title">Cuatro pasos. Cero fricción para ti.</h2>
+        <div class="process__steps">
+          <article class="process-step">
+            <p class="process-step__num" aria-hidden="true">01</p>
+            <h3>Escuchamos</h3>
+            <p>Entendemos tu idea, fechas, perfil de viajeros y nivel de exclusividad que buscas.</p>
+          </article>
+          <article class="process-step">
+            <p class="process-step__num" aria-hidden="true">02</p>
+            <h3>Diseñamos</h3>
+            <p>Preparamos una propuesta a medida con opciones claras, costos transparentes y tiempos definidos.</p>
+          </article>
+          <article class="process-step">
+            <p class="process-step__num" aria-hidden="true">03</p>
+            <h3>Coordinamos</h3>
+            <p>Reservas, accesos, traslados y detalles operativos quedan bajo nuestra gestión.</p>
+          </article>
+          <article class="process-step">
+            <p class="process-step__num" aria-hidden="true">04</p>
+            <h3>Tú disfrutas</h3>
+            <p>Llegas, vives la experiencia y cuentas con soporte en tiempo real si algo cambia.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials" id="testimonios" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="reveal">
+          <p class="eyebrow">Testimonios</p>
+          <h2 class="section-title" id="testimonials-title">Quienes confían en un trato distinto</h2>
+        </div>
+        <div class="testimonials__grid">
+          <blockquote class="testimonial testimonial--featured reveal">
+            <p class="testimonial__quote">«Necesitábamos cerrar un retiro ejecutivo en diez días. Global Experience VIP resolvió venue, logística y cena privada sin que yo enviara un solo correo a proveedores.»</p>
+            <footer class="testimonial__author">
+              <cite class="testimonial__name">Mariana Restrepo</cite>
+              <p class="testimonial__role">Directora regional · Sector financiero</p>
+            </footer>
+          </blockquote>
+          <blockquote class="testimonial reveal" style="transition-delay: 0.08s">
+            <p class="testimonial__quote">«La discreción y la rapidez en cambios de último minuto marcaron la diferencia en nuestro viaje a Europa.»</p>
+            <footer class="testimonial__author">
+              <cite class="testimonial__name">Andrés Villalobos</cite>
+              <p class="testimonial__role">Empresario · Viajero frecuente</p>
+            </footer>
+          </blockquote>
+          <blockquote class="testimonial reveal" style="transition-delay: 0.12s">
+            <p class="testimonial__quote">«Acceso a un evento que llevaba meses buscando por canales oficiales. Lo resolvieron en una semana, con hospitality impecable.»</p>
+            <footer class="testimonial__author">
+              <cite class="testimonial__name">Camila Duarte</cite>
+              <p class="testimonial__role">Socia · Firma de inversión</p>
+            </footer>
+          </blockquote>
+        </div>
+        <div class="trust-badge reveal">
+          <div class="trust-badge__item">
+            <strong>12+</strong>
+            <span>Años de experiencia combinada del equipo</span>
+          </div>
+          <div class="trust-badge__item">
+            <strong>40+</strong>
+            <span>Destinos coordinados al año</span>
+          </div>
+          <div class="trust-badge__item">
+            <strong>98%</strong>
+            <span>Clientes que repiten o refieren</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section class="cta-band" aria-labelledby="cta-band-title">
+      <div class="container cta-band__inner reveal">
+        <h2 id="cta-band-title">Diseñemos la experiencia que ya tienes en mente</h2>
+        <a href="#contacto" class="btn btn--primary">Agendar asesoría</a>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contact" id="contacto" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact__panel reveal">
+          <div class="contact__copy">
+            <p class="eyebrow">Contacto</p>
+            <h2 class="section-title" id="contact-title">Hablemos con la atención que merece tu tiempo</h2>
+            <p class="section-lead">
+              Cuéntanos qué tienes en mente. Un asesor senior revisará tu solicitud y responderá en menos de 24 horas hábiles.
+            </p>
+            <div class="contact__channels">
+              <a href="https://wa.me/573000000000?text=Hola%2C%20quiero%20solicitar%20una%20experiencia%20VIP." class="contact__channel" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#25d366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp · +57 300 000 0000
+              </a>
+              <a href="mailto:concierge@globalexperiencevip.com" class="contact__channel">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" aria-hidden="true"><path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+                concierge@globalexperiencevip.com
+              </a>
+            </div>
+            <a href="https://wa.me/573000000000" class="btn btn--whatsapp" style="margin-top: 2rem; align-self: flex-start" target="_blank" rel="noopener noreferrer">Escribir ahora</a>
+          </div>
+          <div class="contact__form-wrap">
+            <form id="contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="nombre">Nombre completo</label>
+                  <input type="text" id="nombre" name="nombre" placeholder="Ej. Carlos Mendoza" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                  <label for="email">Correo electrónico</label>
+                  <input type="email" id="email" name="email" placeholder="tu@email.com" required autocomplete="email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="interes">Tipo de experiencia</label>
+                <select id="interes" name="interes" required>
+                  <option value="" disabled selected>Selecciona una opción</option>
+                  <option value="viaje">Viaje premium personalizado</option>
+                  <option value="evento">Evento o acceso exclusivo</option>
+                  <option value="corporativo">Experiencia corporativa</option>
+                  <option value="lifestyle">Lifestyle / concierge</option>
+                  <option value="otro">Otro — lo describiré abajo</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="mensaje">Cuéntanos tu idea</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Destino, fechas aproximadas, número de personas y cualquier detalle relevante…" required></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary" style="width: 100%">Enviar solicitud</button>
+              <p class="form-note">Al enviar, aceptas ser contactado por nuestro equipo. Tus datos se tratan con confidencialidad.</p>
+            </form>
+            <p class="form-success" id="form-success" role="status" aria-live="polite">
+              Gracias. Hemos recibido tu solicitud.<br>Un asesor se pondrá en contacto contigo pronto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#inicio" class="logo">Global <span>Experience</span> VIP</a>
+          <p>Concierge internacional de viajes y experiencias premium. Curaduría, acceso y hospitalidad sin concesiones.</p>
+        </div>
+        <div>
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#experiencias">Experiencias</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+            <li><a href="mailto:concierge@globalexperiencevip.com">Email</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Redes</h4>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Global Experience VIP. Todos los derechos reservados.</p>
+        <p>Experiencias diseñadas con discreción y estándar internacional.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20una%20experiencia%20VIP." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const header = document.getElementById("header");
+      const themeToggle = document.getElementById("theme-toggle");
+      const menuToggle = document.getElementById("menu-toggle");
+      const nav = document.getElementById("nav");
+      const form = document.getElementById("contact-form");
+      const formSuccess = document.getElementById("form-success");
+
+      const storedTheme = localStorage.getItem("gxvip-theme");
+      if (storedTheme) root.setAttribute("data-theme", storedTheme);
+
+      themeToggle.addEventListener("click", function () {
+        const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem("gxvip-theme", next);
+      });
+
+      function onScroll() {
+        header.classList.toggle("is-scrolled", window.scrollY > 24);
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      menuToggle.addEventListener("click", function () {
+        const open = nav.classList.toggle("is-open");
+        menuToggle.setAttribute("aria-expanded", open);
+        document.body.style.overflow = open ? "hidden" : "";
+      });
+
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          nav.classList.remove("is-open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        });
+      });
+
+      const revealEls = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("is-visible");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+        );
+        revealEls.forEach(function (el) { io.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        form.classList.add("is-hidden");
+        formSuccess.classList.add("is-shown");
+      });
+    })();
+  </script>
+</body>
+</html>
