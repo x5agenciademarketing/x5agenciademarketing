@@ -36,7 +36,7 @@
       --accent-warm: #7a9e8e;
       --accent-soft: rgba(201, 169, 98, 0.12);
       --border: rgba(245, 241, 234, 0.09);
-      --hero-overlay: linear-gradient(180deg, rgba(10,9,8,0.55) 0%, rgba(10,9,8,0.88) 70%, #0a0908 100%);
+      --hero-overlay: linear-gradient(180deg, rgba(10,9,8,0.35) 0%, rgba(10,9,8,0.72) 55%, rgba(10,9,8,0.95) 100%);
       --nav-bg: rgba(10, 9, 8, 0.85);
     }
 
@@ -203,11 +203,14 @@
     /* Hero */
     .hero {
       position: relative;
-      min-height: min(92vh, 720px);
+      min-height: min(88vh, 780px);
       padding-top: var(--nav-h);
       display: flex;
       align-items: flex-end;
       overflow: hidden;
+    }
+    @media (min-width: 900px) {
+      .hero { min-height: min(92vh, 860px); }
     }
     .hero__bg {
       position: absolute;
@@ -425,9 +428,14 @@
     .cta-final__btns {
       margin-top: 1.5rem;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.65rem;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .cta-phone {
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
     }
 
     .footer {
@@ -526,7 +534,7 @@
   <main id="main">
     <section class="hero" id="inicio">
       <div class="hero__bg" aria-hidden="true">
-        <img id="hero-img" src="https://images.unsplash.com/photo-1587595437133-32759c2f39ed?w=1920&q=85" alt="" width="1920" height="1080" fetchpriority="high">
+        <img id="hero-img" src="https://images.unsplash.com/photo-1587595437133-32759c2f39ed?w=1920&q=90" data-i18n-alt="heroAlt" alt="Panorámica de Medellín al atardecer con el valle de Aburrá" width="1920" height="1080" fetchpriority="high">
       </div>
       <div class="hero__content">
         <div data-animate>
@@ -555,7 +563,7 @@
       <div class="exp-track">
         <article class="exp-card" data-animate style="transition-delay: 0.05s">
           <div class="exp-card__img">
-            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=80" data-i18n-alt="exp1Alt" alt="Vista de Medellín" loading="lazy" width="600" height="450">
+            <img src="https://images.unsplash.com/photo-1574485007669-86fcfbeb88cb?w=600&q=80" data-i18n-alt="exp1Alt" alt="Arte urbano y calles de la Comuna 13 en Medellín" loading="lazy" width="600" height="450">
           </div>
           <div class="exp-card__body">
             <span class="exp-card__tag" data-i18n="exp1Tag">Ciudad</span>
@@ -565,7 +573,7 @@
         </article>
         <article class="exp-card" data-animate style="transition-delay: 0.1s">
           <div class="exp-card__img">
-            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&q=80" data-i18n-alt="exp2Alt" alt="Gastronomía y vida nocturna" loading="lazy" width="600" height="450">
+            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=80" data-i18n-alt="exp2Alt" alt="Metrocable sobre el barrio y el valle de Medellín" loading="lazy" width="600" height="450">
           </div>
           <div class="exp-card__body">
             <span class="exp-card__tag" data-i18n="exp2Tag">Sabor &amp; noche</span>
@@ -575,7 +583,7 @@
         </article>
         <article class="exp-card" data-animate style="transition-delay: 0.15s">
           <div class="exp-card__img">
-            <img src="https://images.unsplash.com/photo-1590523277543-a94d2a4fe00b?w=600&q=80" data-i18n-alt="exp3Alt" alt="Paisaje verde de Antioquia" loading="lazy" width="600" height="450">
+            <img src="https://images.unsplash.com/photo-1559056199-64137f1fceb3?w=600&q=80" data-i18n-alt="exp3Alt" alt="Plantación de café en las montañas de Antioquia" loading="lazy" width="600" height="450">
           </div>
           <div class="exp-card__body">
             <span class="exp-card__tag" data-i18n="exp3Tag">Naturaleza</span>
@@ -585,7 +593,7 @@
         </article>
         <article class="exp-card" data-animate style="transition-delay: 0.2s">
           <div class="exp-card__img">
-            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" data-i18n-alt="exp4Alt" alt="Hotel boutique" loading="lazy" width="600" height="450">
+            <img src="https://images.unsplash.com/photo-1583422409516-52452c3a5fad?w=600&q=80" data-i18n-alt="exp4Alt" alt="Vista urbana de Medellín desde las lomas" loading="lazy" width="600" height="450">
           </div>
           <div class="exp-card__body">
             <span class="exp-card__tag" data-i18n="exp4Tag">Estancia</span>
@@ -668,7 +676,7 @@
         <p class="lead" data-i18n="ctaLead">Escríbenos por WhatsApp y armamos una propuesta a tu medida en menos de 24 horas.</p>
         <div class="cta-final__btns">
           <a href="https://wa.me/573046370794" class="btn btn--wa" data-i18n-wa="waCta" target="_blank" rel="noopener noreferrer" data-i18n="ctaWa">Escribir por WhatsApp</a>
-          <a href="mailto:concierge@globalexperiencevip.com" class="btn btn--outline" data-i18n="ctaEmail">concierge@globalexperiencevip.com</a>
+          <p class="cta-phone" data-i18n="ctaPhone">+57 304 637 0794</p>
         </div>
       </div>
     </section>
@@ -708,6 +716,7 @@
           langLabel: "EN",
           menuOpen: "Abrir menú",
           menuClose: "Cerrar menú",
+          heroAlt: "Panorámica de Medellín al atardecer con el valle de Aburrá",
           heroEyebrow: "Medellín · Antioquia",
           heroTitle: "La ciudad que enamora, <em>vivida en grande</em>",
           heroSub: "Somos tu concierge en Medellín: rutas premium, mesas con alma paisa y escapadas a los alrededores, con el detalle de un servicio de lujo y la calidez de quien conoce cada rincón.",
@@ -719,19 +728,19 @@
           expEyebrow: "En la ciudad",
           expTitle: "Experiencias que solo Medellín puede dar",
           expLead: "Curamos lo esencial para que no pierdas tiempo eligiendo: solo vivir la ciudad con estándar premium.",
-          exp1Alt: "Vista panorámica de Medellín",
+          exp1Alt: "Arte urbano y calles de la Comuna 13 en Medellín",
           exp1Tag: "Ciudad",
           exp1Title: "Medellín íntima",
           exp1Text: "Comuna 13, museos, miradores y barrios con guía local que cuenta la historia sin folleto turístico.",
-          exp2Alt: "Restaurante y ambiente nocturno",
+          exp2Alt: "Metrocable sobre el barrio y el valle de Medellín",
           exp2Tag: "Sabor & noche",
           exp2Title: "Mesa y ritmo paisa",
           exp2Text: "Reservas en restaurantes de autor, rooftops en Provenza y noches con trato preferencial.",
-          exp3Alt: "Paisaje verde de Antioquia",
+          exp3Alt: "Plantación de café en las montañas de Antioquia",
           exp3Tag: "Naturaleza",
           exp3Title: "Verde a una hora",
           exp3Text: "Fincas cafeteras, reservas y vuelos en helicóptero o rutas escénicas sin logística que te quite el disfrute.",
-          exp4Alt: "Hotel boutique en Medellín",
+          exp4Alt: "Vista urbana de Medellín desde las lomas",
           exp4Tag: "Estancia",
           exp4Title: "Hospedaje con sello",
           exp4Text: "Hoteles boutique en El Poblado y Las Palmas, con beneficios negociados y check-in sin fricción.",
@@ -765,7 +774,7 @@
           ctaTitle: "Cuéntanos cuándo llegas a Medellín",
           ctaLead: "Escríbenos por WhatsApp y armamos una propuesta a tu medida en menos de 24 horas.",
           ctaWa: "Escribir por WhatsApp",
-          ctaEmail: "concierge@globalexperiencevip.com",
+          ctaPhone: "+57 304 637 0794",
           footerCopy: "© 2026 Global Experience VIP · Medellín, Colombia",
           footerTop: "Volver arriba",
           waAria: "Contactar por WhatsApp",
@@ -787,6 +796,7 @@
           langLabel: "ES",
           menuOpen: "Open menu",
           menuClose: "Close menu",
+          heroAlt: "Panoramic view of Medellín at sunset over the Aburrá Valley",
           heroEyebrow: "Medellín · Antioquia",
           heroTitle: "The city that captivates, <em>experienced in style</em>",
           heroSub: "We are your Medellín concierge: premium routes, soulful dining and escapes to the surrounding region—with luxury detail and the warmth of true local knowledge.",
@@ -798,19 +808,19 @@
           expEyebrow: "In the city",
           expTitle: "Experiences only Medellín can offer",
           expLead: "We curate the essentials so you spend no time choosing—only living the city at a premium standard.",
-          exp1Alt: "Panoramic view of Medellín",
+          exp1Alt: "Street art and alleys in Comuna 13, Medellín",
           exp1Tag: "City",
           exp1Title: "Intimate Medellín",
           exp1Text: "Comuna 13, museums, viewpoints and neighborhoods with a local guide—no generic tour script.",
-          exp2Alt: "Dining and nightlife",
+          exp2Alt: "Metrocable over the neighborhood and Medellín valley",
           exp2Tag: "Taste & night",
           exp2Title: "Table & paisa rhythm",
           exp2Text: "Reservations at signature restaurants, Provenza rooftops and nights with preferential treatment.",
-          exp3Alt: "Green landscapes of Antioquia",
+          exp3Alt: "Coffee plantation in the mountains of Antioquia",
           exp3Tag: "Nature",
           exp3Title: "Green within an hour",
           exp3Text: "Coffee farms, nature reserves and helicopter flights or scenic routes—we handle the logistics.",
-          exp4Alt: "Boutique hotel in Medellín",
+          exp4Alt: "Urban view of Medellín from the hillside",
           exp4Tag: "Stay",
           exp4Title: "Signature lodging",
           exp4Text: "Boutique hotels in El Poblado and Las Palmas with negotiated perks and seamless check-in.",
@@ -844,7 +854,7 @@
           ctaTitle: "Tell us when you arrive in Medellín",
           ctaLead: "Message us on WhatsApp and we will send a tailored proposal within 24 hours.",
           ctaWa: "Message on WhatsApp",
-          ctaEmail: "concierge@globalexperiencevip.com",
+          ctaPhone: "+57 304 637 0794",
           footerCopy: "© 2026 Global Experience VIP · Medellín, Colombia",
           footerTop: "Back to top",
           waAria: "Contact via WhatsApp",
