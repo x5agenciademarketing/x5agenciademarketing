@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/globalexperiencevip",
+      "destination": "/globalexperiencevip/",
+      "permanent": true
+    },
+    {
       "source": "/globalexperiencvip",
       "destination": "/globalexperiencevip",
       "permanent": true
