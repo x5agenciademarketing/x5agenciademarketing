@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Global Experience VIP — Experiencias premium en Medellín y Antioquia. Concierge local, hospitalidad cercana y rutas de lujo por la ciudad y sus alrededores.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Global Experience VIP | Medellín y Antioquia en experiencias premium">
+  <meta property="og:description" content="Vive Medellín con curaduría local: ciudad, gastronomía, naturaleza cercana y hospitalidad de alto nivel sin perder calidez paisa.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:url" content="https://x5agenciademarketing.lat/globalexperiencevip/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1587595437133-32759c2f39ed?w=1200&q=80">
+  <link rel="canonical" href="https://x5agenciademarketing.lat/globalexperiencevip/">
+  <title>Global Experience VIP | Medellín &amp; Antioquia</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230c0b0a'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='14' font-weight='600' fill='%23c9a962' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-display: "Cormorant Garamond", Georgia, serif;
+      --font-body: "Outfit", system-ui, sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --radius: 8px;
+      --nav-h: 64px;
+      --container: min(1100px, calc(100% - 1.5rem));
+      --gap: clamp(2.5rem, 6vw, 4.5rem);
+      --bg: #0a0908;
+      --bg-card: #141210;
+      --bg-soft: #1c1916;
+      --text: #f5f1ea;
+      --text-muted: #a8a093;
+      --text-subtle: #6e6962;
+      --accent: #c9a962;
+      --accent-warm: #7a9e8e;
+      --accent-soft: rgba(201, 169, 98, 0.12);
+      --border: rgba(245, 241, 234, 0.09);
+      --hero-overlay: linear-gradient(180deg, rgba(10,9,8,0.55) 0%, rgba(10,9,8,0.88) 70%, #0a0908 100%);
+      --nav-bg: rgba(10, 9, 8, 0.85);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+    body {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; cursor: pointer; border: none; background: none; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .container { width: var(--container); margin-inline: auto; }
+    .eyebrow {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      margin-bottom: 0.65rem;
+    }
+    .title {
+      font-family: var(--font-display);
+      font-size: clamp(1.85rem, 5vw, 2.75rem);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      margin-top: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      font-size: 0.92rem;
+      max-width: 46ch;
+    }
+
+    /* Scroll animations */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    [data-animate].is-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    [data-animate="fade"] { transform: none; }
+    [data-animate="left"] { transform: translateX(-20px); }
+    [data-animate="left"].is-in { transform: translateX(0); }
+    [data-animate="scale"] { transform: scale(0.97); }
+    [data-animate="scale"].is-in { transform: scale(1); }
+
+    .header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid transparent;
+      transition: background 0.35s, border-color 0.35s;
+    }
+    .header.is-scrolled {
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      border-color: var(--border);
+    }
+    .header__inner {
+      width: var(--container);
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .logo span { color: var(--accent); }
+    .nav { display: flex; align-items: center; gap: 1.25rem; }
+    .nav__list { display: flex; gap: 1.25rem; list-style: none; }
+    .nav__link {
+      font-size: 0.72rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .nav__link:hover { color: var(--text); }
+    .header__actions { display: flex; align-items: center; gap: 0.5rem; }
+    .lang-toggle {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .lang-toggle:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.25rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      transition: transform 0.25s var(--ease), background 0.25s, box-shadow 0.25s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn--gold { background: var(--accent); color: #0a0908; }
+    .btn--gold:hover { box-shadow: 0 8px 24px var(--accent-soft); }
+    .btn--outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn--outline:hover { border-color: var(--accent-warm); color: var(--accent-warm); }
+    .btn--wa { background: #25d366; color: #fff; }
+    .menu-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: var(--text);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 720px);
+      padding-top: var(--nav-h);
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      transform: scale(1.06);
+      transition: transform 0.1s linear;
+    }
+    .hero__bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--hero-overlay);
+    }
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      width: var(--container);
+      margin-inline: auto;
+      padding: 2rem 0 2.5rem;
+    }
+    .hero__headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 7vw, 3.6rem);
+      font-weight: 500;
+      line-height: 1.05;
+      max-width: 14ch;
+    }
+    .hero__headline em { font-style: italic; color: var(--accent); }
+    .hero__sub {
+      margin-top: 1rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      font-size: 0.95rem;
+      max-width: 40ch;
+    }
+    .hero__ctas {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+    .hero__pills {
+      margin-top: 1.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .pill {
+      padding: 0.45rem 0.85rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      background: rgba(20, 18, 16, 0.5);
+      backdrop-filter: blur(6px);
+    }
+    .pill strong { color: var(--text); font-weight: 500; }
+
+    section { padding-block: var(--gap); }
+    .section-head { margin-bottom: 1.5rem; }
+
+    /* Experiences scroll */
+    .exp-track {
+      display: flex;
+      gap: 0.85rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: calc((100% - var(--container)) / 2 + 0.75rem);
+      padding: 0.25rem calc((100% - min(1100px, 100% - 1.5rem)) / 2) 0.5rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .exp-track::-webkit-scrollbar { display: none; }
+    @media (min-width: 900px) {
+      .exp-track {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        overflow: visible;
+        scroll-snap-type: none;
+        padding: 0;
+      }
+    }
+    .exp-card {
+      flex: 0 0 min(78vw, 280px);
+      scroll-snap-align: start;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      transition: border-color 0.3s, transform 0.35s var(--ease);
+    }
+    .exp-card:hover { border-color: rgba(201,169,98,0.35); transform: translateY(-3px); }
+    @media (min-width: 900px) { .exp-card { flex: none; } }
+    .exp-card__img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+    .exp-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+    .exp-card:hover .exp-card__img img { transform: scale(1.05); }
+    .exp-card__body { padding: 1rem 1.1rem 1.15rem; }
+    .exp-card__tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+    }
+    .exp-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin: 0.35rem 0 0.4rem;
+    }
+    .exp-card p { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; }
+
+    /* Region */
+    .region { background: var(--bg-soft); }
+    .region__grid {
+      display: grid;
+      gap: 0.75rem;
+    }
+    @media (min-width: 640px) {
+      .region__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .region__grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .region__item {
+      padding: 1.15rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      transition: border-color 0.3s, padding-left 0.35s var(--ease);
+    }
+    .region__item:hover { border-color: var(--accent-warm); padding-left: 1.35rem; }
+    .region__item h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+    .region__item p { font-size: 0.8rem; color: var(--text-muted); font-weight: 300; }
+    .region__dist {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* Why */
+    .why__list {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 768px) {
+      .why__list { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    }
+    .why__item {
+      padding: 1.25rem;
+      border-left: 2px solid var(--accent-warm);
+      background: linear-gradient(90deg, var(--accent-soft), transparent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .why__item h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+    }
+    .why__item p { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; }
+
+    /* Testimonial */
+    .quote-block {
+      padding: 1.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      max-width: 640px;
+    }
+    .quote-block p {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 3vw, 1.45rem);
+      font-style: italic;
+      line-height: 1.45;
+    }
+    .quote-block footer {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+    }
+
+    /* CTA */
+    .cta-final {
+      text-align: center;
+      padding-block: clamp(2.5rem, 8vw, 4rem);
+      border-top: 1px solid var(--border);
+      background: radial-gradient(ellipse at 50% 0%, rgba(122, 158, 142, 0.08), transparent 60%);
+    }
+    .cta-final .title { max-width: none; margin-inline: auto; }
+    .cta-final .lead { margin-inline: auto; }
+    .cta-final__btns {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.65rem;
+    }
+
+    .footer {
+      padding: 1.5rem 0 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+    }
+    .footer__inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .footer__links { display: flex; gap: 1.25rem; }
+    .footer a:hover { color: var(--accent); }
+
+    .wa-float {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      z-index: 90;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.35);
+      transition: transform 0.3s var(--ease);
+    }
+    .wa-float:hover { transform: scale(1.06); }
+    .wa-float svg { width: 26px; height: 26px; fill: currentColor; }
+
+    /* Mobile compact */
+    @media (max-width: 899px) {
+      :root { --nav-h: 58px; --gap: 2.25rem; }
+      .btn--nav { display: none; }
+      .nav__list { display: none; }
+      .menu-toggle { display: flex; }
+      .nav.is-open {
+        display: flex;
+        position: fixed;
+        inset: var(--nav-h) 0 0;
+        background: var(--bg);
+        flex-direction: column;
+        padding: 1.5rem;
+        border-top: 1px solid var(--border);
+      }
+      .nav.is-open .nav__list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+      .nav.is-open .nav__link { font-size: 0.95rem; }
+      .nav.is-open .header__actions {
+        margin-top: auto;
+        width: 100%;
+        flex-direction: column;
+      }
+      .nav.is-open .btn--nav { display: inline-flex; width: 100%; }
+      .hero { min-height: auto; }
+      .hero__content { padding: 1.5rem 0 2rem; }
+      .section-head .lead { display: none; }
+      .why .section-head .lead { display: block; font-size: 0.85rem; }
+    }
+    @media (min-width: 900px) {
+      .menu-toggle { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="#inicio" class="logo" data-i18n-aria="logoAria">Global <span>Experience</span> VIP</a>
+      <nav class="nav" id="nav" data-i18n-aria="navAria">
+        <ul class="nav__list">
+          <li><a href="#inicio" class="nav__link" data-i18n="navHome">Inicio</a></li>
+          <li><a href="#experiencias" class="nav__link" data-i18n="navExp">Experiencias</a></li>
+          <li><a href="#region" class="nav__link" data-i18n="navRegion">Alrededores</a></li>
+          <li><a href="#contacto" class="nav__link" data-i18n="navContact">Contacto</a></li>
+        </ul>
+        <div class="header__actions">
+          <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Switch to English">EN</button>
+          <a href="#contacto" class="btn btn--gold btn--nav" data-i18n="navCta">Reservar experiencia</a>
+        </div>
+      </nav>
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav" data-i18n-aria="menuOpen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="inicio">
+      <div class="hero__bg" aria-hidden="true">
+        <img id="hero-img" src="https://images.unsplash.com/photo-1587595437133-32759c2f39ed?w=1920&q=85" alt="" width="1920" height="1080" fetchpriority="high">
+      </div>
+      <div class="hero__content">
+        <div data-animate>
+          <p class="eyebrow" data-i18n="heroEyebrow">Medellín · Antioquia</p>
+          <h1 class="hero__headline" data-i18n-html="heroTitle">La ciudad que enamora, <em>vivida en grande</em></h1>
+          <p class="hero__sub" data-i18n="heroSub">Somos tu concierge en Medellín: rutas premium, mesas con alma paisa y escapadas a los alrededores, con el detalle de un servicio de lujo y la calidez de quien conoce cada rincón.</p>
+          <div class="hero__ctas">
+            <a href="#contacto" class="btn btn--gold" data-i18n="heroCta1">Planear mi viaje</a>
+            <a href="https://wa.me/573046370794" class="btn btn--outline" data-i18n-wa="waHero" target="_blank" rel="noopener noreferrer" data-i18n="heroCta2">WhatsApp</a>
+          </div>
+          <div class="hero__pills">
+            <span class="pill" data-i18n-html="pill1"><strong>El Poblado</strong> · Provenza</span>
+            <span class="pill" data-i18n-html="pill2"><strong>Guatapé</strong> · 90 min</span>
+            <span class="pill" data-i18n="pill3">Respuesta en 24h</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencias">
+      <div class="container section-head" data-animate>
+        <p class="eyebrow" data-i18n="expEyebrow">En la ciudad</p>
+        <h2 class="title" data-i18n="expTitle">Experiencias que solo Medellín puede dar</h2>
+        <p class="lead" data-i18n="expLead">Curamos lo esencial para que no pierdas tiempo eligiendo: solo vivir la ciudad con estándar premium.</p>
+      </div>
+      <div class="exp-track">
+        <article class="exp-card" data-animate style="transition-delay: 0.05s">
+          <div class="exp-card__img">
+            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=80" data-i18n-alt="exp1Alt" alt="Vista de Medellín" loading="lazy" width="600" height="450">
+          </div>
+          <div class="exp-card__body">
+            <span class="exp-card__tag" data-i18n="exp1Tag">Ciudad</span>
+            <h3 data-i18n="exp1Title">Medellín íntima</h3>
+            <p data-i18n="exp1Text">Comuna 13, museos, miradores y barrios con guía local que cuenta la historia sin folleto turístico.</p>
+          </div>
+        </article>
+        <article class="exp-card" data-animate style="transition-delay: 0.1s">
+          <div class="exp-card__img">
+            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&q=80" data-i18n-alt="exp2Alt" alt="Gastronomía y vida nocturna" loading="lazy" width="600" height="450">
+          </div>
+          <div class="exp-card__body">
+            <span class="exp-card__tag" data-i18n="exp2Tag">Sabor &amp; noche</span>
+            <h3 data-i18n="exp2Title">Mesa y ritmo paisa</h3>
+            <p data-i18n="exp2Text">Reservas en restaurantes de autor, rooftops en Provenza y noches con trato preferencial.</p>
+          </div>
+        </article>
+        <article class="exp-card" data-animate style="transition-delay: 0.15s">
+          <div class="exp-card__img">
+            <img src="https://images.unsplash.com/photo-1590523277543-a94d2a4fe00b?w=600&q=80" data-i18n-alt="exp3Alt" alt="Paisaje verde de Antioquia" loading="lazy" width="600" height="450">
+          </div>
+          <div class="exp-card__body">
+            <span class="exp-card__tag" data-i18n="exp3Tag">Naturaleza</span>
+            <h3 data-i18n="exp3Title">Verde a una hora</h3>
+            <p data-i18n="exp3Text">Fincas cafeteras, reservas y vuelos en helicóptero o rutas escénicas sin logística que te quite el disfrute.</p>
+          </div>
+        </article>
+        <article class="exp-card" data-animate style="transition-delay: 0.2s">
+          <div class="exp-card__img">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" data-i18n-alt="exp4Alt" alt="Hotel boutique" loading="lazy" width="600" height="450">
+          </div>
+          <div class="exp-card__body">
+            <span class="exp-card__tag" data-i18n="exp4Tag">Estancia</span>
+            <h3 data-i18n="exp4Title">Hospedaje con sello</h3>
+            <p data-i18n="exp4Text">Hoteles boutique en El Poblado y Las Palmas, con beneficios negociados y check-in sin fricción.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="region" id="region">
+      <div class="container">
+        <div class="section-head" data-animate>
+          <p class="eyebrow" data-i18n="regionEyebrow">Alrededores</p>
+          <h2 class="title" data-i18n="regionTitle">Antioquia, a tu ritmo</h2>
+          <p class="lead" data-i18n="regionLead">Medellín es la base. Desde aquí diseñamos escapadas de un día o fin de semana con transporte y detalle resueltos.</p>
+        </div>
+        <div class="region__grid">
+          <article class="region__item" data-animate="left">
+            <h3 data-i18n="reg1Title">Guatapé &amp; Peñol</h3>
+            <p data-i18n="reg1Text">Lancha privada, almuerzo en la orilla y subida al peñón sin colas ni improvisos.</p>
+            <span class="region__dist" data-i18n="reg1Dist">~90 min desde Medellín</span>
+          </article>
+          <article class="region__item" data-animate style="transition-delay: 0.06s">
+            <h3 data-i18n="reg2Title">Santa Fe de Antioquia</h3>
+            <p data-i18n="reg2Text">Patrimonio colonial, puente colgante y almuerzo en patio con cocina tradicional elevada.</p>
+            <span class="region__dist" data-i18n="reg2Dist">~1 h 15 min</span>
+          </article>
+          <article class="region__item" data-animate style="transition-delay: 0.12s">
+            <h3 data-i18n="reg3Title">Jardín &amp; café</h3>
+            <p data-i18n="reg3Text">Pueblos del suroeste, cascadas y cata de café en finca con dueños locales.</p>
+            <span class="region__dist" data-i18n="reg3Dist">~3 h · ideal 2 días</span>
+          </article>
+          <article class="region__item" data-animate style="transition-delay: 0.18s">
+            <h3 data-i18n="reg4Title">Rionegro &amp; Llanogrande</h3>
+            <p data-i18n="reg4Text">Cerca al aeropuerto: golf, cenas de llegada o salida y hoteles para conexiones ejecutivas.</p>
+            <span class="region__dist" data-i18n="reg4Dist">~40 min · MDE</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="why" id="por-que">
+      <div class="container">
+        <div class="section-head" data-animate>
+          <p class="eyebrow" data-i18n="whyEyebrow">Por qué con nosotros</p>
+          <h2 class="title" data-i18n="whyTitle">Lujo con cara humana</h2>
+          <p class="lead" data-i18n="whyLead">No somos una agencia genérica: somos equipo local que habla claro, cumple y te trata por nombre.</p>
+        </div>
+        <ul class="why__list">
+          <li class="why__item" data-animate>
+            <h3 data-i18n="why1Title">Conocimiento real</h3>
+            <p data-i18n="why1Text">Vivimos Medellín. Sabemos qué mesa reservar un martes y qué ruta evitar en temporada alta.</p>
+          </li>
+          <li class="why__item" data-animate style="transition-delay: 0.08s">
+            <h3 data-i18n="why2Title">Todo resuelto</h3>
+            <p data-i18n="why2Text">Traslados, entradas, cambios de último minuto: un solo WhatsApp, una sola respuesta.</p>
+          </li>
+          <li class="why__item" data-animate style="transition-delay: 0.16s">
+            <h3 data-i18n="why3Title">Estilo sin rigidez</h3>
+            <p data-i18n="why3Text">Hospitalidad premium sin protocolos fríos. Exigencia en el detalle, cercanía en el trato.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="testimonio">
+      <div class="container" data-animate="scale">
+        <blockquote class="quote-block">
+          <p data-i18n="quote">«Llegamos sin plan y salimos con una semana perfecta: Provenza, Guatapé en lancha privada y una cena que aún comentamos. Se sintió como viajar con un amigo que además tiene contactos de sobra.»</p>
+          <footer data-i18n="quoteAuthor">James &amp; Sarah · Viajeros desde Londres</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="cta-final" id="contacto">
+      <div class="container" data-animate>
+        <p class="eyebrow" data-i18n="ctaEyebrow">Empecemos</p>
+        <h2 class="title" data-i18n="ctaTitle">Cuéntanos cuándo llegas a Medellín</h2>
+        <p class="lead" data-i18n="ctaLead">Escríbenos por WhatsApp y armamos una propuesta a tu medida en menos de 24 horas.</p>
+        <div class="cta-final__btns">
+          <a href="https://wa.me/573046370794" class="btn btn--wa" data-i18n-wa="waCta" target="_blank" rel="noopener noreferrer" data-i18n="ctaWa">Escribir por WhatsApp</a>
+          <a href="mailto:concierge@globalexperiencevip.com" class="btn btn--outline" data-i18n="ctaEmail">concierge@globalexperiencevip.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p data-i18n="footerCopy">© 2026 Global Experience VIP · Medellín, Colombia</p>
+      <div class="footer__links">
+        <a href="https://wa.me/573046370794" data-i18n-wa="waFloat" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="#inicio" data-i18n="footerTop">Volver arriba</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/573046370794" class="wa-float" data-i18n-wa="waFloat" data-i18n-aria="waAria" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    (function () {
+      const WA = "573046370794";
+      const LANG_KEY = "gxvip-lang";
+
+      const T = {
+        es: {
+          metaTitle: "Global Experience VIP | Medellín & Antioquia",
+          metaDesc: "Global Experience VIP — Experiencias premium en Medellín y Antioquia. Concierge local, hospitalidad cercana y rutas de lujo por la ciudad y sus alrededores.",
+          logoAria: "Global Experience VIP — Inicio",
+          navAria: "Navegación principal",
+          navHome: "Inicio",
+          navExp: "Experiencias",
+          navRegion: "Alrededores",
+          navContact: "Contacto",
+          navCta: "Reservar experiencia",
+          langSwitch: "Cambiar a inglés",
+          langLabel: "EN",
+          menuOpen: "Abrir menú",
+          menuClose: "Cerrar menú",
+          heroEyebrow: "Medellín · Antioquia",
+          heroTitle: "La ciudad que enamora, <em>vivida en grande</em>",
+          heroSub: "Somos tu concierge en Medellín: rutas premium, mesas con alma paisa y escapadas a los alrededores, con el detalle de un servicio de lujo y la calidez de quien conoce cada rincón.",
+          heroCta1: "Planear mi viaje",
+          heroCta2: "WhatsApp",
+          pill1: "<strong>El Poblado</strong> · Provenza",
+          pill2: "<strong>Guatapé</strong> · 90 min",
+          pill3: "Respuesta en 24h",
+          expEyebrow: "En la ciudad",
+          expTitle: "Experiencias que solo Medellín puede dar",
+          expLead: "Curamos lo esencial para que no pierdas tiempo eligiendo: solo vivir la ciudad con estándar premium.",
+          exp1Alt: "Vista panorámica de Medellín",
+          exp1Tag: "Ciudad",
+          exp1Title: "Medellín íntima",
+          exp1Text: "Comuna 13, museos, miradores y barrios con guía local que cuenta la historia sin folleto turístico.",
+          exp2Alt: "Restaurante y ambiente nocturno",
+          exp2Tag: "Sabor & noche",
+          exp2Title: "Mesa y ritmo paisa",
+          exp2Text: "Reservas en restaurantes de autor, rooftops en Provenza y noches con trato preferencial.",
+          exp3Alt: "Paisaje verde de Antioquia",
+          exp3Tag: "Naturaleza",
+          exp3Title: "Verde a una hora",
+          exp3Text: "Fincas cafeteras, reservas y vuelos en helicóptero o rutas escénicas sin logística que te quite el disfrute.",
+          exp4Alt: "Hotel boutique en Medellín",
+          exp4Tag: "Estancia",
+          exp4Title: "Hospedaje con sello",
+          exp4Text: "Hoteles boutique en El Poblado y Las Palmas, con beneficios negociados y check-in sin fricción.",
+          regionEyebrow: "Alrededores",
+          regionTitle: "Antioquia, a tu ritmo",
+          regionLead: "Medellín es la base. Desde aquí diseñamos escapadas de un día o fin de semana con transporte y detalle resueltos.",
+          reg1Title: "Guatapé & Peñol",
+          reg1Text: "Lancha privada, almuerzo en la orilla y subida al peñón sin colas ni improvisos.",
+          reg1Dist: "~90 min desde Medellín",
+          reg2Title: "Santa Fe de Antioquia",
+          reg2Text: "Patrimonio colonial, puente colgante y almuerzo en patio con cocina tradicional elevada.",
+          reg2Dist: "~1 h 15 min",
+          reg3Title: "Jardín & café",
+          reg3Text: "Pueblos del suroeste, cascadas y cata de café en finca con dueños locales.",
+          reg3Dist: "~3 h · ideal 2 días",
+          reg4Title: "Rionegro & Llanogrande",
+          reg4Text: "Cerca al aeropuerto: golf, cenas de llegada o salida y hoteles para conexiones ejecutivas.",
+          reg4Dist: "~40 min · MDE",
+          whyEyebrow: "Por qué con nosotros",
+          whyTitle: "Lujo con cara humana",
+          whyLead: "No somos una agencia genérica: somos equipo local que habla claro, cumple y te trata por nombre.",
+          why1Title: "Conocimiento real",
+          why1Text: "Vivimos Medellín. Sabemos qué mesa reservar un martes y qué ruta evitar en temporada alta.",
+          why2Title: "Todo resuelto",
+          why2Text: "Traslados, entradas, cambios de último minuto: un solo WhatsApp, una sola respuesta.",
+          why3Title: "Estilo sin rigidez",
+          why3Text: "Hospitalidad premium sin protocolos fríos. Exigencia en el detalle, cercanía en el trato.",
+          quote: "«Llegamos sin plan y salimos con una semana perfecta: Provenza, Guatapé en lancha privada y una cena que aún comentamos. Se sintió como viajar con un amigo que además tiene contactos de sobra.»",
+          quoteAuthor: "James & Sarah · Viajeros desde Londres",
+          ctaEyebrow: "Empecemos",
+          ctaTitle: "Cuéntanos cuándo llegas a Medellín",
+          ctaLead: "Escríbenos por WhatsApp y armamos una propuesta a tu medida en menos de 24 horas.",
+          ctaWa: "Escribir por WhatsApp",
+          ctaEmail: "concierge@globalexperiencevip.com",
+          footerCopy: "© 2026 Global Experience VIP · Medellín, Colombia",
+          footerTop: "Volver arriba",
+          waAria: "Contactar por WhatsApp",
+          waHero: "Hola, quiero planear una experiencia en Medellín.",
+          waCta: "Hola, me gustaría armar mi experiencia en Medellín con Global Experience VIP.",
+          waFloat: "Hola, me interesa conocer experiencias en Medellín."
+        },
+        en: {
+          metaTitle: "Global Experience VIP | Medellín & Antioquia",
+          metaDesc: "Global Experience VIP — Premium experiences in Medellín and Antioquia. Local concierge, warm hospitality and luxury routes across the city and beyond.",
+          logoAria: "Global Experience VIP — Home",
+          navAria: "Main navigation",
+          navHome: "Home",
+          navExp: "Experiences",
+          navRegion: "Beyond the city",
+          navContact: "Contact",
+          navCta: "Book experience",
+          langSwitch: "Switch to Spanish",
+          langLabel: "ES",
+          menuOpen: "Open menu",
+          menuClose: "Close menu",
+          heroEyebrow: "Medellín · Antioquia",
+          heroTitle: "The city that captivates, <em>experienced in style</em>",
+          heroSub: "We are your Medellín concierge: premium routes, soulful dining and escapes to the surrounding region—with luxury detail and the warmth of true local knowledge.",
+          heroCta1: "Plan my trip",
+          heroCta2: "WhatsApp",
+          pill1: "<strong>El Poblado</strong> · Provenza",
+          pill2: "<strong>Guatapé</strong> · 90 min",
+          pill3: "Reply within 24h",
+          expEyebrow: "In the city",
+          expTitle: "Experiences only Medellín can offer",
+          expLead: "We curate the essentials so you spend no time choosing—only living the city at a premium standard.",
+          exp1Alt: "Panoramic view of Medellín",
+          exp1Tag: "City",
+          exp1Title: "Intimate Medellín",
+          exp1Text: "Comuna 13, museums, viewpoints and neighborhoods with a local guide—no generic tour script.",
+          exp2Alt: "Dining and nightlife",
+          exp2Tag: "Taste & night",
+          exp2Title: "Table & paisa rhythm",
+          exp2Text: "Reservations at signature restaurants, Provenza rooftops and nights with preferential treatment.",
+          exp3Alt: "Green landscapes of Antioquia",
+          exp3Tag: "Nature",
+          exp3Title: "Green within an hour",
+          exp3Text: "Coffee farms, nature reserves and helicopter flights or scenic routes—we handle the logistics.",
+          exp4Alt: "Boutique hotel in Medellín",
+          exp4Tag: "Stay",
+          exp4Title: "Signature lodging",
+          exp4Text: "Boutique hotels in El Poblado and Las Palmas with negotiated perks and seamless check-in.",
+          regionEyebrow: "Beyond Medellín",
+          regionTitle: "Antioquia, at your pace",
+          regionLead: "Medellín is your base. From here we design day trips or weekend escapes with transport and details covered.",
+          reg1Title: "Guatapé & El Peñol",
+          reg1Text: "Private boat, lakeside lunch and rock climb without queues or guesswork.",
+          reg1Dist: "~90 min from Medellín",
+          reg2Title: "Santa Fe de Antioquia",
+          reg2Text: "Colonial heritage, suspension bridge and courtyard lunch with elevated traditional cuisine.",
+          reg2Dist: "~1 h 15 min",
+          reg3Title: "Jardín & coffee",
+          reg3Text: "Southwestern towns, waterfalls and farm tastings with local owners.",
+          reg3Dist: "~3 h · ideal 2 days",
+          reg4Title: "Rionegro & Llanogrande",
+          reg4Text: "Near the airport: golf, arrival or departure dinners and hotels for executive connections.",
+          reg4Dist: "~40 min · MDE",
+          whyEyebrow: "Why travel with us",
+          whyTitle: "Luxury with a human face",
+          whyLead: "We are not a generic agency: a local team that speaks plainly, delivers and knows you by name.",
+          why1Title: "Real local knowledge",
+          why1Text: "We live in Medellín. We know which table to book on a Tuesday and which route to skip in high season.",
+          why2Title: "Everything handled",
+          why2Text: "Transfers, tickets, last-minute changes—one WhatsApp, one point of contact.",
+          why3Title: "Style without stiffness",
+          why3Text: "Premium hospitality without cold protocol. High standards, warm treatment.",
+          quote: "«We arrived with no plan and left with a perfect week: Provenza, private boat in Guatapé and a dinner we still talk about. It felt like traveling with a well-connected friend.»",
+          quoteAuthor: "James & Sarah · Travelers from London",
+          ctaEyebrow: "Let's begin",
+          ctaTitle: "Tell us when you arrive in Medellín",
+          ctaLead: "Message us on WhatsApp and we will send a tailored proposal within 24 hours.",
+          ctaWa: "Message on WhatsApp",
+          ctaEmail: "concierge@globalexperiencevip.com",
+          footerCopy: "© 2026 Global Experience VIP · Medellín, Colombia",
+          footerTop: "Back to top",
+          waAria: "Contact via WhatsApp",
+          waHero: "Hello, I would like to plan an experience in Medellín.",
+          waCta: "Hello, I would like to plan my Medellín experience with Global Experience VIP.",
+          waFloat: "Hello, I am interested in Medellín experiences."
+        }
+      };
+
+      const root = document.documentElement;
+      const header = document.getElementById("header");
+      const langToggle = document.getElementById("lang-toggle");
+      const menuToggle = document.getElementById("menu-toggle");
+      const nav = document.getElementById("nav");
+      const heroImg = document.getElementById("hero-img");
+      const metaDesc = document.querySelector('meta[name="description"]');
+
+      let lang = localStorage.getItem(LANG_KEY) || "es";
+      if (!T[lang]) lang = "es";
+
+      function waUrl(key) {
+        return "https://wa.me/" + WA + "?text=" + encodeURIComponent(T[lang][key]);
+      }
+
+      function applyLang(l) {
+        lang = l;
+        const d = T[l];
+        root.lang = l;
+        localStorage.setItem(LANG_KEY, l);
+        langToggle.textContent = d.langLabel;
+        langToggle.setAttribute("aria-label", d.langSwitch);
+        document.title = d.metaTitle;
+        if (metaDesc) metaDesc.content = d.metaDesc;
+
+        document.querySelectorAll("[data-i18n]").forEach(function (el) {
+          const k = el.dataset.i18n;
+          if (d[k] != null) el.textContent = d[k];
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+          const k = el.dataset.i18nHtml;
+          if (d[k] != null) el.innerHTML = d[k];
+        });
+        document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+          const k = el.dataset.i18nAlt;
+          if (d[k] != null) el.alt = d[k];
+        });
+        document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+          const k = el.dataset.i18nAria;
+          if (d[k] != null) el.setAttribute("aria-label", d[k]);
+        });
+        document.querySelectorAll("[data-i18n-wa]").forEach(function (el) {
+          const k = el.dataset.i18nWa;
+          if (d[k] != null) el.href = waUrl(k);
+        });
+        menuToggle.setAttribute("aria-label", d[nav.classList.contains("is-open") ? "menuClose" : "menuOpen"]);
+      }
+
+      langToggle.addEventListener("click", function () {
+        applyLang(lang === "es" ? "en" : "es");
+      });
+      applyLang(lang);
+
+      header.classList.toggle("is-scrolled", window.scrollY > 20);
+      window.addEventListener("scroll", function () {
+        header.classList.toggle("is-scrolled", window.scrollY > 20);
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && heroImg) {
+          const y = Math.min(window.scrollY * 0.00035, 0.08);
+          heroImg.style.transform = "scale(" + (1.06 + y) + ") translateY(" + (window.scrollY * 0.12) + "px)";
+        }
+      }, { passive: true });
+
+      menuToggle.addEventListener("click", function () {
+        const open = nav.classList.toggle("is-open");
+        menuToggle.setAttribute("aria-expanded", open);
+        menuToggle.setAttribute("aria-label", T[lang][open ? "menuClose" : "menuOpen"]);
+        document.body.style.overflow = open ? "hidden" : "";
+      });
+      nav.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          nav.classList.remove("is-open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        });
+      });
+
+      const animated = document.querySelectorAll("[data-animate]");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add("is-in");
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+        animated.forEach(function (el) { io.observe(el); });
+      } else {
+        animated.forEach(function (el) { el.classList.add("is-in"); });
+      }
+    })();
+  </script>
+</body>
+</html>
