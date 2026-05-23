@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
   <meta property="og:url" content="https://x5agenciademarketing.lat/globalexperiencevip/">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1587595437133-32759c2f39ed?w=1200&q=80">
+  <meta property="og:image" content="https://x5agenciademarketing.lat/globalexperiencevip/images/hero.jpg">
   <link rel="canonical" href="https://x5agenciademarketing.lat/globalexperiencevip/">
   <title>Global Experience VIP | Medellín &amp; Antioquia</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230c0b0a'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='14' font-weight='600' fill='%23c9a962' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
@@ -134,7 +134,17 @@
       letter-spacing: 0.03em;
     }
     .logo span { color: var(--accent); }
-    .nav { display: flex; align-items: center; gap: 1.25rem; }
+    .header__tools {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: auto;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
     .nav__list { display: flex; gap: 1.25rem; list-style: none; }
     .nav__link {
       font-size: 0.72rem;
@@ -144,7 +154,11 @@
       transition: color 0.2s;
     }
     .nav__link:hover { color: var(--text); }
-    .header__actions { display: flex; align-items: center; gap: 0.5rem; }
+    .header__tools {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
     .lang-toggle {
       width: 36px;
       height: 36px;
@@ -216,13 +230,21 @@
       position: absolute;
       inset: 0;
       z-index: 0;
+      background-color: #1a1814;
+      background-image: url("images/hero.jpg");
+      background-size: cover;
+      background-position: center 35%;
     }
+    .hero__bg picture,
     .hero__bg img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 35%;
-      transform: scale(1.06);
+      min-height: 100%;
+    }
+    #hero-img {
+      transform: scale(1.04);
       transition: transform 0.1s linear;
     }
     .hero__bg::after {
@@ -315,10 +337,12 @@
       aspect-ratio: 4/3;
       overflow: hidden;
     }
+    .exp-card__img picture,
     .exp-card__img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      background: var(--bg-soft);
       transition: transform 0.6s var(--ease);
     }
     .exp-card:hover .exp-card__img img { transform: scale(1.05); }
@@ -472,40 +496,57 @@
     .wa-float:hover { transform: scale(1.06); }
     .wa-float svg { width: 26px; height: 26px; fill: currentColor; }
 
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      inset: var(--nav-h) 0 0;
+      z-index: 99;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 1.5rem 1.5rem;
+      flex-direction: column;
+      gap: 0;
+    }
+    .mobile-drawer.is-open { display: flex; }
+    .mobile-drawer__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .mobile-drawer__link {
+      display: block;
+      padding: 0.85rem 0;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-drawer__cta {
+      margin-top: 1.25rem;
+      width: 100%;
+    }
+
     /* Mobile compact */
     @media (max-width: 899px) {
       :root { --nav-h: 58px; --gap: 2.25rem; }
-      .btn--nav { display: none; }
-      .nav__list { display: none; }
+      .nav { display: none; }
+      .header__tools { margin-left: auto; }
       .menu-toggle { display: flex; }
-      .nav.is-open {
-        display: flex;
-        position: fixed;
-        inset: var(--nav-h) 0 0;
-        background: var(--bg);
-        flex-direction: column;
-        padding: 1.5rem;
-        border-top: 1px solid var(--border);
+      .hero {
+        min-height: clamp(480px, 78vh, 640px);
       }
-      .nav.is-open .nav__list {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-      }
-      .nav.is-open .nav__link { font-size: 0.95rem; }
-      .nav.is-open .header__actions {
-        margin-top: auto;
-        width: 100%;
-        flex-direction: column;
-      }
-      .nav.is-open .btn--nav { display: inline-flex; width: 100%; }
-      .hero { min-height: auto; }
-      .hero__content { padding: 1.5rem 0 2rem; }
+      .hero__content { padding: 1.25rem 0 1.75rem; }
+      .hero__sub { font-size: 0.88rem; max-width: 100%; }
+      .hero__pills { margin-top: 1.25rem; }
       .section-head .lead { display: none; }
       .why .section-head .lead { display: block; font-size: 0.85rem; }
+      body.menu-open { overflow: hidden; }
     }
     @media (min-width: 900px) {
       .menu-toggle { display: none; }
+      .mobile-drawer { display: none !important; }
     }
   </style>
 </head>
@@ -513,28 +554,41 @@
   <header class="header" id="header">
     <div class="header__inner">
       <a href="#inicio" class="logo" data-i18n-aria="logoAria">Global <span>Experience</span> VIP</a>
-      <nav class="nav" id="nav" data-i18n-aria="navAria">
+      <nav class="nav" id="nav" data-i18n-aria="navAria" aria-label="Navegación principal">
         <ul class="nav__list">
           <li><a href="#inicio" class="nav__link" data-i18n="navHome">Inicio</a></li>
           <li><a href="#experiencias" class="nav__link" data-i18n="navExp">Experiencias</a></li>
           <li><a href="#region" class="nav__link" data-i18n="navRegion">Alrededores</a></li>
           <li><a href="#contacto" class="nav__link" data-i18n="navContact">Contacto</a></li>
         </ul>
-        <div class="header__actions">
-          <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Switch to English">EN</button>
-          <a href="#contacto" class="btn btn--gold btn--nav" data-i18n="navCta">Reservar experiencia</a>
-        </div>
+        <a href="#contacto" class="btn btn--gold btn--nav" data-i18n="navCta">Reservar experiencia</a>
       </nav>
-      <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav" data-i18n-aria="menuOpen">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="header__tools">
+        <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Switch to English">EN</button>
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-drawer" data-i18n-aria="menuOpen">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <ul class="mobile-drawer__list">
+      <li><a href="#inicio" class="mobile-drawer__link" data-i18n="navHome">Inicio</a></li>
+      <li><a href="#experiencias" class="mobile-drawer__link" data-i18n="navExp">Experiencias</a></li>
+      <li><a href="#region" class="mobile-drawer__link" data-i18n="navRegion">Alrededores</a></li>
+      <li><a href="#contacto" class="mobile-drawer__link" data-i18n="navContact">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn btn--gold mobile-drawer__cta" data-i18n="navCta">Reservar experiencia</a>
+  </div>
 
   <main id="main">
     <section class="hero" id="inicio">
       <div class="hero__bg" aria-hidden="true">
-        <img id="hero-img" src="https://images.unsplash.com/photo-1587595437133-32759c2f39ed?w=1920&q=90" data-i18n-alt="heroAlt" alt="Panorámica de Medellín al atardecer con el valle de Aburrá" width="1920" height="1080" fetchpriority="high">
+        <picture>
+          <source srcset="images/hero.webp" type="image/webp">
+          <img id="hero-img" src="images/hero.jpg" data-i18n-alt="heroAlt" alt="Metrocable y panorama del valle de Medellín" width="1920" height="1080" fetchpriority="high" decoding="async">
+        </picture>
       </div>
       <div class="hero__content">
         <div data-animate>
@@ -563,7 +617,10 @@
       <div class="exp-track">
         <article class="exp-card" data-animate style="transition-delay: 0.05s">
           <div class="exp-card__img">
-            <img src="https://images.unsplash.com/photo-1574485007669-86fcfbeb88cb?w=600&q=80" data-i18n-alt="exp1Alt" alt="Arte urbano y calles de la Comuna 13 en Medellín" loading="lazy" width="600" height="450">
+            <picture>
+              <source srcset="images/exp-ciudad.webp" type="image/webp">
+              <img src="images/exp-ciudad.jpg" data-i18n-alt="exp1Alt" alt="Arte urbano y calles de la Comuna 13 en Medellín" loading="lazy" width="800" height="600" decoding="async">
+            </picture>
           </div>
           <div class="exp-card__body">
             <span class="exp-card__tag" data-i18n="exp1Tag">Ciudad</span>
@@ -573,7 +630,10 @@
         </article>
         <article class="exp-card" data-animate style="transition-delay: 0.1s">
           <div class="exp-card__img">
-            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=80" data-i18n-alt="exp2Alt" alt="Metrocable sobre el barrio y el valle de Medellín" loading="lazy" width="600" height="450">
+            <picture>
+              <source srcset="images/exp-noche.webp" type="image/webp">
+              <img src="images/exp-noche.jpg" data-i18n-alt="exp2Alt" alt="Metrocable sobre el barrio y el valle de Medellín" loading="lazy" width="800" height="600" decoding="async">
+            </picture>
           </div>
           <div class="exp-card__body">
             <span class="exp-card__tag" data-i18n="exp2Tag">Sabor &amp; noche</span>
@@ -583,7 +643,10 @@
         </article>
         <article class="exp-card" data-animate style="transition-delay: 0.15s">
           <div class="exp-card__img">
-            <img src="https://images.unsplash.com/photo-1559056199-64137f1fceb3?w=600&q=80" data-i18n-alt="exp3Alt" alt="Plantación de café en las montañas de Antioquia" loading="lazy" width="600" height="450">
+            <picture>
+              <source srcset="images/exp-naturaleza.webp" type="image/webp">
+              <img src="images/exp-naturaleza.jpg" data-i18n-alt="exp3Alt" alt="Plantación de café en las montañas de Antioquia" loading="lazy" width="800" height="600" decoding="async">
+            </picture>
           </div>
           <div class="exp-card__body">
             <span class="exp-card__tag" data-i18n="exp3Tag">Naturaleza</span>
@@ -593,7 +656,10 @@
         </article>
         <article class="exp-card" data-animate style="transition-delay: 0.2s">
           <div class="exp-card__img">
-            <img src="https://images.unsplash.com/photo-1583422409516-52452c3a5fad?w=600&q=80" data-i18n-alt="exp4Alt" alt="Vista urbana de Medellín desde las lomas" loading="lazy" width="600" height="450">
+            <picture>
+              <source srcset="images/exp-estancia.webp" type="image/webp">
+              <img src="images/exp-estancia.jpg" data-i18n-alt="exp4Alt" alt="Vista urbana de Medellín desde las lomas" loading="lazy" width="800" height="600" decoding="async">
+            </picture>
           </div>
           <div class="exp-card__body">
             <span class="exp-card__tag" data-i18n="exp4Tag">Estancia</span>
@@ -716,7 +782,7 @@
           langLabel: "EN",
           menuOpen: "Abrir menú",
           menuClose: "Cerrar menú",
-          heroAlt: "Panorámica de Medellín al atardecer con el valle de Aburrá",
+          heroAlt: "Metrocable y panorama del valle de Medellín",
           heroEyebrow: "Medellín · Antioquia",
           heroTitle: "La ciudad que enamora, <em>vivida en grande</em>",
           heroSub: "Somos tu concierge en Medellín: rutas premium, mesas con alma paisa y escapadas a los alrededores, con el detalle de un servicio de lujo y la calidez de quien conoce cada rincón.",
@@ -796,7 +862,7 @@
           langLabel: "ES",
           menuOpen: "Open menu",
           menuClose: "Close menu",
-          heroAlt: "Panoramic view of Medellín at sunset over the Aburrá Valley",
+          heroAlt: "Metrocable and panoramic view of Medellín valley",
           heroEyebrow: "Medellín · Antioquia",
           heroTitle: "The city that captivates, <em>experienced in style</em>",
           heroSub: "We are your Medellín concierge: premium routes, soulful dining and escapes to the surrounding region—with luxury detail and the warmth of true local knowledge.",
@@ -868,7 +934,7 @@
       const header = document.getElementById("header");
       const langToggle = document.getElementById("lang-toggle");
       const menuToggle = document.getElementById("menu-toggle");
-      const nav = document.getElementById("nav");
+      const mobileDrawer = document.getElementById("mobile-drawer");
       const heroImg = document.getElementById("hero-img");
       const metaDesc = document.querySelector('meta[name="description"]');
 
@@ -909,7 +975,23 @@
           const k = el.dataset.i18nWa;
           if (d[k] != null) el.href = waUrl(k);
         });
-        menuToggle.setAttribute("aria-label", d[nav.classList.contains("is-open") ? "menuClose" : "menuOpen"]);
+        menuToggle.setAttribute("aria-label", d[mobileDrawer.classList.contains("is-open") ? "menuClose" : "menuOpen"]);
+      }
+
+      function closeMenu() {
+        mobileDrawer.classList.remove("is-open");
+        mobileDrawer.setAttribute("aria-hidden", "true");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", T[lang].menuOpen);
+        document.body.classList.remove("menu-open");
+      }
+
+      function openMenu() {
+        mobileDrawer.classList.add("is-open");
+        mobileDrawer.setAttribute("aria-hidden", "false");
+        menuToggle.setAttribute("aria-expanded", "true");
+        menuToggle.setAttribute("aria-label", T[lang].menuClose);
+        document.body.classList.add("menu-open");
       }
 
       langToggle.addEventListener("click", function () {
@@ -922,22 +1004,19 @@
         header.classList.toggle("is-scrolled", window.scrollY > 20);
         if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && heroImg) {
           const y = Math.min(window.scrollY * 0.00035, 0.08);
-          heroImg.style.transform = "scale(" + (1.06 + y) + ") translateY(" + (window.scrollY * 0.12) + "px)";
+          heroImg.style.transform = "scale(" + (1.04 + y) + ") translateY(" + (window.scrollY * 0.12) + "px)";
         }
       }, { passive: true });
 
       menuToggle.addEventListener("click", function () {
-        const open = nav.classList.toggle("is-open");
-        menuToggle.setAttribute("aria-expanded", open);
-        menuToggle.setAttribute("aria-label", T[lang][open ? "menuClose" : "menuOpen"]);
-        document.body.style.overflow = open ? "hidden" : "";
+        if (mobileDrawer.classList.contains("is-open")) closeMenu();
+        else openMenu();
       });
-      nav.querySelectorAll("a").forEach(function (a) {
-        a.addEventListener("click", function () {
-          nav.classList.remove("is-open");
-          menuToggle.setAttribute("aria-expanded", "false");
-          document.body.style.overflow = "";
-        });
+      mobileDrawer.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", closeMenu);
+      });
+      document.getElementById("nav").querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", closeMenu);
       });
 
       const animated = document.querySelectorAll("[data-animate]");
