@@ -293,6 +293,9 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
 
 .exp-note{text-align:center;margin-top:38px;color:var(--muted);font-family:var(--serif);font-weight:500;font-size:1.15rem}
 
+/* Puntos de carrusel (visibles solo en móvil) */
+.carousel-dots{display:none}
+
 /* ============================================================
    CÓMO FUNCIONA
    ============================================================ */
@@ -423,6 +426,70 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
 .wa-float svg{width:30px;height:30px;fill:#fff}
 
 /* ============================================================
+   LOGO REAL
+   ============================================================ */
+.logo-img{height:44px;width:auto;max-width:210px;object-fit:contain;display:block}
+.header.scrolled .logo-img{height:40px}
+.footer .logo-img{height:48px}
+
+/* ============================================================
+   BADGE DE GALERÍA EN TARJETAS DE EXPERIENCIA
+   ============================================================ */
+.exp{cursor:pointer}
+.exp-badge{
+  position:absolute;top:14px;right:14px;z-index:3;
+  display:flex;align-items:center;gap:6px;
+  background:rgba(11,11,12,.6);backdrop-filter:blur(6px);
+  border:1px solid var(--line);border-radius:100px;
+  padding:5px 11px;font-size:.72rem;font-weight:600;color:var(--cream);letter-spacing:.02em;
+  opacity:0;transform:translateY(-4px);transition:opacity .4s var(--ease),transform .4s var(--ease);
+}
+.exp.in .exp-badge{opacity:1;transform:none}
+.exp-badge svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6}
+
+/* ============================================================
+   GASTRONOMÍA — galería
+   ============================================================ */
+.food-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.food-item{
+  position:relative;border-radius:12px;overflow:hidden;cursor:pointer;
+  aspect-ratio:1/1;border:1px solid var(--line);background:linear-gradient(160deg,#1a1611,#0b0b0c);
+}
+.food-item img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.food-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(11,11,12,.55));opacity:0;transition:opacity .4s var(--ease)}
+.food-item:hover img{transform:scale(1.08)}
+.food-item:hover::after{opacity:1}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+.lightbox{
+  position:fixed;inset:0;z-index:100;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(7,7,8,.94);backdrop-filter:blur(6px);
+  opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;
+  padding:24px;
+}
+.lightbox.open{opacity:1;visibility:visible}
+.lb-stage{max-width:min(1100px,92vw);max-height:86vh;display:flex;align-items:center;justify-content:center}
+.lb-stage img{max-width:100%;max-height:86vh;width:auto;height:auto;border-radius:8px;box-shadow:0 30px 80px -20px rgba(0,0,0,.8);opacity:0;transition:opacity .35s var(--ease)}
+.lb-stage img.ready{opacity:1}
+.lb-close,.lb-arrow{
+  position:absolute;z-index:2;color:var(--cream);
+  width:52px;height:52px;border-radius:50%;
+  display:grid;place-items:center;font-size:2rem;line-height:1;
+  background:rgba(255,255,255,.06);border:1px solid var(--line);
+  transition:background .3s,border-color .3s,transform .3s;
+}
+.lb-close{top:20px;right:20px;font-size:1.7rem}
+.lb-prev{left:20px}
+.lb-next{right:20px}
+.lb-close:hover,.lb-arrow:hover{background:rgba(198,161,91,.18);border-color:var(--gold);color:var(--gold-soft)}
+.lb-arrow:hover{transform:translateY(-50%) scale(1.06)}
+.lb-arrow{top:50%;transform:translateY(-50%)}
+.lb-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:.82rem;letter-spacing:.1em}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media(max-width:980px){
@@ -431,16 +498,59 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
   .trust-split{grid-template-columns:1fr}
   .trust-visual{min-height:340px;order:-1}
   .foot-grid{grid-template-columns:1fr 1fr}
+  .food-grid{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:760px){
   .nav-links,.nav-wa{display:none}
   .burger{display:flex}
-  .pillars,.steps,.grid{grid-template-columns:1fr}
-  .grid{gap:16px}
-  .exp{min-height:260px}
+  .steps{grid-template-columns:1fr}
   .exp-body p{opacity:1;max-height:80px}
   .foot-grid{grid-template-columns:1fr}
   .hero{min-height:auto;padding-top:140px}
+
+  /* Centrar indicadores de confianza del hero */
+  .trust-row{justify-content:center}
+  .trust-item{justify-content:center}
+
+  /* Quitar el indicador "Desliza" */
+  .scroll-hint{display:none}
+
+  /* Botón WhatsApp del menú móvil más ordenado */
+  .mobile-menu .btn{font-size:1rem;padding:1.05em 1.4em}
+  .mobile-menu .btn svg{width:20px;height:20px}
+
+  /* ====== CARRUSELES — solo móvil (no afecta escritorio) ====== */
+  .pillars,
+  #expGrid,
+  #foodGrid{
+    display:flex;
+    gap:14px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    margin-inline:calc(var(--pad) * -1);
+    padding:4px var(--pad) 8px;
+    grid-template-columns:none;
+  }
+  .pillars::-webkit-scrollbar,
+  #expGrid::-webkit-scrollbar,
+  #foodGrid::-webkit-scrollbar{display:none}
+  .pillar{flex:0 0 80%;min-width:0;scroll-snap-align:center}
+  .exp{flex:0 0 78%;min-height:360px;scroll-snap-align:center}
+  .food-item{flex:0 0 62%;scroll-snap-align:center;aspect-ratio:4/5}
+
+  .carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:22px}
+  .carousel-dots button{width:7px;height:7px;border-radius:50%;background:var(--muted-2);padding:0;transition:background .3s,transform .3s}
+  .carousel-dots button.active{background:var(--gold);transform:scale(1.3)}
+
+  /* Logo y lightbox en móvil */
+  .logo-img{height:36px;max-width:160px}
+  .footer .logo-img{height:40px}
+  .lb-close,.lb-arrow{width:42px;height:42px;font-size:1.5rem}
+  .lb-prev{left:10px}
+  .lb-next{right:10px}
+  .lb-close{top:14px;right:14px}
 }
 
 /* ============================================================
@@ -461,15 +571,15 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
      ============================================================ -->
 <header class="header" id="header">
   <nav class="nav" aria-label="Principal">
-    <!-- LOGO (editable): reemplaza este bloque por <img src="tu-logo.svg" alt="Global Experience VIP" class="logo-img"> -->
+    <!-- LOGO real (transparente). Ajusta la altura en .logo-img si lo necesitas -->
     <a href="#hero" class="logo" aria-label="Global Experience VIP — inicio">
-      <span class="logo-mark">G</span>
-      <span class="logo-txt"><b>Global Experience</b><span>VIP</span></span>
+      <img src="img/logo-global.png" alt="Global Experience VIP" class="logo-img" />
     </a>
 
     <div class="nav-links">
-      <a href="#valor" data-i18n="nav_value">Filosofía</a>
+      <a href="#valor" data-i18n="nav_value">Nosotros</a>
       <a href="#experiencias" data-i18n="nav_exp">Experiencias</a>
+      <a href="#gastronomia" data-i18n="nav_food">Gastronomía</a>
       <a href="#proceso" data-i18n="nav_how">Cómo funciona</a>
       <a href="#confianza" data-i18n="nav_trust">Confianza</a>
       <a href="#testimonios" data-i18n="nav_reviews">Reseñas</a>
@@ -490,12 +600,16 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
 
 <!-- Menú móvil -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#valor" data-i18n="nav_value">Filosofía</a>
+  <a href="#valor" data-i18n="nav_value">Nosotros</a>
   <a href="#experiencias" data-i18n="nav_exp">Experiencias</a>
+  <a href="#gastronomia" data-i18n="nav_food">Gastronomía</a>
   <a href="#proceso" data-i18n="nav_how">Cómo funciona</a>
   <a href="#confianza" data-i18n="nav_trust">Confianza</a>
   <a href="#testimonios" data-i18n="nav_reviews">Reseñas</a>
-  <a class="btn btn-gold wa-link" href="#" data-i18n="hero_cta1">Hablar por WhatsApp</a>
+  <a class="btn btn-gold btn-block wa-link" href="#">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.044z"/></svg>
+    <span data-i18n="hero_cta1">Hablar por WhatsApp</span>
+  </a>
 </div>
 
 <!-- ============================================================
@@ -537,7 +651,7 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
       <div class="rule"></div>
       <p class="lede" data-i18n="value_sub">No hacemos tours masivos. Diseñamos experiencias privadas alrededor de tres principios.</p>
     </div>
-    <div class="pillars">
+    <div class="pillars" id="pillarsTrack">
       <article class="pillar reveal d1">
         <div class="pillar-ico"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 5.5 6 .5-4.5 4 1.4 5.9L12 20l-5.3 2.9 1.4-5.9-4.5-4 6-.5z"/></svg></div>
         <h3 data-i18n="pillar1_t">Exclusividad</h3>
@@ -554,6 +668,7 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
         <p data-i18n="pillar3_d">Acompañamiento local de principio a fin, con atención cercana y total tranquilidad.</p>
       </article>
     </div>
+    <div class="carousel-dots" id="pillarDots" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -581,7 +696,7 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
     <div class="grid" id="expGrid">
 
       <article class="exp reveal" data-cat="city">
-        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1533055640609-24b498cdf9a4?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-media" style="background-image:url('img/experiencias/provenza.jpg'),url('https://images.unsplash.com/photo-1533055640609-24b498cdf9a4?auto=format&fit=crop&w=900&q=80'),linear-gradient(160deg,#1a1611,#0b0b0c)"></div>
         <div class="exp-body">
           <span class="exp-cat" data-i18n="cat_city">Ciudad</span>
           <h3>Provenza</h3>
@@ -590,7 +705,7 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
       </article>
 
       <article class="exp reveal" data-cat="city">
-        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1591030394763-d4b0d3a3c8b5?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-media" style="background-image:url('img/experiencias/comuna-13.jpg'),url('https://images.unsplash.com/photo-1591030394763-d4b0d3a3c8b5?auto=format&fit=crop&w=900&q=80'),linear-gradient(160deg,#1a1611,#0b0b0c)"></div>
         <div class="exp-body">
           <span class="exp-cat" data-i18n="cat_city">Ciudad</span>
           <h3>Comuna 13</h3>
@@ -599,7 +714,7 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
       </article>
 
       <article class="exp reveal" data-cat="city">
-        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-media" style="background-image:url('img/experiencias/pueblito-paisa.jpg'),url('https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&w=900&q=80'),linear-gradient(160deg,#1a1611,#0b0b0c)"></div>
         <div class="exp-body">
           <span class="exp-cat" data-i18n="cat_city">Ciudad</span>
           <h3>Pueblito Paisa &amp; Miradores</h3>
@@ -608,7 +723,7 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
       </article>
 
       <article class="exp reveal" data-cat="nature">
-        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-media" style="background-image:url('img/experiencias/guatape.jpg'),url('https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=900&q=80'),linear-gradient(160deg,#1a1611,#0b0b0c)"></div>
         <div class="exp-body">
           <span class="exp-cat" data-i18n="cat_nature">Naturaleza</span>
           <h3>Guatapé &amp; El Peñol</h3>
@@ -617,7 +732,7 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
       </article>
 
       <article class="exp reveal" data-cat="nature">
-        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-media" style="background-image:url('img/experiencias/rionegro.jpg'),url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80'),linear-gradient(160deg,#1a1611,#0b0b0c)"></div>
         <div class="exp-body">
           <span class="exp-cat" data-i18n="cat_nature">Naturaleza</span>
           <h3>Rionegro &amp; Pueblos de Antioquia</h3>
@@ -626,7 +741,7 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
       </article>
 
       <article class="exp reveal" data-cat="nature">
-        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-media" style="background-image:url('img/experiencias/eje-cafetero.jpg'),url('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=900&q=80'),linear-gradient(160deg,#1a1611,#0b0b0c)"></div>
         <div class="exp-body">
           <span class="exp-cat" data-i18n="cat_nature">Naturaleza</span>
           <h3>Eje Cafetero</h3>
@@ -635,7 +750,7 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
       </article>
 
       <article class="exp reveal" data-cat="adventure">
-        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1605554928604-5c1a3b9a5b1f?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-media" style="background-image:url('img/experiencias/parapente.jpg'),url('https://images.unsplash.com/photo-1605554928604-5c1a3b9a5b1f?auto=format&fit=crop&w=900&q=80'),linear-gradient(160deg,#1a1611,#0b0b0c)"></div>
         <div class="exp-body">
           <span class="exp-cat" data-i18n="cat_adventure">Aventura</span>
           <h3>Parapente</h3>
@@ -644,7 +759,7 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
       </article>
 
       <article class="exp reveal" data-cat="adventure">
-        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-media" style="background-image:url('img/experiencias/jetski.jpg'),url('https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=900&q=80'),linear-gradient(160deg,#1a1611,#0b0b0c)"></div>
         <div class="exp-body">
           <span class="exp-cat" data-i18n="cat_adventure">Aventura</span>
           <h3>Jetski</h3>
@@ -653,7 +768,7 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
       </article>
 
       <article class="exp reveal" data-cat="adventure">
-        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1473862170180-84427c485aca?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-media" style="background-image:url('img/experiencias/helicoptero.jpg'),url('https://images.unsplash.com/photo-1473862170180-84427c485aca?auto=format&fit=crop&w=900&q=80'),linear-gradient(160deg,#1a1611,#0b0b0c)"></div>
         <div class="exp-body">
           <span class="exp-cat" data-i18n="cat_adventure">Aventura</span>
           <h3>Helicóptero</h3>
@@ -662,7 +777,25 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
       </article>
 
     </div>
+    <div class="carousel-dots" id="expDots" aria-hidden="true"></div>
     <p class="exp-note reveal" data-i18n="exp_note">¿No ves lo que buscas? Lo creamos contigo.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     GASTRONOMÍA — galería (las 10 imágenes se cargan vía JS)
+     ============================================================ -->
+<section class="section" id="gastronomia">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow" data-i18n="food_eyebrow">Sabores de Medellín</span>
+      <h2 data-i18n="food_title">Gastronomía de autor</h2>
+      <div class="rule"></div>
+      <p class="lede" data-i18n="food_sub">Desde cocinas de autor en Provenza hasta sabores locales escondidos. Diseñamos experiencias gastronómicas privadas pensadas a tu gusto.</p>
+    </div>
+    <!-- La galería se rellena automáticamente desde el array foodImages (en el JS) -->
+    <div class="food-grid reveal" id="foodGrid"></div>
+    <div class="carousel-dots" id="foodDots" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -805,15 +938,15 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
     <div class="foot-grid">
       <div class="foot-brand">
         <a href="#hero" class="logo">
-          <span class="logo-mark">G</span>
-          <span class="logo-txt"><b>Global Experience</b><span>VIP</span></span>
+          <img src="img/logo-global.png" alt="Global Experience VIP" class="logo-img" />
         </a>
         <p data-i18n="foot_about">Experiencias privadas y a medida en Medellín y Antioquia. Tú decides, nosotros lo hacemos posible.</p>
       </div>
       <div class="foot-col">
         <h4 data-i18n="foot_explore">Explorar</h4>
-        <a href="#valor" data-i18n="nav_value">Filosofía</a>
+        <a href="#valor" data-i18n="nav_value">Nosotros</a>
         <a href="#experiencias" data-i18n="nav_exp">Experiencias</a>
+        <a href="#gastronomia" data-i18n="nav_food">Gastronomía</a>
         <a href="#proceso" data-i18n="nav_how">Cómo funciona</a>
         <a href="#testimonios" data-i18n="nav_reviews">Reseñas</a>
       </div>
@@ -836,6 +969,17 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
   <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.044z"/></svg>
 </a>
 
+<!-- ============================================================
+     VISOR DE GALERÍA (lightbox)
+     ============================================================ -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Galería de imágenes">
+  <button class="lb-close" id="lbClose" aria-label="Cerrar">&times;</button>
+  <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Anterior">&#8249;</button>
+  <div class="lb-stage"><img id="lbImg" src="" alt="" /></div>
+  <button class="lb-arrow lb-next" id="lbNext" aria-label="Siguiente">&#8250;</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
 <script>
 /* ============================================================
    CONFIGURACIÓN — WhatsApp
@@ -854,7 +998,7 @@ function waLink(lang){
    ============================================================ */
 var I18N = {
   es:{
-    nav_value:"Filosofía", nav_exp:"Experiencias", nav_how:"Cómo funciona", nav_trust:"Confianza", nav_reviews:"Reseñas", nav_cta:"WhatsApp",
+    nav_value:"Nosotros", nav_exp:"Experiencias", nav_food:"Gastronomía", nav_how:"Cómo funciona", nav_trust:"Confianza", nav_reviews:"Reseñas", nav_cta:"WhatsApp",
     hero_eyebrow:"Experiencias privadas en Medellín",
     hero_title:"Vive Medellín <em>a tu manera</em>.",
     hero_sub:"Tú decides qué ver, a dónde ir y a qué hora. Nosotros diseñamos, cuidamos y acompañamos cada momento de tu viaje privado.",
@@ -880,6 +1024,9 @@ var I18N = {
     exp_jetski:"Adrenalina sobre el agua en el embalse de Guatapé, con todo organizado para ti.",
     exp_heli:"Sobrevuela la ciudad y las montañas en un tour privado e inolvidable desde las alturas.",
     exp_note:"¿No ves lo que buscas? Lo creamos contigo.",
+    food_eyebrow:"Sabores de Medellín", food_title:"Gastronomía de autor",
+    food_sub:"Desde cocinas de autor en Provenza hasta sabores locales escondidos. Diseñamos experiencias gastronómicas privadas pensadas a tu gusto.",
+    gallery_photos:"fotos",
     how_eyebrow:"Sin fricción", how_title:"Cómo funciona",
     how_sub:"Cuatro pasos simples, una sola conversación. Todo empieza con un mensaje.",
     step1_t:"Nos escribes", step1_d:"Escríbenos por WhatsApp y cuéntanos que viajas a Medellín.",
@@ -907,7 +1054,7 @@ var I18N = {
     foot_rights:"Todos los derechos reservados."
   },
   en:{
-    nav_value:"Philosophy", nav_exp:"Experiences", nav_how:"How it works", nav_trust:"Trust", nav_reviews:"Reviews", nav_cta:"WhatsApp",
+    nav_value:"About us", nav_exp:"Experiences", nav_food:"Dining", nav_how:"How it works", nav_trust:"Trust", nav_reviews:"Reviews", nav_cta:"WhatsApp",
     hero_eyebrow:"Private experiences in Medellín",
     hero_title:"Experience Medellín <em>your way</em>.",
     hero_sub:"You decide what to see, where to go and when. We design, protect and accompany every moment of your private journey.",
@@ -933,6 +1080,9 @@ var I18N = {
     exp_jetski:"Adrenaline on the water at the Guatapé reservoir, with everything arranged for you.",
     exp_heli:"Soar above the city and the mountains on a private, unforgettable tour from above.",
     exp_note:"Don't see what you're looking for? We'll create it with you.",
+    food_eyebrow:"Flavors of Medellín", food_title:"Signature dining",
+    food_sub:"From signature kitchens in Provenza to hidden local flavors. We craft private dining experiences shaped around your taste.",
+    gallery_photos:"photos",
     how_eyebrow:"Frictionless", how_title:"How it works",
     how_sub:"Four simple steps, one conversation. It all starts with a message.",
     step1_t:"Reach out", step1_d:"Message us on WhatsApp and tell us you're coming to Medellín.",
@@ -1069,8 +1219,210 @@ tabs.forEach(function(t){
       var show = (f === "all" || c.getAttribute("data-cat") === f);
       c.classList.toggle("hide", !show);
     });
+    // resincronizar carrusel móvil al filtrar
+    if(window.expCar){
+      var g = document.getElementById("expGrid");
+      g.scrollTo({left:0});
+      window.expCar.rebuild();
+    }
   });
 });
+
+/* ============================================================
+   CARRUSELES MÓVIL (pilares + experiencias) — scroll-snap + puntos
+   ============================================================ */
+function setupCarousel(trackId, dotsId){
+  var track = document.getElementById(trackId);
+  var dotsBox = document.getElementById(dotsId);
+  if(!track || !dotsBox) return {rebuild:function(){}};
+  var mq = window.matchMedia("(max-width:760px)");
+  var rm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function visibleCards(){
+    return Array.prototype.filter.call(track.children, function(c){ return c.offsetParent !== null; });
+  }
+  function update(){
+    if(!mq.matches) return;
+    var items = visibleCards(); if(!items.length) return;
+    var center = track.scrollLeft + track.clientWidth/2, best=0, bd=Infinity;
+    items.forEach(function(c,i){ var cc=c.offsetLeft + c.clientWidth/2, d=Math.abs(cc-center); if(d<bd){bd=d;best=i;} });
+    Array.prototype.forEach.call(dotsBox.children, function(d,i){ d.classList.toggle("active", i===best); });
+  }
+  function build(){
+    dotsBox.innerHTML = "";
+    if(!mq.matches) return;
+    var items = visibleCards();
+    if(items.length < 2) return;
+    items.forEach(function(c,i){
+      var b = document.createElement("button");
+      b.setAttribute("aria-label", "Ir al elemento " + (i+1));
+      b.addEventListener("click", function(){
+        var target = c.offsetLeft - (track.clientWidth - c.clientWidth)/2;
+        track.scrollTo({left:target, behavior: rm ? "auto" : "smooth"});
+      });
+      dotsBox.appendChild(b);
+    });
+    update();
+  }
+  var ticking=false;
+  track.addEventListener("scroll", function(){
+    if(!ticking){ requestAnimationFrame(function(){ update(); ticking=false; }); ticking=true; }
+  }, {passive:true});
+  window.addEventListener("resize", build);
+  build();
+  return {rebuild:build};
+}
+window.pillarCar = setupCarousel("pillarsTrack", "pillarDots");
+window.expCar = setupCarousel("expGrid", "expDots");
+
+/* ============================================================
+   GALERÍAS DE IMÁGENES  (EDITABLE)
+   - IMG_BASE / FOOD_BASE: carpeta donde están las fotos.
+   - Los nombres NO llevan extensión: el código prueba .jpg, .jpeg, .png, .webp
+     automáticamente, así que funciona aunque tus archivos varíen de formato.
+   - El orden de "expGalleryOrder" corresponde al orden de las tarjetas.
+   ============================================================ */
+var IMG_BASE  = "img/experiencias/";   // fotos de experiencias
+var FOOD_BASE = "img/experiencias/";   // <-- si la gastronomía está en otra carpeta (p.ej. "img/"), cámbialo aquí
+
+var galleries = {
+  provenza:  ["provenza"],
+  comuna13:  ["comuna-13"],
+  pueblito:  ["pueblito-paisa"],
+  guatape:   ["guatape","guatape-2","guatape-3","guatape-4","guatape-5","guatape-6"],
+  rionegro:  ["rionegro","rionegro-2"],
+  cafetero:  ["eje-cafetero","eje-cafetero-2"],
+  parapente: ["parapente","parapente-2"],
+  jetski:    ["jetski"],
+  heli:      ["helicoptero","helicoptero-2"]
+};
+// orden EXACTO de las tarjetas de la sección Inspiración
+var expGalleryOrder = ["provenza","comuna13","pueblito","guatape","rionegro","cafetero","parapente","jetski","heli"];
+
+// 10 imágenes de gastronomía (nombres tal como los guardaste)
+var foodImages = [];
+for(var fi=1; fi<=10; fi++){ foodImages.push("gastronomia (" + fi + ")"); }
+
+/* Carga una imagen probando varias extensiones hasta encontrar la correcta */
+function loadImage(imgEl, basePath){
+  var exts = ["jpg","jpeg","png","webp","JPG","JPEG","PNG","WEBP"];
+  var i = 0;
+  imgEl.onerror = function(){
+    i++;
+    if(i < exts.length){ imgEl.src = basePath + "." + exts[i]; }
+    else { imgEl.onerror = null; imgEl.style.opacity = "0"; }
+  };
+  imgEl.src = basePath + "." + exts[0];
+}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+var lb = document.getElementById("lightbox");
+var lbImg = document.getElementById("lbImg");
+var lbCounter = document.getElementById("lbCounter");
+var lbList = [], lbIndex = 0, lbBase = IMG_BASE, lbReturnFocus = null;
+var lbRM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function lbShow(i){
+  if(!lbList.length) return;
+  lbIndex = (i + lbList.length) % lbList.length;
+  lbImg.classList.remove("ready");
+  lbImg.alt = "";
+  var done = function(){ lbImg.classList.add("ready"); };
+  lbImg.onload = done;
+  loadImage(lbImg, lbBase + lbList[lbIndex]);
+  lbCounter.textContent = lbList.length > 1 ? (lbIndex+1) + " / " + lbList.length : "";
+  var multi = lbList.length > 1;
+  document.getElementById("lbPrev").style.display = multi ? "" : "none";
+  document.getElementById("lbNext").style.display = multi ? "" : "none";
+}
+function lbOpen(list, base, start, trigger){
+  lbList = list; lbBase = base; lbReturnFocus = trigger || null;
+  lb.classList.add("open"); lb.setAttribute("aria-hidden","false");
+  document.body.style.overflow = "hidden";
+  lbShow(start || 0);
+  document.getElementById("lbClose").focus();
+}
+function lbClose(){
+  lb.classList.remove("open"); lb.setAttribute("aria-hidden","true");
+  document.body.style.overflow = "";
+  if(lbReturnFocus){ lbReturnFocus.focus(); }
+}
+document.getElementById("lbClose").addEventListener("click", lbClose);
+document.getElementById("lbPrev").addEventListener("click", function(){ lbShow(lbIndex-1); });
+document.getElementById("lbNext").addEventListener("click", function(){ lbShow(lbIndex+1); });
+lb.addEventListener("click", function(e){ if(e.target === lb) lbClose(); });
+document.addEventListener("keydown", function(e){
+  if(!lb.classList.contains("open")) return;
+  if(e.key === "Escape") lbClose();
+  else if(e.key === "ArrowLeft") lbShow(lbIndex-1);
+  else if(e.key === "ArrowRight") lbShow(lbIndex+1);
+});
+// swipe en móvil
+var tx=0;
+lb.addEventListener("touchstart", function(e){ tx = e.changedTouches[0].clientX; }, {passive:true});
+lb.addEventListener("touchend", function(e){
+  var dx = e.changedTouches[0].clientX - tx;
+  if(Math.abs(dx) > 45){ lbShow(lbIndex + (dx < 0 ? 1 : -1)); }
+}, {passive:true});
+
+/* ============================================================
+   TARJETAS DE EXPERIENCIA: badge + abrir galería
+   ============================================================ */
+var photoIcon = '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 21h12a2 2 0 0 0 2-2V9"/></svg>';
+(function(){
+  var expCards = document.querySelectorAll("#expGrid .exp");
+  expCards.forEach(function(card, idx){
+    var key = expGalleryOrder[idx];
+    var list = (galleries[key] || []).slice();
+    if(!list.length) return;
+
+    // badge con número de fotos (solo si hay más de una)
+    if(list.length > 1){
+      var badge = document.createElement("div");
+      badge.className = "exp-badge";
+      badge.innerHTML = photoIcon + '<span>' + list.length + ' <span data-i18n="gallery_photos">fotos</span></span>';
+      card.appendChild(badge);
+    }
+    // accesible y clicable
+    card.setAttribute("role","button");
+    card.setAttribute("tabindex","0");
+    var open = function(){ lbOpen(list, IMG_BASE, 0, card); };
+    card.addEventListener("click", open);
+    card.addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); open(); }
+    });
+  });
+})();
+
+/* ============================================================
+   GASTRONOMÍA: render de galería + carrusel móvil
+   ============================================================ */
+(function(){
+  var grid = document.getElementById("foodGrid");
+  if(!grid) return;
+  foodImages.forEach(function(name, i){
+    var item = document.createElement("div");
+    item.className = "food-item";
+    item.setAttribute("role","button");
+    item.setAttribute("tabindex","0");
+    item.setAttribute("aria-label","Foto de gastronomía " + (i+1));
+    var img = document.createElement("img");
+    img.loading = "lazy";
+    img.alt = "Gastronomía " + (i+1);
+    loadImage(img, FOOD_BASE + name);
+    item.appendChild(img);
+    var open = function(){ lbOpen(foodImages, FOOD_BASE, i, item); };
+    item.addEventListener("click", open);
+    item.addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); open(); }
+    });
+    grid.appendChild(item);
+  });
+  window.foodCar = setupCarousel("foodGrid", "foodDots");
+})();
+
 
 /* ============================================================
    TESTIMONIOS — render + carrusel
