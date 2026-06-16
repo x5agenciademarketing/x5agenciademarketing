@@ -1,1396 +1,1156 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Global Experience VIP — Experiencias premium en Medellín y Antioquia. Concierge local, hospitalidad cercana y rutas de lujo por la ciudad y sus alrededores.">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Global Experience VIP | Medellín y Antioquia en experiencias premium">
-  <meta property="og:description" content="Vive Medellín con curaduría local: ciudad, gastronomía, naturaleza cercana y hospitalidad de alto nivel sin perder calidez paisa.">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="es_ES">
-  <meta property="og:url" content="https://x5agenciademarketing.lat/globalexperiencevip/">
-  <meta property="og:image" content="https://x5agenciademarketing.lat/globalexperiencevip/images/hero.jpg">
-  <link rel="canonical" href="https://x5agenciademarketing.lat/globalexperiencevip/">
-  <title>Global Experience VIP | Medellín &amp; Antioquia</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230c0b0a'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='14' font-weight='600' fill='%23c9a962' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --font-display: "Cormorant Garamond", Georgia, serif;
-      --font-body: "Outfit", system-ui, sans-serif;
-      --ease: cubic-bezier(0.22, 1, 0.36, 1);
-      --radius: 8px;
-      --nav-h: 64px;
-      --container: min(1100px, calc(100% - 1.5rem));
-      --gap: clamp(2.5rem, 6vw, 4.5rem);
-      --bg: #0a0908;
-      --bg-card: #141210;
-      --bg-soft: #1c1916;
-      --text: #f5f1ea;
-      --text-muted: #a8a093;
-      --text-subtle: #6e6962;
-      --accent: #c9a962;
-      --accent-warm: #7a9e8e;
-      --accent-soft: rgba(201, 169, 98, 0.12);
-      --border: rgba(245, 241, 234, 0.09);
-      --hero-overlay: linear-gradient(180deg, rgba(10,9,8,0.35) 0%, rgba(10,9,8,0.72) 55%, rgba(10,9,8,0.95) 100%);
-      --nav-bg: rgba(10, 9, 8, 0.85);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Global Experience VIP · Experiencias privadas en Medellín</title>
+<meta name="description" content="Experiencias privadas y personalizadas en Medellín. Tú decides qué ver, a dónde ir y a qué hora. Global Experience VIP diseña, cuida y acompaña tu viaje a medida." />
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
-      html { scroll-behavior: auto; }
-    }
+<!-- ============================================================
+     FUENTES (editable) — Bricolage Grotesque (títulos, gruesa) + Manrope (texto)
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
-    body {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: var(--text);
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    img { display: block; max-width: 100%; height: auto; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; color: inherit; cursor: pointer; border: none; background: none; }
-    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+<style>
+/* ============================================================
+   TOKENS DE MARCA — paleta, tipografía, ritmo
+   ============================================================ */
+:root{
+  --ink:#0B0B0C;          /* negro profundo */
+  --ink-2:#121110;        /* oscuro elevado (cards, paneles) */
+  --ink-3:#1B1916;        /* hover / superficies */
+  --line:rgba(214,196,150,.16);
+  --gold:#C6A15B;         /* dorado principal */
+  --gold-soft:#E4D2A2;    /* champagne / brillos */
+  --gold-deep:#9E7D3F;
+  --cream:#F4F0E6;        /* blanco cálido */
+  --text:#ECE8DE;
+  --muted:#9D978A;        /* texto secundario */
+  --muted-2:#726D63;
 
-    .container { width: var(--container); margin-inline: auto; }
-    .eyebrow {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent-warm);
-      margin-bottom: 0.65rem;
-    }
-    .title {
-      font-family: var(--font-display);
-      font-size: clamp(1.85rem, 5vw, 2.75rem);
-      font-weight: 500;
-      line-height: 1.12;
-      letter-spacing: -0.02em;
-    }
-    .lead {
-      margin-top: 0.85rem;
-      color: var(--text-muted);
-      font-weight: 300;
-      font-size: 0.92rem;
-      max-width: 46ch;
-    }
+  --maxw:1180px;
+  --pad:clamp(20px,5vw,40px);
+  --sp:clamp(72px,11vw,140px);   /* espaciado vertical de sección */
+  --r:14px;
 
-    /* Scroll animations */
-    [data-animate] {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-    }
-    [data-animate].is-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    [data-animate="fade"] { transform: none; }
-    [data-animate="left"] { transform: translateX(-20px); }
-    [data-animate="left"].is-in { transform: translateX(0); }
-    [data-animate="scale"] { transform: scale(0.97); }
-    [data-animate="scale"].is-in { transform: scale(1); }
-    [data-animate="right"] { transform: translateX(24px); }
-    [data-animate="right"].is-in { transform: translateX(0); }
-    [data-animate="zoom"] { transform: scale(0.92); }
-    [data-animate="zoom"].is-in { transform: scale(1); }
+  --serif:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 
-    /* Gallery carousel */
-    .gallery {
-      padding-block: clamp(2rem, 5vw, var(--gap));
-      background: var(--bg);
-      overflow: hidden;
-    }
-    .gallery-carousel {
-      position: relative;
-      max-width: var(--container);
-      margin-inline: auto;
-    }
-    .gallery-viewport {
-      overflow: hidden;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-    }
-    .gallery-track {
-      display: flex;
-      transition: transform 0.55s var(--ease);
-      will-change: transform;
-    }
-    .gallery-slide {
-      flex: 0 0 100%;
-      aspect-ratio: 16 / 10;
-      max-height: 280px;
-      position: relative;
-      overflow: hidden;
-    }
-    @media (min-width: 640px) {
-      .gallery-slide { flex: 0 0 50%; max-height: 320px; }
-    }
-    @media (min-width: 900px) {
-      .gallery-slide { flex: 0 0 33.333%; max-height: 340px; }
-    }
-    .gallery-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s var(--ease);
-    }
-    .gallery-slide.is-active img { transform: scale(1.02); }
-    .gallery-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: rgba(10, 9, 8, 0.75);
-      backdrop-filter: blur(8px);
-      color: var(--text);
-      display: grid;
-      place-items: center;
-      font-size: 1.1rem;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .gallery-nav:hover { border-color: var(--accent); color: var(--accent); }
-    .gallery-nav--prev { left: 0.5rem; }
-    .gallery-nav--next { right: 0.5rem; }
-    .gallery-dots {
-      display: none;
-    }
-    .gallery-progress {
-      margin-top: 0.85rem;
-      height: 2px;
-      background: var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-      max-width: 160px;
-      margin-inline: auto;
-    }
-    .gallery-progress__bar {
-      display: block;
-      height: 100%;
-      width: 0;
-      background: var(--accent);
-      border-radius: 2px;
-      transition: width 0.45s var(--ease);
-    }
-    .gallery-counter {
-      text-align: center;
-      margin-top: 0.65rem;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-subtle);
-    }
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
 
-    /* Region with thumbs */
-    .region__item {
-      padding: 0;
-      overflow: hidden;
-    }
-    .region__thumb {
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
-    }
-    .region__thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s var(--ease);
-    }
-    .region__item:hover .region__thumb img { transform: scale(1.06); }
-    .region__body { padding: 1.15rem; }
-    .region__item:hover { padding-left: 0; }
-    .region__item:hover .region__body { padding-left: 1.35rem; }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--text);
+  font-family:var(--sans);
+  font-weight:400;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
 
-    /* Testimonial with image */
-    .quote-wrap {
-      display: grid;
-      gap: 1.25rem;
-      align-items: stretch;
-    }
-    @media (min-width: 768px) {
-      .quote-wrap { grid-template-columns: 0.95fr 1.05fr; }
-    }
-    .quote-visual {
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      min-height: 220px;
-      max-height: 320px;
-    }
-    @media (max-width: 767px) {
-      .quote-visual {
-        aspect-ratio: 16 / 10;
-        max-height: 200px;
-        min-height: auto;
-      }
-    }
-    .quote-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .quote-block { max-width: none; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+/* Accesibilidad: foco visible */
+a:focus-visible,button:focus-visible{
+  outline:2px solid var(--gold-soft);
+  outline-offset:3px;
+  border-radius:6px;
+}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-    /* Stagger groups */
-    [data-animate-stagger] > * {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
-    }
-    [data-animate-stagger].is-in > * {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    [data-animate-stagger].is-in > *:nth-child(1) { transition-delay: 0.04s; }
-    [data-animate-stagger].is-in > *:nth-child(2) { transition-delay: 0.1s; }
-    [data-animate-stagger].is-in > *:nth-child(3) { transition-delay: 0.16s; }
-    [data-animate-stagger].is-in > *:nth-child(4) { transition-delay: 0.22s; }
-    [data-animate-stagger].is-in > *:nth-child(5) { transition-delay: 0.28s; }
-    [data-animate-stagger].is-in > *:nth-child(6) { transition-delay: 0.34s; }
+/* ----- Tipografía base ----- */
+.eyebrow{
+  font-family:var(--sans);
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.04;letter-spacing:-.025em;margin:0}
+h2{font-size:clamp(2.1rem,5vw,3.4rem)}
+h3{font-size:clamp(1.4rem,2.4vw,1.7rem)}
+.lede{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--muted);line-height:1.75;font-weight:400}
+em{font-style:normal;font-weight:800;color:var(--gold-soft)}
 
-    .header {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 100;
-      height: var(--nav-h);
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid transparent;
-      transition: background 0.35s, border-color 0.35s;
-    }
-    .header.is-scrolled {
-      background: var(--nav-bg);
-      backdrop-filter: blur(14px);
-      border-color: var(--border);
-    }
-    .header__inner {
-      width: var(--container);
-      margin-inline: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-    .logo {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
-    .logo span { color: var(--accent); }
-    .header__tools {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-left: auto;
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .nav__list { display: flex; gap: 1.25rem; list-style: none; }
-    .nav__link {
-      font-size: 0.72rem;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      transition: color 0.2s;
-    }
-    .nav__link:hover { color: var(--text); }
-    .header__tools {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .lang-toggle {
-      width: 36px;
-      height: 36px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-    }
-    .lang-toggle:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.7rem 1.25rem;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      border-radius: 4px;
-      transition: transform 0.25s var(--ease), background 0.25s, box-shadow 0.25s;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn--gold { background: var(--accent); color: #0a0908; }
-    .btn--gold:hover { box-shadow: 0 8px 24px var(--accent-soft); }
-    .btn--outline {
-      border: 1px solid var(--border);
-      color: var(--text);
-    }
-    .btn--outline:hover { border-color: var(--accent-warm); color: var(--accent-warm); }
-    .btn--wa { background: #25d366; color: #fff; }
-    .menu-toggle {
-      display: none;
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-    }
-    .menu-toggle span {
-      display: block;
-      width: 18px;
-      height: 1.5px;
-      background: var(--text);
-      transition: transform 0.3s, opacity 0.3s;
-    }
-    .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-    .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.container{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+.section{padding-block:var(--sp)}
+.center{text-align:center}
 
-    /* Hero */
-    .hero {
-      position: relative;
-      min-height: min(88vh, 780px);
-      padding-top: var(--nav-h);
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-    }
-    @media (min-width: 900px) {
-      .hero { min-height: min(92vh, 860px); }
-    }
-    .hero__bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      background-color: #1a1814;
-      background-image: url("/globalexperiencevip/images/hero.jpg");
-      background-size: cover;
-      background-position: center 35%;
-    }
-    .hero__bg picture,
-    .hero__bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 35%;
-      min-height: 100%;
-    }
-    #hero-img {
-      transform: scale(1.04);
-      transition: transform 0.1s linear;
-    }
-    .hero__bg::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: var(--hero-overlay);
-    }
-    .hero__content {
-      position: relative;
-      z-index: 1;
-      width: var(--container);
-      margin-inline: auto;
-      padding: 2rem 0 2.5rem;
-    }
-    .hero__headline {
-      font-family: var(--font-display);
-      font-size: clamp(2.1rem, 7vw, 3.6rem);
-      font-weight: 500;
-      line-height: 1.05;
-      max-width: 14ch;
-    }
-    .hero__headline em { font-style: italic; color: var(--accent); }
-    .hero__sub {
-      margin-top: 1rem;
-      color: var(--text-muted);
-      font-weight: 300;
-      font-size: 0.95rem;
-      max-width: 40ch;
-    }
-    .hero__ctas {
-      margin-top: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-    }
-    .hero__pills {
-      margin-top: 1.75rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .pill {
-      padding: 0.45rem 0.85rem;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      background: rgba(20, 18, 16, 0.5);
-      backdrop-filter: blur(6px);
-    }
-    .pill strong { color: var(--text); font-weight: 500; }
+.section-head{max-width:640px;margin-inline:auto;margin-bottom:clamp(40px,6vw,68px)}
+.section-head .eyebrow{display:block;margin-bottom:18px}
 
-    section { padding-block: var(--gap); }
-    .section-head { margin-bottom: 1.5rem; }
+/* hairline dorada — firma visual */
+.rule{width:46px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:22px 0}
+.center .rule{margin-inline:auto;background:linear-gradient(90deg,transparent,var(--gold),transparent);width:64px}
 
-    /* Experiences scroll */
-    .exp-track {
-      display: flex;
-      gap: 0.85rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-padding-inline: calc((100% - var(--container)) / 2 + 0.75rem);
-      padding: 0.25rem calc((100% - min(1100px, 100% - 1.5rem)) / 2) 0.5rem;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .exp-track::-webkit-scrollbar { display: none; }
-    @media (min-width: 900px) {
-      .exp-track {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        overflow: visible;
-        scroll-snap-type: none;
-        padding: 0;
-      }
-    }
-    .exp-card {
-      flex: 0 0 min(78vw, 280px);
-      scroll-snap-align: start;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-      transition: border-color 0.3s, transform 0.35s var(--ease);
-    }
-    .exp-card:hover { border-color: rgba(201,169,98,0.35); transform: translateY(-3px); }
-    @media (min-width: 900px) { .exp-card { flex: none; } }
-    .exp-card__img {
-      aspect-ratio: 4/3;
-      overflow: hidden;
-    }
-    .exp-card__img picture,
-    .exp-card__img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background: var(--bg-soft);
-      transition: transform 0.6s var(--ease);
-    }
-    .exp-card:hover .exp-card__img img { transform: scale(1.05); }
-    .exp-card__body { padding: 1rem 1.1rem 1.15rem; }
-    .exp-card__tag {
-      font-size: 0.6rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent-warm);
-    }
-    .exp-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 500;
-      margin: 0.35rem 0 0.4rem;
-    }
-    .exp-card p { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; }
+/* ============================================================
+   BOTONES
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:.6em;
+  font-family:var(--sans);font-weight:600;font-size:.92rem;letter-spacing:.01em;
+  padding:.95em 1.7em;border-radius:100px;
+  transition:transform .4s var(--ease),background .4s var(--ease),color .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);
+  will-change:transform;
+}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold-soft),var(--gold));
+  color:#231b0c;
+  box-shadow:0 10px 30px -12px rgba(198,161,91,.6);
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 38px -12px rgba(198,161,91,.75)}
+.btn-ghost{
+  border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.02);
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-soft);transform:translateY(-2px)}
+.btn-block{width:100%;justify-content:center}
 
-    /* Region */
-    .region { background: var(--bg-soft); }
-    .region__grid {
-      display: grid;
-      gap: 0.75rem;
-    }
-    @media (min-width: 640px) {
-      .region__grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (min-width: 900px) {
-      .region__grid { grid-template-columns: repeat(4, 1fr); }
-    }
-    .region__item {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--bg-card);
-      transition: border-color 0.3s;
-    }
-    .region__item:hover { border-color: var(--accent-warm); }
-    .region__item h3 {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 500;
-      margin-bottom: 0.35rem;
-    }
-    .region__item p { font-size: 0.8rem; color: var(--text-muted); font-weight: 300; }
-    .region__dist {
-      display: block;
-      margin-top: 0.5rem;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header{
+  position:fixed;inset:0 0 auto 0;z-index:60;
+  padding-block:18px;
+  transition:background .5s var(--ease),padding .5s var(--ease),border-color .5s var(--ease),backdrop-filter .5s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.header.scrolled{
+  background:rgba(11,11,12,.82);
+  backdrop-filter:blur(14px) saturate(120%);
+  -webkit-backdrop-filter:blur(14px) saturate(120%);
+  padding-block:12px;
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
 
-    /* Why */
-    .why__list {
-      display: grid;
-      gap: 1rem;
-    }
-    @media (min-width: 768px) {
-      .why__list { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    }
-    .why__item {
-      padding: 1.25rem;
-      border-left: 2px solid var(--accent-warm);
-      background: linear-gradient(90deg, var(--accent-soft), transparent);
-      border-radius: 0 var(--radius) var(--radius) 0;
-    }
-    .why__item h3 {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      margin-bottom: 0.4rem;
-    }
-    .why__item p { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; }
+/* LOGO (editable) — reemplaza el bloque .logo por <img src="logo.svg" class="logo-img"> */
+.logo{display:flex;align-items:center;gap:12px;flex:none}
+.logo-mark{
+  width:38px;height:38px;border-radius:50%;flex:none;
+  display:grid;place-items:center;
+  border:1px solid var(--gold);
+  background:radial-gradient(circle at 30% 25%,rgba(228,210,162,.22),transparent 60%);
+  font-family:var(--serif);font-size:1.05rem;color:var(--gold-soft);letter-spacing:.02em;
+}
+.logo-txt{line-height:1.05}
+.logo-txt b{display:block;font-family:var(--serif);font-weight:600;font-size:1.04rem;letter-spacing:.02em;color:var(--cream)}
+.logo-txt span{font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.logo-img{height:42px;width:auto} /* usar si integras logo en imagen */
 
-    /* Testimonial */
-    .quote-block {
-      padding: 1.75rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--bg-card);
-      max-width: 640px;
-    }
-    .quote-block p {
-      font-family: var(--font-display);
-      font-size: clamp(1.15rem, 3vw, 1.45rem);
-      font-style: italic;
-      line-height: 1.45;
-    }
-    .quote-block footer {
-      margin-top: 1.25rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.8rem;
-      color: var(--text-subtle);
-    }
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{
+  font-size:.86rem;font-weight:500;color:var(--muted);letter-spacing:.01em;position:relative;
+  transition:color .3s var(--ease);
+}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:width .35s var(--ease)}
+.nav-links a:hover{color:var(--cream)}
+.nav-links a:hover::after{width:100%}
 
-    /* CTA */
-    .cta-final {
-      text-align: center;
-      padding-block: clamp(2.5rem, 8vw, 4rem);
-      border-top: 1px solid var(--border);
-      background:
-        linear-gradient(180deg, rgba(10, 9, 8, 0.88) 0%, rgba(10, 9, 8, 0.94) 100%),
-        url("/globalexperiencevip/images/imagenes-de-relleno/imagen%20(30).jpeg") center / cover no-repeat;
-    }
-    .cta-final .title { max-width: none; margin-inline: auto; }
-    .cta-final .lead { margin-inline: auto; }
-    .cta-final__btns {
-      margin-top: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.85rem;
-    }
-    .cta-phone {
-      font-size: 0.85rem;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-    }
+.nav-right{display:flex;align-items:center;gap:14px;flex:none}
 
-    .footer {
-      padding: 1.5rem 0 2rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.75rem;
-      color: var(--text-subtle);
-    }
-    .footer__inner {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-    .footer__links { display: flex; gap: 1.25rem; }
-    .footer a:hover { color: var(--accent); }
+/* Selector de idioma */
+.lang{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:100px;padding:3px;background:rgba(255,255,255,.02)}
+.lang button{
+  font-size:.74rem;font-weight:700;letter-spacing:.08em;color:var(--muted);
+  padding:.32em .72em;border-radius:100px;transition:color .3s var(--ease),background .3s var(--ease);
+}
+.lang button.active{color:#231b0c;background:linear-gradient(135deg,var(--gold-soft),var(--gold))}
 
-    .wa-float {
-      position: fixed;
-      bottom: 1.25rem;
-      right: 1.25rem;
-      z-index: 90;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: #25d366;
-      color: #fff;
-      display: grid;
-      place-items: center;
-      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.35);
-      transition: transform 0.3s var(--ease);
-    }
-    .wa-float:hover { transform: scale(1.06); }
-    .wa-float svg { width: 26px; height: 26px; fill: currentColor; }
+.nav-wa{display:inline-flex}
 
-    .mobile-drawer {
-      display: none;
-      position: fixed;
-      inset: var(--nav-h) 0 0;
-      z-index: 99;
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 1.25rem 1.5rem 1.5rem;
-      flex-direction: column;
-      gap: 0;
-    }
-    .mobile-drawer.is-open { display: flex; }
-    .mobile-drawer__list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .mobile-drawer__link {
-      display: block;
-      padding: 0.85rem 0;
-      font-size: 0.95rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text);
-      border-bottom: 1px solid var(--border);
-    }
-    .mobile-drawer__cta {
-      margin-top: 1.25rem;
-      width: 100%;
-    }
+/* Menú móvil */
+.burger{display:none;flex-direction:column;gap:5px;width:38px;height:38px;align-items:center;justify-content:center}
+.burger span{width:20px;height:1.5px;background:var(--cream);transition:transform .35s var(--ease),opacity .25s}
+.burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-    /* Mobile compact */
-    @media (max-width: 899px) {
-      :root { --nav-h: 58px; --gap: 2.25rem; }
-      .nav { display: none; }
-      .header__tools { margin-left: auto; }
-      .menu-toggle { display: flex; }
-      .hero {
-        min-height: clamp(480px, 78vh, 640px);
-      }
-      .hero__content { padding: 1.25rem 0 1.75rem; }
-      .hero__sub { font-size: 0.88rem; max-width: 100%; }
-      .hero__pills { margin-top: 1.25rem; }
-      .section-head .lead { display: none; }
-      .why .section-head .lead { display: block; font-size: 0.85rem; }
-      body.menu-open { overflow: hidden; }
-      [data-animate] {
-        transform: translateY(26px);
-        transition-duration: 0.85s;
-      }
-      [data-animate="left"] { transform: translateX(-22px); }
-      [data-animate="right"] { transform: translateX(22px); }
-      [data-animate="zoom"] { transform: scale(0.94); }
-      [data-animate="fade"] { transform: translateY(12px); }
-      .gallery-slide { max-height: 240px; }
-    }
-    @media (min-width: 900px) {
-      .menu-toggle { display: none; }
-      .mobile-drawer { display: none !important; }
-    }
-  </style>
+.mobile-menu{
+  position:fixed;inset:0;z-index:55;background:rgba(11,11,12,.97);
+  backdrop-filter:blur(8px);
+  display:flex;flex-direction:column;justify-content:center;gap:8px;padding:var(--pad);
+  opacity:0;visibility:hidden;transform:translateY(-12px);
+  transition:opacity .4s var(--ease),transform .4s var(--ease),visibility .4s;
+}
+.mobile-menu.open{opacity:1;visibility:visible;transform:none}
+.mobile-menu a{font-family:var(--serif);font-size:1.9rem;color:var(--cream);padding:.3em 0;border-bottom:1px solid var(--line)}
+.mobile-menu .btn{margin-top:24px}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  padding-top:120px;padding-bottom:90px;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  /* IMAGEN HERO (editable): reemplaza la primera url() por tu foto de Medellín */
+  background-image:url('https://images.unsplash.com/photo-1599402396789-9c8b5c0e2c93?auto=format&fit=crop&w=2000&q=80'),
+    linear-gradient(160deg,#1a1611,#0b0b0c);
+  background-size:cover;background-position:center 30%;
+  transform:scale(1.08);
+  will-change:transform;
+}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(11,11,12,.55) 0%,rgba(11,11,12,.35) 40%,rgba(11,11,12,.92) 100%),
+    radial-gradient(120% 90% at 15% 20%,rgba(11,11,12,.2),rgba(11,11,12,.85));
+}
+.hero-inner{position:relative;z-index:2;max-width:760px}
+.hero .eyebrow{margin-bottom:26px}
+.hero h1{font-size:clamp(2.9rem,7.4vw,5.4rem);color:var(--cream);font-weight:800}
+.hero .lede{margin:28px 0 38px;max-width:560px;color:#d8d3c6}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+
+.trust-row{display:flex;flex-wrap:wrap;gap:14px 28px;margin-top:46px}
+.trust-item{display:flex;align-items:center;gap:9px;font-size:.82rem;letter-spacing:.04em;color:#c7c1b4}
+.trust-item .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+
+.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase}
+.scroll-hint .line{width:1px;height:38px;background:linear-gradient(var(--gold),transparent);animation:scrollPulse 2.4s var(--ease) infinite}
+@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ============================================================
+   ANIMACIONES DE ENTRADA (carga + scroll)
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}
+.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}
+.reveal.d4{transition-delay:.32s}
+
+/* carga del hero */
+.hero-anim{opacity:0;transform:translateY(22px);animation:heroUp 1s var(--ease) forwards}
+.hero-anim.a1{animation-delay:.15s}
+.hero-anim.a2{animation-delay:.3s}
+.hero-anim.a3{animation-delay:.45s}
+.hero-anim.a4{animation-delay:.6s}
+.hero-anim.a5{animation-delay:.75s}
+@keyframes heroUp{to{opacity:1;transform:none}}
+
+/* transición suave al cambiar idioma */
+.lang-fade{animation:langFade .5s var(--ease)}
+@keyframes langFade{from{opacity:.35;filter:blur(.4px)}to{opacity:1;filter:none}}
+
+/* ============================================================
+   PROPUESTA DE VALOR (3 pilares)
+   ============================================================ */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.pillar{
+  background:linear-gradient(180deg,var(--ink-2),rgba(18,17,16,.4));
+  border:1px solid var(--line);border-radius:var(--r);
+  padding:38px 32px;
+  transition:transform .5s var(--ease),border-color .5s var(--ease),background .5s var(--ease);
+}
+.pillar:hover{transform:translateY(-6px);border-color:rgba(198,161,91,.45);background:linear-gradient(180deg,var(--ink-3),var(--ink-2))}
+.pillar-ico{width:46px;height:46px;color:var(--gold);margin-bottom:24px}
+.pillar-ico svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.2}
+.pillar h3{margin-bottom:12px;color:var(--cream)}
+.pillar p{color:var(--muted);font-size:.96rem;margin:0}
+
+/* ============================================================
+   EXPERIENCIAS / DESTINOS
+   ============================================================ */
+.tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:42px}
+.tab{
+  font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);padding:.6em 1.3em;border-radius:100px;border:1px solid var(--line);
+  transition:color .35s var(--ease),border-color .35s var(--ease),background .35s var(--ease);
+}
+.tab:hover{color:var(--cream)}
+.tab.active{color:#231b0c;background:linear-gradient(135deg,var(--gold-soft),var(--gold));border-color:transparent}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.exp{
+  position:relative;border-radius:var(--r);overflow:hidden;min-height:300px;
+  display:flex;align-items:flex-end;
+  border:1px solid var(--line);
+  transition:opacity .5s var(--ease),transform .5s var(--ease);
+}
+.exp.tall{grid-row:span 1}
+.exp-media{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1.1s var(--ease);transform:scale(1.02)}
+.exp::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,0) 30%,rgba(11,11,12,.55) 65%,rgba(11,11,12,.94))}
+.exp:hover .exp-media{transform:scale(1.1)}
+.exp-body{position:relative;z-index:2;padding:24px 24px 26px}
+.exp-cat{font-size:.66rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px}
+.exp-body h3{color:#fff;font-size:1.5rem}
+.exp-body p{margin:6px 0 0;font-size:.88rem;color:#cfc9bc;opacity:0;max-height:0;transition:opacity .45s var(--ease),max-height .45s var(--ease),margin .45s var(--ease)}
+.exp:hover .exp-body p{opacity:1;max-height:80px}
+.exp.hide{display:none}
+
+.exp-note{text-align:center;margin-top:38px;color:var(--muted);font-family:var(--serif);font-weight:500;font-size:1.15rem}
+
+/* ============================================================
+   CÓMO FUNCIONA
+   ============================================================ */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:step}
+.step{position:relative;padding-top:30px}
+.step::before{
+  counter-increment:step;content:"0" counter(step);
+  font-family:var(--serif);font-size:2.6rem;color:var(--gold);opacity:.55;line-height:1;display:block;margin-bottom:14px;
+}
+.step::after{content:"";position:absolute;top:46px;left:64px;right:-22px;height:1px;background:var(--line)}
+.steps .step:last-child::after{display:none}
+.step h3{font-size:1.25rem;color:var(--cream);margin-bottom:8px}
+.step p{font-size:.92rem;color:var(--muted);margin:0}
+
+.how-cta{text-align:center;margin-top:54px}
+
+/* ============================================================
+   SEGURIDAD Y CONFIANZA
+   ============================================================ */
+.trust-split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,5vw,64px);align-items:center}
+.trust-copy h2{color:var(--cream)}
+.trust-list{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:16px}
+.trust-list li{display:flex;gap:14px;align-items:flex-start;font-size:1rem;color:#d6d1c5}
+.trust-list .check{flex:none;width:22px;height:22px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:grid;place-items:center;margin-top:2px}
+.trust-list .check svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2.4}
+
+.trust-visual{position:relative;border-radius:var(--r);overflow:hidden;min-height:420px;border:1px solid var(--line)}
+.trust-visual-img{position:absolute;inset:0;
+  /* IMAGEN (editable) */
+  background-image:url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1400&q=80'),linear-gradient(160deg,#1a1611,#0b0b0c);
+  background-size:cover;background-position:center}
+.trust-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(11,11,12,.2),rgba(11,11,12,.8))}
+.trust-badge{
+  position:absolute;z-index:2;left:22px;bottom:22px;right:22px;
+  background:rgba(11,11,12,.66);backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:12px;padding:22px 24px;
+}
+.trust-badge b{font-family:var(--serif);font-size:1.4rem;color:var(--gold-soft);display:block;margin-bottom:6px;font-weight:600}
+.trust-badge p{margin:0;font-size:.9rem;color:#cfc9bc}
+
+/* ============================================================
+   TESTIMONIOS (carrusel fade)
+   ============================================================ */
+.testi-wrap{position:relative;max-width:780px;margin-inline:auto;min-height:280px}
+.testi{
+  position:absolute;inset:0;opacity:0;transform:translateY(14px);pointer-events:none;
+  transition:opacity .7s var(--ease),transform .7s var(--ease);
+  text-align:center;display:flex;flex-direction:column;justify-content:center;
+}
+.testi.active{opacity:1;transform:none;pointer-events:auto;position:relative}
+.testi-quote{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2rem);line-height:1.32;color:var(--cream);font-style:normal;font-weight:600;letter-spacing:-.02em}
+.testi-mark{font-family:var(--serif);font-size:4rem;color:var(--gold);opacity:.4;line-height:.4;display:block;margin-bottom:6px}
+.testi-author{margin-top:26px;font-weight:600;color:var(--gold-soft);letter-spacing:.02em}
+.testi-origin{font-size:.82rem;color:var(--muted);letter-spacing:.04em}
+
+.testi-nav{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:38px}
+.testi-arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);color:var(--muted);display:grid;place-items:center;transition:color .3s,border-color .3s,transform .3s}
+.testi-arrow:hover{color:var(--gold);border-color:var(--gold);transform:scale(1.06)}
+.testi-arrow svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6}
+.testi-dots{display:flex;gap:8px}
+.dot-btn{width:7px;height:7px;border-radius:50%;background:var(--muted-2);transition:background .3s,transform .3s}
+.dot-btn.active{background:var(--gold);transform:scale(1.3)}
+
+/* ============================================================
+   TRUSTPILOT (placeholder preparado)
+   ============================================================ */
+.trustpilot{
+  border:1px solid var(--line);border-radius:var(--r);
+  background:linear-gradient(180deg,var(--ink-2),rgba(18,17,16,.3));
+  padding:clamp(38px,6vw,60px);text-align:center;
+}
+.tp-stars{display:flex;gap:6px;justify-content:center;margin-bottom:22px}
+.tp-stars span{width:30px;height:30px;background:var(--gold);border-radius:5px;display:grid;place-items:center}
+.tp-stars svg{width:18px;height:18px;fill:#0b0b0c}
+.trustpilot h3{color:var(--cream);font-size:clamp(1.6rem,3vw,2.1rem);margin-bottom:14px}
+.trustpilot p{color:var(--muted);max-width:520px;margin:0 auto 28px}
+/* ESPACIO RESERVADO PARA WIDGET / BADGE DE TRUSTPILOT */
+.tp-slot{
+  border:1px dashed var(--line);border-radius:10px;padding:24px;
+  max-width:440px;margin:0 auto;color:var(--muted-2);font-size:.84rem;letter-spacing:.04em;
+  display:flex;align-items:center;justify-content:center;gap:10px;min-height:74px;
+}
+.tp-slot .tp-logo{font-weight:800;color:var(--gold-soft);letter-spacing:.02em}
+
+/* ============================================================
+   CTA FINAL
+   ============================================================ */
+.final{position:relative;overflow:hidden;border-radius:0}
+.final-bg{position:absolute;inset:0;
+  /* IMAGEN (editable) */
+  background-image:url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=2000&q=80'),linear-gradient(160deg,#1a1611,#0b0b0c);
+  background-size:cover;background-position:center}
+.final-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,.82),rgba(11,11,12,.92))}
+.final-inner{position:relative;z-index:2;text-align:center;max-width:680px;margin-inline:auto}
+.final h2{color:var(--cream);font-size:clamp(2.2rem,5.5vw,3.6rem)}
+.final .lede{margin:24px auto 36px;color:#d8d3c6}
+.final .btn-gold{padding:1.1em 2.2em;font-size:1rem}
+.final-urgency{margin-top:26px;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{background:var(--ink-2);border-top:1px solid var(--line);padding-block:clamp(54px,7vw,80px) 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.foot-brand .logo{margin-bottom:18px}
+.foot-brand p{color:var(--muted);font-size:.94rem;max-width:300px;margin:0}
+.foot-col h4{font-family:var(--sans);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 18px;font-weight:700}
+.foot-col a,.foot-col span{display:block;color:var(--muted);font-size:.92rem;margin-bottom:11px;transition:color .3s}
+.foot-col a:hover{color:var(--cream)}
+.foot-bottom{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;padding-top:26px;border-top:1px solid var(--line);color:var(--muted-2);font-size:.8rem}
+.foot-bottom a{color:var(--muted-2)}
+.foot-bottom a:hover{color:var(--gold)}
+
+/* ============================================================
+   WHATSAPP FLOTANTE
+   ============================================================ */
+.wa-float{
+  position:fixed;right:20px;bottom:20px;z-index:50;
+  width:58px;height:58px;border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  display:grid;place-items:center;
+  box-shadow:0 12px 30px -8px rgba(18,140,126,.6);
+  transition:transform .4s var(--ease);
+  opacity:0;transform:translateY(20px) scale(.8);
+}
+.wa-float.show{opacity:1;transform:none}
+.wa-float:hover{transform:translateY(-3px) scale(1.05)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:980px){
+  .pillars,.steps{grid-template-columns:1fr 1fr}
+  .step::after{display:none}
+  .trust-split{grid-template-columns:1fr}
+  .trust-visual{min-height:340px;order:-1}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  .nav-links,.nav-wa{display:none}
+  .burger{display:flex}
+  .pillars,.steps,.grid{grid-template-columns:1fr}
+  .grid{gap:16px}
+  .exp{min-height:260px}
+  .exp-body p{opacity:1;max-height:80px}
+  .foot-grid{grid-template-columns:1fr}
+  .hero{min-height:auto;padding-top:140px}
+}
+
+/* ============================================================
+   PREFERENCIA: MOVIMIENTO REDUCIDO
+   ============================================================ */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+  .hero-anim{opacity:1;transform:none}
+  .hero-bg{transform:none}
+}
+</style>
 </head>
 <body>
-  <header class="header" id="header">
-    <div class="header__inner">
-      <a href="#inicio" class="logo" data-i18n-aria="logoAria">Global <span>Experience</span> VIP</a>
-      <nav class="nav" id="nav" data-i18n-aria="navAria" aria-label="Navegación principal">
-        <ul class="nav__list">
-          <li><a href="#inicio" class="nav__link" data-i18n="navHome">Inicio</a></li>
-          <li><a href="#experiencias" class="nav__link" data-i18n="navExp">Experiencias</a></li>
-          <li><a href="#galeria" class="nav__link" data-i18n="navGallery">Galería</a></li>
-          <li><a href="#region" class="nav__link" data-i18n="navRegion">Alrededores</a></li>
-          <li><a href="#contacto" class="nav__link" data-i18n="navContact">Contacto</a></li>
-        </ul>
-        <a href="#contacto" class="btn btn--gold btn--nav" data-i18n="navCta">Reservar experiencia</a>
-      </nav>
-      <div class="header__tools">
-        <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Switch to English">EN</button>
-        <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-drawer" data-i18n-aria="menuOpen">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
 
-  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
-    <ul class="mobile-drawer__list">
-      <li><a href="#inicio" class="mobile-drawer__link" data-i18n="navHome">Inicio</a></li>
-      <li><a href="#experiencias" class="mobile-drawer__link" data-i18n="navExp">Experiencias</a></li>
-      <li><a href="#galeria" class="mobile-drawer__link" data-i18n="navGallery">Galería</a></li>
-      <li><a href="#region" class="mobile-drawer__link" data-i18n="navRegion">Alrededores</a></li>
-      <li><a href="#contacto" class="mobile-drawer__link" data-i18n="navContact">Contacto</a></li>
-    </ul>
-    <a href="#contacto" class="btn btn--gold mobile-drawer__cta" data-i18n="navCta">Reservar experiencia</a>
+<!-- ============================================================
+     HEADER FIJO
+     ============================================================ -->
+<header class="header" id="header">
+  <nav class="nav" aria-label="Principal">
+    <!-- LOGO (editable): reemplaza este bloque por <img src="tu-logo.svg" alt="Global Experience VIP" class="logo-img"> -->
+    <a href="#hero" class="logo" aria-label="Global Experience VIP — inicio">
+      <span class="logo-mark">G</span>
+      <span class="logo-txt"><b>Global Experience</b><span>VIP</span></span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#valor" data-i18n="nav_value">Filosofía</a>
+      <a href="#experiencias" data-i18n="nav_exp">Experiencias</a>
+      <a href="#proceso" data-i18n="nav_how">Cómo funciona</a>
+      <a href="#confianza" data-i18n="nav_trust">Confianza</a>
+      <a href="#testimonios" data-i18n="nav_reviews">Reseñas</a>
+    </div>
+
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button data-lang="es" class="active" aria-pressed="true">ES</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-gold nav-wa wa-link" href="#" data-i18n="nav_cta">WhatsApp</a>
+      <button class="burger" id="burger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Menú móvil -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#valor" data-i18n="nav_value">Filosofía</a>
+  <a href="#experiencias" data-i18n="nav_exp">Experiencias</a>
+  <a href="#proceso" data-i18n="nav_how">Cómo funciona</a>
+  <a href="#confianza" data-i18n="nav_trust">Confianza</a>
+  <a href="#testimonios" data-i18n="nav_reviews">Reseñas</a>
+  <a class="btn btn-gold wa-link" href="#" data-i18n="hero_cta1">Hablar por WhatsApp</a>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <span class="eyebrow hero-anim a1" data-i18n="hero_eyebrow">Experiencias privadas en Medellín</span>
+    <h1 class="hero-anim a2" data-i18n-html="hero_title">Vive Medellín <em>a tu manera</em>.</h1>
+    <p class="lede hero-anim a3" data-i18n="hero_sub">Tú decides qué ver, a dónde ir y a qué hora. Nosotros diseñamos, cuidamos y acompañamos cada momento de tu viaje privado.</p>
+    <div class="hero-cta hero-anim a4">
+      <a class="btn btn-gold wa-link" href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.044z"/></svg>
+        <span data-i18n="hero_cta1">Hablar por WhatsApp</span>
+      </a>
+      <a class="btn btn-ghost" href="#experiencias" data-i18n="hero_cta2">Explorar experiencias</a>
+    </div>
+    <div class="trust-row hero-anim a5">
+      <span class="trust-item"><span class="dot"></span><span data-i18n="trust_1">Experiencias privadas</span></span>
+      <span class="trust-item"><span class="dot"></span><span data-i18n="trust_2">Acompañamiento local</span></span>
+      <span class="trust-item"><span class="dot"></span><span data-i18n="trust_3">Planificación personalizada</span></span>
+    </div>
   </div>
+  <div class="scroll-hint hero-anim a5" aria-hidden="true">
+    <span data-i18n="scroll">Desliza</span>
+    <span class="line"></span>
+  </div>
+</section>
 
-  <main id="main">
-    <section class="hero" id="inicio">
-      <div class="hero__bg" aria-hidden="true">
-        <picture>
-          <source srcset="/globalexperiencevip/images/hero.webp" type="image/webp">
-          <img id="hero-img" src="/globalexperiencevip/images/hero.jpg" data-i18n-alt="heroAlt" alt="Metrocable y panorama del valle de Medellín" width="1920" height="1080" fetchpriority="high" decoding="async">
-        </picture>
-      </div>
-      <div class="hero__content">
-        <div data-animate>
-          <p class="eyebrow" data-i18n="heroEyebrow">Medellín · Antioquia</p>
-          <h1 class="hero__headline" data-i18n-html="heroTitle">La ciudad que enamora, <em>vivida en grande</em></h1>
-          <p class="hero__sub" data-i18n="heroSub">Somos tu concierge en Medellín: rutas premium, mesas con alma paisa y escapadas a los alrededores, con el detalle de un servicio de lujo y la calidez de quien conoce cada rincón.</p>
-          <div class="hero__ctas">
-            <a href="#contacto" class="btn btn--gold" data-i18n="heroCta1">Planear mi viaje</a>
-            <a href="https://wa.me/573046370794" class="btn btn--outline" data-i18n-wa="waHero" target="_blank" rel="noopener noreferrer" data-i18n="heroCta2">WhatsApp</a>
-          </div>
-          <div class="hero__pills">
-            <span class="pill" data-i18n-html="pill1"><strong>El Poblado</strong> · Provenza</span>
-            <span class="pill" data-i18n-html="pill2"><strong>Guatapé</strong> · 90 min</span>
-            <span class="pill" data-i18n="pill3">Respuesta en 24h</span>
-          </div>
+<!-- ============================================================
+     PROPUESTA DE VALOR — 3 PILARES
+     ============================================================ -->
+<section class="section" id="valor">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow" data-i18n="value_eyebrow">Nuestra filosofía</span>
+      <h2 data-i18n="value_title">Otra forma de viajar</h2>
+      <div class="rule"></div>
+      <p class="lede" data-i18n="value_sub">No hacemos tours masivos. Diseñamos experiencias privadas alrededor de tres principios.</p>
+    </div>
+    <div class="pillars">
+      <article class="pillar reveal d1">
+        <div class="pillar-ico"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 5.5 6 .5-4.5 4 1.4 5.9L12 20l-5.3 2.9 1.4-5.9-4.5-4 6-.5z"/></svg></div>
+        <h3 data-i18n="pillar1_t">Exclusividad</h3>
+        <p data-i18n="pillar1_d">Experiencias diseñadas solo para ti. Sin grupos, sin horarios impuestos, sin recorridos en serie.</p>
+      </article>
+      <article class="pillar reveal d2">
+        <div class="pillar-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3 data-i18n="pillar2_t">Control</h3>
+        <p data-i18n="pillar2_d">Tú marcas el ritmo. Eliges los lugares, las horas y el plan. Nosotros lo hacemos posible.</p>
+      </article>
+      <article class="pillar reveal d3">
+        <div class="pillar-ico"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M9 12l2 2 4-4.5"/></svg></div>
+        <h3 data-i18n="pillar3_t">Confianza</h3>
+        <p data-i18n="pillar3_d">Acompañamiento local de principio a fin, con atención cercana y total tranquilidad.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXPERIENCIAS / DESTINOS
+     ============================================================ -->
+<section class="section" id="experiencias">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow" data-i18n="exp_eyebrow">Inspiración</span>
+      <h2 data-i18n="exp_title">Experiencias para crear la tuya</h2>
+      <div class="rule"></div>
+      <p class="lede" data-i18n="exp_sub">Estos son puntos de partida, no paquetes cerrados. Tomamos lo que te inspira y diseñamos un recorrido único.</p>
+    </div>
+
+    <!-- Filtros / tabs -->
+    <div class="tabs reveal" role="tablist">
+      <button class="tab active" data-filter="all" data-i18n="filter_all">Todo</button>
+      <button class="tab" data-filter="city" data-i18n="filter_city">Ciudad</button>
+      <button class="tab" data-filter="nature" data-i18n="filter_nature">Naturaleza</button>
+      <button class="tab" data-filter="adventure" data-i18n="filter_adventure">Aventura</button>
+    </div>
+
+    <!-- GRID DE EXPERIENCIAS (imágenes editables vía background-image) -->
+    <div class="grid" id="expGrid">
+
+      <article class="exp reveal" data-cat="city">
+        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1533055640609-24b498cdf9a4?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-body">
+          <span class="exp-cat" data-i18n="cat_city">Ciudad</span>
+          <h3>Provenza</h3>
+          <p data-i18n="exp_provenza">El barrio más vibrante de El Poblado: gastronomía de autor, cócteles y vida nocturna sofisticada.</p>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <section id="experiencias">
-      <div class="container section-head" data-animate>
-        <p class="eyebrow" data-i18n="expEyebrow">En la ciudad</p>
-        <h2 class="title" data-i18n="expTitle">Experiencias que solo Medellín puede dar</h2>
-        <p class="lead" data-i18n="expLead">Curamos lo esencial para que no pierdas tiempo eligiendo: solo vivir la ciudad con estándar premium.</p>
-      </div>
-      <div class="exp-track" data-animate-stagger>
-        <article class="exp-card">
-          <div class="exp-card__img">
-            <picture>
-              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(5).jpeg" data-i18n-alt="exp1Alt" alt="Arte urbano y calles de la Comuna 13 en Medellín" loading="lazy" width="800" height="600" decoding="async">
-            </picture>
-          </div>
-          <div class="exp-card__body">
-            <span class="exp-card__tag" data-i18n="exp1Tag">Ciudad</span>
-            <h3 data-i18n="exp1Title">Medellín íntima</h3>
-            <p data-i18n="exp1Text">Comuna 13, museos, miradores y barrios con guía local que cuenta la historia sin folleto turístico.</p>
-          </div>
-        </article>
-        <article class="exp-card">
-          <div class="exp-card__img">
-            <picture>
-              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(6).jpeg" data-i18n-alt="exp2Alt" alt="Metrocable sobre el barrio y el valle de Medellín" loading="lazy" width="800" height="600" decoding="async">
-            </picture>
-          </div>
-          <div class="exp-card__body">
-            <span class="exp-card__tag" data-i18n="exp2Tag">Sabor &amp; noche</span>
-            <h3 data-i18n="exp2Title">Mesa y ritmo paisa</h3>
-            <p data-i18n="exp2Text">Reservas en restaurantes de autor, rooftops en Provenza y noches con trato preferencial.</p>
-          </div>
-        </article>
-        <article class="exp-card">
-          <div class="exp-card__img">
-            <picture>
-              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(7).jpeg" data-i18n-alt="exp3Alt" alt="Plantación de café en las montañas de Antioquia" loading="lazy" width="800" height="600" decoding="async">
-            </picture>
-          </div>
-          <div class="exp-card__body">
-            <span class="exp-card__tag" data-i18n="exp3Tag">Naturaleza</span>
-            <h3 data-i18n="exp3Title">Verde a una hora</h3>
-            <p data-i18n="exp3Text">Fincas cafeteras, reservas y vuelos en helicóptero o rutas escénicas sin logística que te quite el disfrute.</p>
-          </div>
-        </article>
-        <article class="exp-card">
-          <div class="exp-card__img">
-            <picture>
-              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(8).jpeg" data-i18n-alt="exp4Alt" alt="Vista urbana de Medellín desde las lomas" loading="lazy" width="800" height="600" decoding="async">
-            </picture>
-          </div>
-          <div class="exp-card__body">
-            <span class="exp-card__tag" data-i18n="exp4Tag">Estancia</span>
-            <h3 data-i18n="exp4Title">Hospedaje con sello</h3>
-            <p data-i18n="exp4Text">Hoteles boutique en El Poblado y Las Palmas, con beneficios negociados y check-in sin fricción.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="gallery" id="galeria">
-      <div class="container section-head" data-animate="fade">
-        <p class="eyebrow" data-i18n="galleryEyebrow">Momentos</p>
-        <h2 class="title" data-i18n="galleryTitle">Medellín en imágenes</h2>
-        <p class="lead" data-i18n="galleryLead">Un vistazo a la ciudad, sus sabores y los paisajes de Antioquia que curamos para ti.</p>
-      </div>
-      <div class="gallery-carousel" data-animate="zoom" aria-roledescription="carousel" aria-label="Galería de imágenes">
-        <button type="button" class="gallery-nav gallery-nav--prev" id="gallery-prev" aria-label="Imagen anterior">‹</button>
-        <div class="gallery-viewport">
-          <div class="gallery-track" id="gallery-track"></div>
+      <article class="exp reveal" data-cat="city">
+        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1591030394763-d4b0d3a3c8b5?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-body">
+          <span class="exp-cat" data-i18n="cat_city">Ciudad</span>
+          <h3>Comuna 13</h3>
+          <p data-i18n="exp_comuna">Arte urbano, música y una historia de transformación contada por quienes la vivieron.</p>
         </div>
-        <button type="button" class="gallery-nav gallery-nav--next" id="gallery-next" aria-label="Imagen siguiente">›</button>
-        <div class="gallery-dots" id="gallery-dots" hidden></div>
-        <div class="gallery-progress" aria-hidden="true"><span class="gallery-progress__bar" id="gallery-progress"></span></div>
-        <p class="gallery-counter" id="gallery-counter" aria-live="polite"></p>
-      </div>
-    </section>
+      </article>
 
-    <section class="region" id="region">
-      <div class="container">
-        <div class="section-head" data-animate>
-          <p class="eyebrow" data-i18n="regionEyebrow">Alrededores</p>
-          <h2 class="title" data-i18n="regionTitle">Antioquia, a tu ritmo</h2>
-          <p class="lead" data-i18n="regionLead">Medellín es la base. Desde aquí diseñamos escapadas de un día o fin de semana con transporte y detalle resueltos.</p>
+      <article class="exp reveal" data-cat="city">
+        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-body">
+          <span class="exp-cat" data-i18n="cat_city">Ciudad</span>
+          <h3>Pueblito Paisa &amp; Miradores</h3>
+          <p data-i18n="exp_pueblito">Las mejores vistas de Medellín al atardecer, con la cultura paisa en su esencia.</p>
         </div>
-        <div class="region__grid" data-animate-stagger>
-          <article class="region__item">
-            <div class="region__thumb">
-              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(25).jpeg" data-i18n-alt="reg1Alt" alt="Embalse de Guatapé y piedra del Peñol" loading="lazy" width="640" height="360" decoding="async">
-            </div>
-            <div class="region__body">
-              <h3 data-i18n="reg1Title">Guatapé &amp; Peñol</h3>
-              <p data-i18n="reg1Text">Lancha privada, almuerzo en la orilla y subida al peñón sin colas ni improvisos.</p>
-              <span class="region__dist" data-i18n="reg1Dist">~90 min desde Medellín</span>
-            </div>
-          </article>
-          <article class="region__item">
-            <div class="region__thumb">
-              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(26).jpeg" data-i18n-alt="reg2Alt" alt="Calles coloniales de Santa Fe de Antioquia" loading="lazy" width="640" height="360" decoding="async">
-            </div>
-            <div class="region__body">
-              <h3 data-i18n="reg2Title">Santa Fe de Antioquia</h3>
-              <p data-i18n="reg2Text">Patrimonio colonial, puente colgante y almuerzo en patio con cocina tradicional elevada.</p>
-              <span class="region__dist" data-i18n="reg2Dist">~1 h 15 min</span>
-            </div>
-          </article>
-          <article class="region__item">
-            <div class="region__thumb">
-              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(27).jpeg" data-i18n-alt="reg3Alt" alt="Paisaje cafetero y montañas de Jardín" loading="lazy" width="640" height="360" decoding="async">
-            </div>
-            <div class="region__body">
-              <h3 data-i18n="reg3Title">Jardín &amp; café</h3>
-              <p data-i18n="reg3Text">Pueblos del suroeste, cascadas y cata de café en finca con dueños locales.</p>
-              <span class="region__dist" data-i18n="reg3Dist">~3 h · ideal 2 días</span>
-            </div>
-          </article>
-          <article class="region__item">
-            <div class="region__thumb">
-              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(28).jpeg" data-i18n-alt="reg4Alt" alt="Zona verde y aeropuerto de Rionegro" loading="lazy" width="640" height="360" decoding="async">
-            </div>
-            <div class="region__body">
-              <h3 data-i18n="reg4Title">Rionegro &amp; Llanogrande</h3>
-              <p data-i18n="reg4Text">Cerca al aeropuerto: golf, cenas de llegada o salida y hoteles para conexiones ejecutivas.</p>
-              <span class="region__dist" data-i18n="reg4Dist">~40 min · MDE</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+      </article>
 
-    <section class="why" id="por-que">
-      <div class="container">
-        <div class="section-head" data-animate>
-          <p class="eyebrow" data-i18n="whyEyebrow">Por qué con nosotros</p>
-          <h2 class="title" data-i18n="whyTitle">Lujo con cara humana</h2>
-          <p class="lead" data-i18n="whyLead">No somos una agencia genérica: somos equipo local que habla claro, cumple y te trata por nombre.</p>
+      <article class="exp reveal" data-cat="nature">
+        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-body">
+          <span class="exp-cat" data-i18n="cat_nature">Naturaleza</span>
+          <h3>Guatapé &amp; El Peñol</h3>
+          <p data-i18n="exp_guatape">El pueblo más colorido de Colombia y la icónica piedra con vistas infinitas sobre el embalse.</p>
         </div>
-        <ul class="why__list" data-animate-stagger>
-          <li class="why__item">
-            <h3 data-i18n="why1Title">Conocimiento real</h3>
-            <p data-i18n="why1Text">Vivimos Medellín. Sabemos qué mesa reservar un martes y qué ruta evitar en temporada alta.</p>
-          </li>
-          <li class="why__item">
-            <h3 data-i18n="why2Title">Todo resuelto</h3>
-            <p data-i18n="why2Text">Traslados, entradas, cambios de último minuto: un solo WhatsApp, una sola respuesta.</p>
-          </li>
-          <li class="why__item">
-            <h3 data-i18n="why3Title">Estilo sin rigidez</h3>
-            <p data-i18n="why3Text">Hospitalidad premium sin protocolos fríos. Exigencia en el detalle, cercanía en el trato.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
+      </article>
 
-    <section id="testimonio">
-      <div class="container">
-        <div class="quote-wrap" data-animate="right">
-          <div class="quote-visual">
-            <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(29).jpeg" data-i18n-alt="quoteImgAlt" alt="Experiencia premium en Medellín al atardecer" loading="lazy" width="800" height="600" decoding="async">
-          </div>
-          <blockquote class="quote-block">
-            <p data-i18n="quote">«Llegamos sin plan y salimos con una semana perfecta: Provenza, Guatapé en lancha privada y una cena que aún comentamos. Se sintió como viajar con un amigo que además tiene contactos de sobra.»</p>
-            <footer data-i18n="quoteAuthor">James &amp; Sarah · Viajeros desde Londres</footer>
-          </blockquote>
+      <article class="exp reveal" data-cat="nature">
+        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-body">
+          <span class="exp-cat" data-i18n="cat_nature">Naturaleza</span>
+          <h3>Rionegro &amp; Pueblos de Antioquia</h3>
+          <p data-i18n="exp_rionegro">Haciendas, fincas cafeteras y pueblos coloniales que conservan el alma de la región.</p>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <section class="cta-final" id="contacto">
-      <div class="container" data-animate>
-        <p class="eyebrow" data-i18n="ctaEyebrow">Empecemos</p>
-        <h2 class="title" data-i18n="ctaTitle">Cuéntanos cuándo llegas a Medellín</h2>
-        <p class="lead" data-i18n="ctaLead">Escríbenos por WhatsApp y armamos una propuesta a tu medida en menos de 24 horas.</p>
-        <div class="cta-final__btns">
-          <a href="https://wa.me/573046370794" class="btn btn--wa" data-i18n-wa="waCta" target="_blank" rel="noopener noreferrer" data-i18n="ctaWa">Escribir por WhatsApp</a>
-          <p class="cta-phone" data-i18n="ctaPhone">+57 304 637 0794</p>
+      <article class="exp reveal" data-cat="nature">
+        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-body">
+          <span class="exp-cat" data-i18n="cat_nature">Naturaleza</span>
+          <h3>Eje Cafetero</h3>
+          <p data-i18n="exp_cafetero">Paisaje cultural cafetero: catación privada, palmas de cera y montañas verdes sin fin.</p>
         </div>
-      </div>
-    </section>
-  </main>
+      </article>
 
-  <footer class="footer">
-    <div class="container footer__inner">
-      <p data-i18n="footerCopy">© 2026 Global Experience VIP · Medellín, Colombia</p>
-      <div class="footer__links">
-        <a href="https://wa.me/573046370794" data-i18n-wa="waFloat" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-        <a href="#inicio" data-i18n="footerTop">Volver arriba</a>
+      <article class="exp reveal" data-cat="adventure">
+        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1605554928604-5c1a3b9a5b1f?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-body">
+          <span class="exp-cat" data-i18n="cat_adventure">Aventura</span>
+          <h3>Parapente</h3>
+          <p data-i18n="exp_parapente">Vuela sobre el Valle de Aburrá y siente Medellín desde el cielo con pilotos certificados.</p>
+        </div>
+      </article>
+
+      <article class="exp reveal" data-cat="adventure">
+        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-body">
+          <span class="exp-cat" data-i18n="cat_adventure">Aventura</span>
+          <h3>Jetski</h3>
+          <p data-i18n="exp_jetski">Adrenalina sobre el agua en el embalse de Guatapé, con todo organizado para ti.</p>
+        </div>
+      </article>
+
+      <article class="exp reveal" data-cat="adventure">
+        <div class="exp-media" style="background-image:url('https://images.unsplash.com/photo-1473862170180-84427c485aca?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="exp-body">
+          <span class="exp-cat" data-i18n="cat_adventure">Aventura</span>
+          <h3>Helicóptero</h3>
+          <p data-i18n="exp_heli">Sobrevuela la ciudad y las montañas en un tour privado e inolvidable desde las alturas.</p>
+        </div>
+      </article>
+
+    </div>
+    <p class="exp-note reveal" data-i18n="exp_note">¿No ves lo que buscas? Lo creamos contigo.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     CÓMO FUNCIONA
+     ============================================================ -->
+<section class="section" id="proceso">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow" data-i18n="how_eyebrow">Sin fricción</span>
+      <h2 data-i18n="how_title">Cómo funciona</h2>
+      <div class="rule"></div>
+      <p class="lede" data-i18n="how_sub">Cuatro pasos simples, una sola conversación. Todo empieza con un mensaje.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal d1">
+        <h3 data-i18n="step1_t">Nos escribes</h3>
+        <p data-i18n="step1_d">Escríbenos por WhatsApp y cuéntanos que viajas a Medellín.</p>
+      </div>
+      <div class="step reveal d2">
+        <h3 data-i18n="step2_t">Cuéntanos tu visión</h3>
+        <p data-i18n="step2_d">Qué te gustaría vivir, ver y sentir durante tu estadía.</p>
+      </div>
+      <div class="step reveal d3">
+        <h3 data-i18n="step3_t">Diseñamos juntos</h3>
+        <p data-i18n="step3_d">Creamos contigo una experiencia a medida, flexible y a tu ritmo.</p>
+      </div>
+      <div class="step reveal d4">
+        <h3 data-i18n="step4_t">Te acompañamos</h3>
+        <p data-i18n="step4_d">Estamos contigo durante todo el recorrido, cuidando cada detalle.</p>
       </div>
     </div>
-  </footer>
+    <div class="how-cta reveal">
+      <a class="btn btn-gold wa-link" href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.044z"/></svg>
+        <span data-i18n="how_cta">Comenzar mi experiencia</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-  <a href="https://wa.me/573046370794" class="wa-float" data-i18n-wa="waFloat" data-i18n-aria="waAria" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
+<!-- ============================================================
+     SEGURIDAD Y CONFIANZA
+     ============================================================ -->
+<section class="section" id="confianza">
+  <div class="container">
+    <div class="trust-split">
+      <div class="trust-copy reveal">
+        <span class="eyebrow" data-i18n="safe_eyebrow">Seguridad &amp; confianza</span>
+        <div class="rule"></div>
+        <h2 data-i18n="safe_title">Viaja con respaldo local y total tranquilidad</h2>
+        <ul class="trust-list">
+          <li><span class="check"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span data-i18n="safe_1">Acompañamiento personal durante toda la experiencia.</span></li>
+          <li><span class="check"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span data-i18n="safe_2">Conductores y anfitriones locales de confianza.</span></li>
+          <li><span class="check"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span data-i18n="safe_3">Atención directa y comunicación constante.</span></li>
+          <li><span class="check"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span data-i18n="safe_4">Planes flexibles que se adaptan a ti en tiempo real.</span></li>
+        </ul>
+      </div>
+      <div class="trust-visual reveal d2">
+        <div class="trust-visual-img" aria-hidden="true"></div>
+        <div class="trust-badge">
+          <b data-i18n="safe_badge_t">Atención cercana, 7 días a la semana</b>
+          <p data-i18n="safe_badge_d">Hablamos tu idioma y cuidamos cada detalle para que solo te ocupes de disfrutar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    (function () {
-      const WA = "573046370794";
-      const LANG_KEY = "gxvip-lang";
+<!-- ============================================================
+     TESTIMONIOS — carrusel fade
+     ============================================================ -->
+<section class="section" id="testimonios">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow" data-i18n="testi_eyebrow">Voces de viajeros</span>
+      <h2 data-i18n="testi_title">Lo que dicen quienes ya viajaron</h2>
+      <div class="rule"></div>
+    </div>
 
-      const T = {
-        es: {
-          metaTitle: "Global Experience VIP | Medellín & Antioquia",
-          metaDesc: "Global Experience VIP — Experiencias premium en Medellín y Antioquia. Concierge local, hospitalidad cercana y rutas de lujo por la ciudad y sus alrededores.",
-          logoAria: "Global Experience VIP — Inicio",
-          navAria: "Navegación principal",
-          navHome: "Inicio",
-          navExp: "Experiencias",
-          navGallery: "Galería",
-          navRegion: "Alrededores",
-          navContact: "Contacto",
-          navCta: "Reservar experiencia",
-          langSwitch: "Cambiar a inglés",
-          langLabel: "EN",
-          menuOpen: "Abrir menú",
-          menuClose: "Cerrar menú",
-          heroAlt: "Metrocable y panorama del valle de Medellín",
-          heroEyebrow: "Medellín · Antioquia",
-          heroTitle: "La ciudad que enamora, <em>vivida en grande</em>",
-          heroSub: "Somos tu concierge en Medellín: rutas premium, mesas con alma paisa y escapadas a los alrededores, con el detalle de un servicio de lujo y la calidez de quien conoce cada rincón.",
-          heroCta1: "Planear mi viaje",
-          heroCta2: "WhatsApp",
-          pill1: "<strong>El Poblado</strong> · Provenza",
-          pill2: "<strong>Guatapé</strong> · 90 min",
-          pill3: "Respuesta en 24h",
-          expEyebrow: "En la ciudad",
-          expTitle: "Experiencias que solo Medellín puede dar",
-          expLead: "Curamos lo esencial para que no pierdas tiempo eligiendo: solo vivir la ciudad con estándar premium.",
-          exp1Alt: "Arte urbano y calles de la Comuna 13 en Medellín",
-          exp1Tag: "Ciudad",
-          exp1Title: "Medellín íntima",
-          exp1Text: "Comuna 13, museos, miradores y barrios con guía local que cuenta la historia sin folleto turístico.",
-          exp2Alt: "Metrocable sobre el barrio y el valle de Medellín",
-          exp2Tag: "Sabor & noche",
-          exp2Title: "Mesa y ritmo paisa",
-          exp2Text: "Reservas en restaurantes de autor, rooftops en Provenza y noches con trato preferencial.",
-          exp3Alt: "Plantación de café en las montañas de Antioquia",
-          exp3Tag: "Naturaleza",
-          exp3Title: "Verde a una hora",
-          exp3Text: "Fincas cafeteras, reservas y vuelos en helicóptero o rutas escénicas sin logística que te quite el disfrute.",
-          exp4Alt: "Vista urbana de Medellín desde las lomas",
-          exp4Tag: "Estancia",
-          exp4Title: "Hospedaje con sello",
-          exp4Text: "Hoteles boutique en El Poblado y Las Palmas, con beneficios negociados y check-in sin fricción.",
-          galleryEyebrow: "Momentos",
-          galleryTitle: "Medellín en imágenes",
-          galleryLead: "Un vistazo a la ciudad, sus sabores y los paisajes de Antioquia que curamos para ti.",
-          galleryAlt: "Experiencia en Medellín y Antioquia",
-          galleryPrev: "Imagen anterior",
-          galleryNext: "Imagen siguiente",
-          galleryCounter: "Imagen {n} de {total}",
-          regionEyebrow: "Alrededores",
-          regionTitle: "Antioquia, a tu ritmo",
-          regionLead: "Medellín es la base. Desde aquí diseñamos escapadas de un día o fin de semana con transporte y detalle resueltos.",
-          reg1Title: "Guatapé & Peñol",
-          reg1Text: "Lancha privada, almuerzo en la orilla y subida al peñón sin colas ni improvisos.",
-          reg1Dist: "~90 min desde Medellín",
-          reg1Alt: "Embalse de Guatapé y piedra del Peñol",
-          reg2Title: "Santa Fe de Antioquia",
-          reg2Text: "Patrimonio colonial, puente colgante y almuerzo en patio con cocina tradicional elevada.",
-          reg2Dist: "~1 h 15 min",
-          reg2Alt: "Calles coloniales de Santa Fe de Antioquia",
-          reg3Title: "Jardín & café",
-          reg3Text: "Pueblos del suroeste, cascadas y cata de café en finca con dueños locales.",
-          reg3Dist: "~3 h · ideal 2 días",
-          reg3Alt: "Paisaje cafetero y montañas de Jardín",
-          reg4Title: "Rionegro & Llanogrande",
-          reg4Text: "Cerca al aeropuerto: golf, cenas de llegada o salida y hoteles para conexiones ejecutivas.",
-          reg4Dist: "~40 min · MDE",
-          reg4Alt: "Zona verde y aeropuerto de Rionegro",
-          whyEyebrow: "Por qué con nosotros",
-          whyTitle: "Lujo con cara humana",
-          whyLead: "No somos una agencia genérica: somos equipo local que habla claro, cumple y te trata por nombre.",
-          why1Title: "Conocimiento real",
-          why1Text: "Vivimos Medellín. Sabemos qué mesa reservar un martes y qué ruta evitar en temporada alta.",
-          why2Title: "Todo resuelto",
-          why2Text: "Traslados, entradas, cambios de último minuto: un solo WhatsApp, una sola respuesta.",
-          why3Title: "Estilo sin rigidez",
-          why3Text: "Hospitalidad premium sin protocolos fríos. Exigencia en el detalle, cercanía en el trato.",
-          quote: "«Llegamos sin plan y salimos con una semana perfecta: Provenza, Guatapé en lancha privada y una cena que aún comentamos. Se sintió como viajar con un amigo que además tiene contactos de sobra.»",
-          quoteImgAlt: "Experiencia premium en Medellín al atardecer",
-          quoteAuthor: "James & Sarah · Viajeros desde Londres",
-          ctaEyebrow: "Empecemos",
-          ctaTitle: "Cuéntanos cuándo llegas a Medellín",
-          ctaLead: "Escríbenos por WhatsApp y armamos una propuesta a tu medida en menos de 24 horas.",
-          ctaWa: "Escribir por WhatsApp",
-          ctaPhone: "+57 304 637 0794",
-          footerCopy: "© 2026 Global Experience VIP · Medellín, Colombia",
-          footerTop: "Volver arriba",
-          waAria: "Contactar por WhatsApp",
-          waHero: "Hola, quiero planear una experiencia en Medellín.",
-          waCta: "Hola, me gustaría armar mi experiencia en Medellín con Global Experience VIP.",
-          waFloat: "Hola, me interesa conocer experiencias en Medellín."
-        },
-        en: {
-          metaTitle: "Global Experience VIP | Medellín & Antioquia",
-          metaDesc: "Global Experience VIP — Premium experiences in Medellín and Antioquia. Local concierge, warm hospitality and luxury routes across the city and beyond.",
-          logoAria: "Global Experience VIP — Home",
-          navAria: "Main navigation",
-          navHome: "Home",
-          navExp: "Experiences",
-          navGallery: "Gallery",
-          navRegion: "Beyond the city",
-          navContact: "Contact",
-          navCta: "Book experience",
-          langSwitch: "Switch to Spanish",
-          langLabel: "ES",
-          menuOpen: "Open menu",
-          menuClose: "Close menu",
-          heroAlt: "Metrocable and panoramic view of Medellín valley",
-          heroEyebrow: "Medellín · Antioquia",
-          heroTitle: "The city that captivates, <em>experienced in style</em>",
-          heroSub: "We are your Medellín concierge: premium routes, soulful dining and escapes to the surrounding region—with luxury detail and the warmth of true local knowledge.",
-          heroCta1: "Plan my trip",
-          heroCta2: "WhatsApp",
-          pill1: "<strong>El Poblado</strong> · Provenza",
-          pill2: "<strong>Guatapé</strong> · 90 min",
-          pill3: "Reply within 24h",
-          expEyebrow: "In the city",
-          expTitle: "Experiences only Medellín can offer",
-          expLead: "We curate the essentials so you spend no time choosing—only living the city at a premium standard.",
-          exp1Alt: "Street art and alleys in Comuna 13, Medellín",
-          exp1Tag: "City",
-          exp1Title: "Intimate Medellín",
-          exp1Text: "Comuna 13, museums, viewpoints and neighborhoods with a local guide—no generic tour script.",
-          exp2Alt: "Metrocable over the neighborhood and Medellín valley",
-          exp2Tag: "Taste & night",
-          exp2Title: "Table & paisa rhythm",
-          exp2Text: "Reservations at signature restaurants, Provenza rooftops and nights with preferential treatment.",
-          exp3Alt: "Coffee plantation in the mountains of Antioquia",
-          exp3Tag: "Nature",
-          exp3Title: "Green within an hour",
-          exp3Text: "Coffee farms, nature reserves and helicopter flights or scenic routes—we handle the logistics.",
-          exp4Alt: "Urban view of Medellín from the hillside",
-          exp4Tag: "Stay",
-          exp4Title: "Signature lodging",
-          exp4Text: "Boutique hotels in El Poblado and Las Palmas with negotiated perks and seamless check-in.",
-          galleryEyebrow: "Moments",
-          galleryTitle: "Medellín in images",
-          galleryLead: "A glimpse of the city, its flavors and the Antioquia landscapes we curate for you.",
-          galleryAlt: "Experience in Medellín and Antioquia",
-          galleryPrev: "Previous image",
-          galleryNext: "Next image",
-          galleryCounter: "Image {n} of {total}",
-          regionEyebrow: "Beyond Medellín",
-          regionTitle: "Antioquia, at your pace",
-          regionLead: "Medellín is your base. From here we design day trips or weekend escapes with transport and details covered.",
-          reg1Title: "Guatapé & El Peñol",
-          reg1Text: "Private boat, lakeside lunch and rock climb without queues or guesswork.",
-          reg1Dist: "~90 min from Medellín",
-          reg1Alt: "Guatapé reservoir and El Peñol rock",
-          reg2Title: "Santa Fe de Antioquia",
-          reg2Text: "Colonial heritage, suspension bridge and courtyard lunch with elevated traditional cuisine.",
-          reg2Dist: "~1 h 15 min",
-          reg2Alt: "Colonial streets of Santa Fe de Antioquia",
-          reg3Title: "Jardín & coffee",
-          reg3Text: "Southwestern towns, waterfalls and farm tastings with local owners.",
-          reg3Dist: "~3 h · ideal 2 days",
-          reg3Alt: "Coffee landscape and mountains of Jardín",
-          reg4Title: "Rionegro & Llanogrande",
-          reg4Text: "Near the airport: golf, arrival or departure dinners and hotels for executive connections.",
-          reg4Dist: "~40 min · MDE",
-          reg4Alt: "Green area near Rionegro airport",
-          whyEyebrow: "Why travel with us",
-          whyTitle: "Luxury with a human face",
-          whyLead: "We are not a generic agency: a local team that speaks plainly, delivers and knows you by name.",
-          why1Title: "Real local knowledge",
-          why1Text: "We live in Medellín. We know which table to book on a Tuesday and which route to skip in high season.",
-          why2Title: "Everything handled",
-          why2Text: "Transfers, tickets, last-minute changes—one WhatsApp, one point of contact.",
-          why3Title: "Style without stiffness",
-          why3Text: "Premium hospitality without cold protocol. High standards, warm treatment.",
-          quote: "«We arrived with no plan and left with a perfect week: Provenza, private boat in Guatapé and a dinner we still talk about. It felt like traveling with a well-connected friend.»",
-          quoteImgAlt: "Premium Medellín experience at sunset",
-          quoteAuthor: "James & Sarah · Travelers from London",
-          ctaEyebrow: "Let's begin",
-          ctaTitle: "Tell us when you arrive in Medellín",
-          ctaLead: "Message us on WhatsApp and we will send a tailored proposal within 24 hours.",
-          ctaWa: "Message on WhatsApp",
-          ctaPhone: "+57 304 637 0794",
-          footerCopy: "© 2026 Global Experience VIP · Medellín, Colombia",
-          footerTop: "Back to top",
-          waAria: "Contact via WhatsApp",
-          waHero: "Hello, I would like to plan an experience in Medellín.",
-          waCta: "Hello, I would like to plan my Medellín experience with Global Experience VIP.",
-          waFloat: "Hello, I am interested in Medellín experiences."
+    <!-- ============================================================
+         TESTIMONIOS EDITABLES — edita el array `reviews` en el JS (más abajo).
+         Cada reseña: { quote, author, origin }. Pueden estar en ES o EN.
+         ============================================================ -->
+    <div class="testi-wrap reveal" id="testiWrap"><!-- se llena por JS --></div>
+
+    <div class="testi-nav reveal">
+      <button class="testi-arrow" id="testiPrev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="testi-dots" id="testiDots"></div>
+      <button class="testi-arrow" id="testiNext" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUSTPILOT — placeholder preparado para integración futura
+     ============================================================ -->
+<section class="section" id="trustpilot">
+  <div class="container">
+    <div class="trustpilot reveal">
+      <div class="tp-stars" aria-hidden="true">
+        <span><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></span>
+      </div>
+      <h3 data-i18n="tp_title">Confiado por viajeros de todo el mundo</h3>
+      <p data-i18n="tp_sub">Pronto podrás ver aquí nuestras reseñas verificadas en Trustpilot. Tu tranquilidad es nuestra prioridad.</p>
+      <!-- ESPACIO RESERVADO: pega aquí el widget/badge oficial de Trustpilot cuando esté listo -->
+      <div class="tp-slot" id="trustpilotSlot">
+        <span class="tp-logo">Trustpilot</span>
+        <span data-i18n="tp_slot">Widget de reseñas próximamente</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA FINAL
+     ============================================================ -->
+<section class="section final" id="contacto">
+  <div class="final-bg" aria-hidden="true"></div>
+  <div class="container final-inner reveal">
+    <h2 data-i18n="final_title">Tu viaje privado por Medellín empieza con un mensaje</h2>
+    <p class="lede" data-i18n="final_sub">Cuéntanos qué te gustaría vivir. Del resto nos encargamos nosotros.</p>
+    <a class="btn btn-gold wa-link" href="#">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.044z"/></svg>
+      <span data-i18n="final_cta">Diseñar mi experiencia</span>
+    </a>
+    <p class="final-urgency" data-i18n="final_urgency">Cupos limitados por temporada para garantizar atención personalizada.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#hero" class="logo">
+          <span class="logo-mark">G</span>
+          <span class="logo-txt"><b>Global Experience</b><span>VIP</span></span>
+        </a>
+        <p data-i18n="foot_about">Experiencias privadas y a medida en Medellín y Antioquia. Tú decides, nosotros lo hacemos posible.</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_explore">Explorar</h4>
+        <a href="#valor" data-i18n="nav_value">Filosofía</a>
+        <a href="#experiencias" data-i18n="nav_exp">Experiencias</a>
+        <a href="#proceso" data-i18n="nav_how">Cómo funciona</a>
+        <a href="#testimonios" data-i18n="nav_reviews">Reseñas</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_contact">Contacto</h4>
+        <a href="https://www.instagram.com/globalexperiencevip" target="_blank" rel="noopener">@globalexperiencevip</a>
+        <a href="mailto:info@globalexperiencevip">info@globalexperiencevip</a>
+        <a href="#" class="wa-link" data-i18n="foot_wa">WhatsApp +57 304 637 0794</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Global Experience VIP. <span data-i18n="foot_rights">Todos los derechos reservados.</span></span>
+      <a href="https://www.x5agenciademarketing.lat/globalexperiencevip/" target="_blank" rel="noopener">globalexperiencevip</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a class="wa-float wa-link" id="waFloat" href="#" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.044z"/></svg>
+</a>
+
+<script>
+/* ============================================================
+   CONFIGURACIÓN — WhatsApp
+   ============================================================ */
+var WHATSAPP_NUMBER = "573046370794"; // +57 304 637 0794
+var WA_MESSAGES = {
+  es: "Hola, estoy interesado en vivir una experiencia privada y personalizada en Medellín. Quiero más información.",
+  en: "Hi, I'm interested in a private and personalized experience in Medellín. I'd like more information."
+};
+function waLink(lang){
+  return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(WA_MESSAGES[lang]);
+}
+
+/* ============================================================
+   TRADUCCIONES (ES / EN)
+   ============================================================ */
+var I18N = {
+  es:{
+    nav_value:"Filosofía", nav_exp:"Experiencias", nav_how:"Cómo funciona", nav_trust:"Confianza", nav_reviews:"Reseñas", nav_cta:"WhatsApp",
+    hero_eyebrow:"Experiencias privadas en Medellín",
+    hero_title:"Vive Medellín <em>a tu manera</em>.",
+    hero_sub:"Tú decides qué ver, a dónde ir y a qué hora. Nosotros diseñamos, cuidamos y acompañamos cada momento de tu viaje privado.",
+    hero_cta1:"Hablar por WhatsApp", hero_cta2:"Explorar experiencias",
+    trust_1:"Experiencias privadas", trust_2:"Acompañamiento local", trust_3:"Planificación personalizada",
+    scroll:"Desliza",
+    value_eyebrow:"Nuestra filosofía", value_title:"Otra forma de viajar",
+    value_sub:"No hacemos tours masivos. Diseñamos experiencias privadas alrededor de tres principios.",
+    pillar1_t:"Exclusividad", pillar1_d:"Experiencias diseñadas solo para ti. Sin grupos, sin horarios impuestos, sin recorridos en serie.",
+    pillar2_t:"Control", pillar2_d:"Tú marcas el ritmo. Eliges los lugares, las horas y el plan. Nosotros lo hacemos posible.",
+    pillar3_t:"Confianza", pillar3_d:"Acompañamiento local de principio a fin, con atención cercana y total tranquilidad.",
+    exp_eyebrow:"Inspiración", exp_title:"Experiencias para crear la tuya",
+    exp_sub:"Estos son puntos de partida, no paquetes cerrados. Tomamos lo que te inspira y diseñamos un recorrido único.",
+    filter_all:"Todo", filter_city:"Ciudad", filter_nature:"Naturaleza", filter_adventure:"Aventura",
+    cat_city:"Ciudad", cat_nature:"Naturaleza", cat_adventure:"Aventura",
+    exp_provenza:"El barrio más vibrante de El Poblado: gastronomía de autor, cócteles y vida nocturna sofisticada.",
+    exp_comuna:"Arte urbano, música y una historia de transformación contada por quienes la vivieron.",
+    exp_pueblito:"Las mejores vistas de Medellín al atardecer, con la cultura paisa en su esencia.",
+    exp_guatape:"El pueblo más colorido de Colombia y la icónica piedra con vistas infinitas sobre el embalse.",
+    exp_rionegro:"Haciendas, fincas cafeteras y pueblos coloniales que conservan el alma de la región.",
+    exp_cafetero:"Paisaje cultural cafetero: catación privada, palmas de cera y montañas verdes sin fin.",
+    exp_parapente:"Vuela sobre el Valle de Aburrá y siente Medellín desde el cielo con pilotos certificados.",
+    exp_jetski:"Adrenalina sobre el agua en el embalse de Guatapé, con todo organizado para ti.",
+    exp_heli:"Sobrevuela la ciudad y las montañas en un tour privado e inolvidable desde las alturas.",
+    exp_note:"¿No ves lo que buscas? Lo creamos contigo.",
+    how_eyebrow:"Sin fricción", how_title:"Cómo funciona",
+    how_sub:"Cuatro pasos simples, una sola conversación. Todo empieza con un mensaje.",
+    step1_t:"Nos escribes", step1_d:"Escríbenos por WhatsApp y cuéntanos que viajas a Medellín.",
+    step2_t:"Cuéntanos tu visión", step2_d:"Qué te gustaría vivir, ver y sentir durante tu estadía.",
+    step3_t:"Diseñamos juntos", step3_d:"Creamos contigo una experiencia a medida, flexible y a tu ritmo.",
+    step4_t:"Te acompañamos", step4_d:"Estamos contigo durante todo el recorrido, cuidando cada detalle.",
+    how_cta:"Comenzar mi experiencia",
+    safe_eyebrow:"Seguridad & confianza", safe_title:"Viaja con respaldo local y total tranquilidad",
+    safe_1:"Acompañamiento personal durante toda la experiencia.",
+    safe_2:"Conductores y anfitriones locales de confianza.",
+    safe_3:"Atención directa y comunicación constante.",
+    safe_4:"Planes flexibles que se adaptan a ti en tiempo real.",
+    safe_badge_t:"Atención cercana, 7 días a la semana",
+    safe_badge_d:"Hablamos tu idioma y cuidamos cada detalle para que solo te ocupes de disfrutar.",
+    testi_eyebrow:"Voces de viajeros", testi_title:"Lo que dicen quienes ya viajaron",
+    tp_title:"Confiado por viajeros de todo el mundo",
+    tp_sub:"Pronto podrás ver aquí nuestras reseñas verificadas en Trustpilot. Tu tranquilidad es nuestra prioridad.",
+    tp_slot:"Widget de reseñas próximamente",
+    final_title:"Tu viaje privado por Medellín empieza con un mensaje",
+    final_sub:"Cuéntanos qué te gustaría vivir. Del resto nos encargamos nosotros.",
+    final_cta:"Diseñar mi experiencia",
+    final_urgency:"Cupos limitados por temporada para garantizar atención personalizada.",
+    foot_about:"Experiencias privadas y a medida en Medellín y Antioquia. Tú decides, nosotros lo hacemos posible.",
+    foot_explore:"Explorar", foot_contact:"Contacto", foot_wa:"WhatsApp +57 304 637 0794",
+    foot_rights:"Todos los derechos reservados."
+  },
+  en:{
+    nav_value:"Philosophy", nav_exp:"Experiences", nav_how:"How it works", nav_trust:"Trust", nav_reviews:"Reviews", nav_cta:"WhatsApp",
+    hero_eyebrow:"Private experiences in Medellín",
+    hero_title:"Experience Medellín <em>your way</em>.",
+    hero_sub:"You decide what to see, where to go and when. We design, protect and accompany every moment of your private journey.",
+    hero_cta1:"Chat on WhatsApp", hero_cta2:"Explore experiences",
+    trust_1:"Private experiences", trust_2:"Local guidance", trust_3:"Personalized planning",
+    scroll:"Scroll",
+    value_eyebrow:"Our philosophy", value_title:"A different way to travel",
+    value_sub:"No mass tours. We design private experiences around three principles.",
+    pillar1_t:"Exclusivity", pillar1_d:"Experiences built only for you. No crowds, no fixed schedules, no one-size-fits-all routes.",
+    pillar2_t:"Control", pillar2_d:"You set the pace. Choose the places, the hours and the plan. We make it happen.",
+    pillar3_t:"Trust", pillar3_d:"Local guidance from start to finish, with close attention and complete peace of mind.",
+    exp_eyebrow:"Inspiration", exp_title:"Experiences to build your own",
+    exp_sub:"These are starting points, not closed packages. We take what inspires you and design a journey that's uniquely yours.",
+    filter_all:"All", filter_city:"City", filter_nature:"Nature", filter_adventure:"Adventure",
+    cat_city:"City", cat_nature:"Nature", cat_adventure:"Adventure",
+    exp_provenza:"El Poblado's most vibrant neighborhood: signature dining, cocktails and sophisticated nightlife.",
+    exp_comuna:"Street art, music and a story of transformation told by those who lived it.",
+    exp_pueblito:"The best views of Medellín at sunset, with paisa culture at its very essence.",
+    exp_guatape:"Colombia's most colorful town and the iconic rock with endless views over the reservoir.",
+    exp_rionegro:"Haciendas, coffee farms and colonial towns that hold the soul of the region.",
+    exp_cafetero:"The coffee cultural landscape: private tastings, wax palms and endless green mountains.",
+    exp_parapente:"Fly over the Aburrá Valley and feel Medellín from the sky with certified pilots.",
+    exp_jetski:"Adrenaline on the water at the Guatapé reservoir, with everything arranged for you.",
+    exp_heli:"Soar above the city and the mountains on a private, unforgettable tour from above.",
+    exp_note:"Don't see what you're looking for? We'll create it with you.",
+    how_eyebrow:"Frictionless", how_title:"How it works",
+    how_sub:"Four simple steps, one conversation. It all starts with a message.",
+    step1_t:"Reach out", step1_d:"Message us on WhatsApp and tell us you're coming to Medellín.",
+    step2_t:"Share your vision", step2_d:"What you'd love to experience, see and feel during your stay.",
+    step3_t:"We design together", step3_d:"We craft a tailor-made experience with you, flexible and at your pace.",
+    step4_t:"We accompany you", step4_d:"We're by your side throughout, caring for every single detail.",
+    how_cta:"Start my experience",
+    safe_eyebrow:"Safety & trust", safe_title:"Travel with local backing and complete peace of mind",
+    safe_1:"Personal guidance throughout the entire experience.",
+    safe_2:"Trusted local drivers and hosts.",
+    safe_3:"Direct attention and constant communication.",
+    safe_4:"Flexible plans that adapt to you in real time.",
+    safe_badge_t:"Close attention, 7 days a week",
+    safe_badge_d:"We speak your language and handle every detail so you can simply enjoy.",
+    testi_eyebrow:"Traveler voices", testi_title:"What past travelers say",
+    tp_title:"Trusted by travelers worldwide",
+    tp_sub:"Soon you'll see our verified Trustpilot reviews right here. Your peace of mind is our priority.",
+    tp_slot:"Reviews widget coming soon",
+    final_title:"Your private Medellín journey starts with a message",
+    final_sub:"Tell us what you'd love to experience. We'll design the rest.",
+    final_cta:"Design my experience",
+    final_urgency:"Limited seasonal availability to ensure personalized attention.",
+    foot_about:"Private, tailor-made experiences in Medellín and Antioquia. You decide, we make it happen.",
+    foot_explore:"Explore", foot_contact:"Contact", foot_wa:"WhatsApp +57 304 637 0794",
+    foot_rights:"All rights reserved."
+  }
+};
+
+/* ============================================================
+   TESTIMONIOS EDITABLES — edita libremente (mezcla ES/EN permitida)
+   ============================================================ */
+var reviews = [
+  { quote:"Everything was effortless from the first message. They planned a private day in Guatapé exactly how we wanted it.", author:"Sarah M.", origin:"United States" },
+  { quote:"Nos sentimos cuidados en todo momento. Cambiamos el plan a último minuto y se adaptaron sin problema.", author:"Lucía R.", origin:"México" },
+  { quote:"The local guidance made all the difference. We saw a side of Medellín we'd never have found on our own.", author:"James & Olivia", origin:"United Kingdom" },
+  { quote:"Atención impecable y muy personal. Sentí que tenía un amigo local organizando todo por mí.", author:"Andrés P.", origin:"España" },
+  { quote:"Booked a private helicopter tour and it exceeded every expectation. Seamless and truly premium.", author:"David K.", origin:"Canada" },
+  { quote:"Flexible, safe and genuinely warm. Exactly what we wanted for our first time in Colombia.", author:"Marie L.", origin:"France" },
+  { quote:"Diseñaron una experiencia a nuestra medida, sin prisas y sin grupos. Volveríamos sin dudarlo.", author:"Camila & Tomás", origin:"Argentina" },
+  { quote:"Communication was constant and clear in English. We never once felt lost or unsure.", author:"Michael B.", origin:"Australia" },
+  { quote:"From Provenza nights to the coffee region, every detail was handled with care and taste.", author:"Hannah W.", origin:"Germany" },
+  { quote:"Lo mejor fue la libertad: decidimos sobre la marcha y ellos hicieron que todo fluyera.", author:"Valentina G.", origin:"Chile" }
+];
+
+/* ============================================================
+   IDIOMA
+   ============================================================ */
+var currentLang = "es";
+try { var saved = localStorage.getItem("gev_lang"); if(saved){ currentLang = saved; } } catch(e){}
+
+function applyLang(lang, animate){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  var dict = I18N[lang];
+
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var key = el.getAttribute("data-i18n");
+    if(dict[key] !== undefined){ el.textContent = dict[key]; }
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(function(el){
+    var key = el.getAttribute("data-i18n-html");
+    if(dict[key] !== undefined){ el.innerHTML = dict[key]; }
+  });
+
+  // links de WhatsApp
+  var link = waLink(lang);
+  document.querySelectorAll(".wa-link").forEach(function(a){ a.setAttribute("href", link); });
+
+  // estado del selector
+  document.querySelectorAll(".lang button").forEach(function(b){
+    var on = b.getAttribute("data-lang") === lang;
+    b.classList.toggle("active", on);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+  });
+
+  try { localStorage.setItem("gev_lang", lang); } catch(e){}
+
+  // transición suave
+  if(animate){
+    var main = document.querySelectorAll("section, .footer, .header");
+    main.forEach(function(s){
+      s.classList.remove("lang-fade"); void s.offsetWidth; s.classList.add("lang-fade");
+    });
+  }
+}
+
+document.querySelectorAll(".lang button").forEach(function(b){
+  b.addEventListener("click", function(){ applyLang(b.getAttribute("data-lang"), true); });
+});
+
+/* ============================================================
+   HEADER STICKY
+   ============================================================ */
+var header = document.getElementById("header");
+function onScrollHeader(){ header.classList.toggle("scrolled", window.scrollY > 30); }
+window.addEventListener("scroll", onScrollHeader, {passive:true});
+onScrollHeader();
+
+/* ============================================================
+   MENÚ MÓVIL
+   ============================================================ */
+var burger = document.getElementById("burger");
+var mobileMenu = document.getElementById("mobileMenu");
+function toggleMenu(open){
+  burger.classList.toggle("open", open);
+  mobileMenu.classList.toggle("open", open);
+  burger.setAttribute("aria-expanded", open ? "true" : "false");
+  document.body.style.overflow = open ? "hidden" : "";
+}
+burger.addEventListener("click", function(){ toggleMenu(!mobileMenu.classList.contains("open")); });
+mobileMenu.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ toggleMenu(false); }); });
+
+/* ============================================================
+   REVEAL ON SCROLL (IntersectionObserver)
+   ============================================================ */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+  });
+}, {threshold:0.14, rootMargin:"0px 0px -40px 0px"});
+document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+
+/* ============================================================
+   FILTROS DE EXPERIENCIAS
+   ============================================================ */
+var tabs = document.querySelectorAll(".tab");
+var cards = document.querySelectorAll("#expGrid .exp");
+tabs.forEach(function(t){
+  t.addEventListener("click", function(){
+    tabs.forEach(function(x){ x.classList.remove("active"); });
+    t.classList.add("active");
+    var f = t.getAttribute("data-filter");
+    cards.forEach(function(c){
+      var show = (f === "all" || c.getAttribute("data-cat") === f);
+      c.classList.toggle("hide", !show);
+    });
+  });
+});
+
+/* ============================================================
+   TESTIMONIOS — render + carrusel
+   ============================================================ */
+var testiWrap = document.getElementById("testiWrap");
+var testiDots = document.getElementById("testiDots");
+var tIndex = 0, tTimer = null;
+
+function renderTestimonials(){
+  testiWrap.innerHTML = "";
+  testiDots.innerHTML = "";
+  reviews.forEach(function(r, i){
+    var d = document.createElement("div");
+    d.className = "testi" + (i===0 ? " active" : "");
+    d.innerHTML =
+      '<span class="testi-mark" aria-hidden="true">&ldquo;</span>' +
+      '<p class="testi-quote">' + r.quote + '</p>' +
+      '<p class="testi-author">' + r.author + '</p>' +
+      '<p class="testi-origin">' + r.origin + '</p>';
+    testiWrap.appendChild(d);
+
+    var dot = document.createElement("button");
+    dot.className = "dot-btn" + (i===0 ? " active" : "");
+    dot.setAttribute("aria-label", "Reseña " + (i+1));
+    dot.addEventListener("click", function(){ goTesti(i); });
+    testiDots.appendChild(dot);
+  });
+}
+function goTesti(i){
+  var slides = testiWrap.querySelectorAll(".testi");
+  var dots = testiDots.querySelectorAll(".dot-btn");
+  if(!slides.length) return;
+  tIndex = (i + slides.length) % slides.length;
+  slides.forEach(function(s,k){ s.classList.toggle("active", k===tIndex); });
+  dots.forEach(function(d,k){ d.classList.toggle("active", k===tIndex); });
+  restartTesti();
+}
+function restartTesti(){
+  if(tTimer) clearInterval(tTimer);
+  tTimer = setInterval(function(){ goTesti(tIndex+1); }, 6000);
+}
+document.getElementById("testiPrev").addEventListener("click", function(){ goTesti(tIndex-1); });
+document.getElementById("testiNext").addEventListener("click", function(){ goTesti(tIndex+1); });
+testiWrap.addEventListener("mouseenter", function(){ if(tTimer) clearInterval(tTimer); });
+testiWrap.addEventListener("mouseleave", restartTesti);
+renderTestimonials();
+restartTesti();
+
+/* ============================================================
+   PARALLAX MUY LEVE EN HERO (respeta reduced-motion)
+   ============================================================ */
+var heroBg = document.getElementById("heroBg");
+var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(heroBg && !reduceMotion){
+  var ticking = false;
+  window.addEventListener("scroll", function(){
+    if(!ticking){
+      window.requestAnimationFrame(function(){
+        var y = window.scrollY;
+        if(y < window.innerHeight){
+          heroBg.style.transform = "scale(1.08) translateY(" + (y * 0.12) + "px)";
         }
-      };
-
-      const root = document.documentElement;
-      const header = document.getElementById("header");
-      const langToggle = document.getElementById("lang-toggle");
-      const menuToggle = document.getElementById("menu-toggle");
-      const mobileDrawer = document.getElementById("mobile-drawer");
-      const heroImg = document.getElementById("hero-img");
-      const metaDesc = document.querySelector('meta[name="description"]');
-
-      let lang = localStorage.getItem(LANG_KEY) || "es";
-      if (!T[lang]) lang = "es";
-
-      function waUrl(key) {
-        return "https://wa.me/" + WA + "?text=" + encodeURIComponent(T[lang][key]);
-      }
-
-      function applyLang(l) {
-        lang = l;
-        const d = T[l];
-        root.lang = l;
-        localStorage.setItem(LANG_KEY, l);
-        langToggle.textContent = d.langLabel;
-        langToggle.setAttribute("aria-label", d.langSwitch);
-        document.title = d.metaTitle;
-        if (metaDesc) metaDesc.content = d.metaDesc;
-
-        document.querySelectorAll("[data-i18n]").forEach(function (el) {
-          const k = el.dataset.i18n;
-          if (d[k] != null) el.textContent = d[k];
-        });
-        document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
-          const k = el.dataset.i18nHtml;
-          if (d[k] != null) el.innerHTML = d[k];
-        });
-        document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
-          const k = el.dataset.i18nAlt;
-          if (d[k] != null) el.alt = d[k];
-        });
-        document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
-          const k = el.dataset.i18nAria;
-          if (d[k] != null) el.setAttribute("aria-label", d[k]);
-        });
-        document.querySelectorAll("[data-i18n-wa]").forEach(function (el) {
-          const k = el.dataset.i18nWa;
-          if (d[k] != null) el.href = waUrl(k);
-        });
-        if (galleryPrev) galleryPrev.setAttribute("aria-label", d.galleryPrev);
-        if (galleryNext) galleryNext.setAttribute("aria-label", d.galleryNext);
-        if (galleryTrack) {
-          galleryTrack.querySelectorAll(".gallery-slide img").forEach(function (img, idx) {
-            img.alt = d.galleryAlt + " " + (idx + 1);
-          });
-        }
-        updateGalleryCounter();
-        menuToggle.setAttribute("aria-label", d[mobileDrawer.classList.contains("is-open") ? "menuClose" : "menuOpen"]);
-      }
-
-      function closeMenu() {
-        mobileDrawer.classList.remove("is-open");
-        mobileDrawer.setAttribute("aria-hidden", "true");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", T[lang].menuOpen);
-        document.body.classList.remove("menu-open");
-      }
-
-      function openMenu() {
-        mobileDrawer.classList.add("is-open");
-        mobileDrawer.setAttribute("aria-hidden", "false");
-        menuToggle.setAttribute("aria-expanded", "true");
-        menuToggle.setAttribute("aria-label", T[lang].menuClose);
-        document.body.classList.add("menu-open");
-      }
-
-      langToggle.addEventListener("click", function () {
-        applyLang(lang === "es" ? "en" : "es");
+        ticking = false;
       });
+      ticking = true;
+    }
+  }, {passive:true});
+}
 
-      header.classList.toggle("is-scrolled", window.scrollY > 20);
-      window.addEventListener("scroll", function () {
-        header.classList.toggle("is-scrolled", window.scrollY > 20);
-        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && heroImg) {
-          const y = Math.min(window.scrollY * 0.00035, 0.08);
-          heroImg.style.transform = "scale(" + (1.04 + y) + ") translateY(" + (window.scrollY * 0.12) + "px)";
-        }
-      }, { passive: true });
+/* ============================================================
+   INIT
+   ============================================================ */
+document.getElementById("year").textContent = new Date().getFullYear();
+applyLang(currentLang, false);
 
-      menuToggle.addEventListener("click", function () {
-        if (mobileDrawer.classList.contains("is-open")) closeMenu();
-        else openMenu();
-      });
-      mobileDrawer.querySelectorAll("a").forEach(function (a) {
-        a.addEventListener("click", closeMenu);
-      });
-      document.getElementById("nav").querySelectorAll("a").forEach(function (a) {
-        a.addEventListener("click", closeMenu);
-      });
-
-      const IMG_FILLER = "/globalexperiencevip/images/imagenes-de-relleno/";
-      function fillerUrl(n) {
-        return IMG_FILLER + encodeURIComponent("imagen (" + n + ").jpeg");
-      }
-
-      const galleryTrack = document.getElementById("gallery-track");
-      const galleryCounter = document.getElementById("gallery-counter");
-      const galleryProgress = document.getElementById("gallery-progress");
-      const galleryPrev = document.getElementById("gallery-prev");
-      const galleryNext = document.getElementById("gallery-next");
-      const GALLERY_TOTAL = 24;
-      let galleryIndex = 0;
-      let galleryTimer = null;
-      let gallerySlidesPerView = 1;
-
-      function galleryPerView() {
-        if (window.matchMedia("(min-width: 900px)").matches) return 3;
-        if (window.matchMedia("(min-width: 640px)").matches) return 2;
-        return 1;
-      }
-
-      function galleryMaxIndex() {
-        return Math.max(0, GALLERY_TOTAL - gallerySlidesPerView);
-      }
-
-      function updateGalleryCounter() {
-        if (!galleryCounter) return;
-        const tpl = T[lang].galleryCounter || "Imagen {n} de {total}";
-        galleryCounter.textContent = tpl.replace("{n}", String(galleryIndex + 1)).replace("{total}", String(GALLERY_TOTAL));
-      }
-
-      function setGallerySlide(i) {
-        galleryIndex = Math.max(0, Math.min(i, galleryMaxIndex()));
-        if (galleryTrack) {
-          galleryTrack.style.transform = "translateX(-" + (galleryIndex * (100 / gallerySlidesPerView)) + "%)";
-          galleryTrack.querySelectorAll(".gallery-slide").forEach(function (slide, idx) {
-            slide.classList.toggle("is-active", idx >= galleryIndex && idx < galleryIndex + gallerySlidesPerView);
-          });
-        }
-        if (galleryProgress) {
-          const pct = galleryMaxIndex() === 0 ? 100 : (galleryIndex / galleryMaxIndex()) * 100;
-          galleryProgress.style.width = pct + "%";
-        }
-        updateGalleryCounter();
-      }
-
-      function galleryStep(dir) {
-        setGallerySlide(galleryIndex + dir);
-      }
-
-      function resetGalleryAutoplay() {
-        if (galleryTimer) clearInterval(galleryTimer);
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        galleryTimer = setInterval(function () {
-          setGallerySlide(galleryIndex >= galleryMaxIndex() ? 0 : galleryIndex + 1);
-        }, 4500);
-      }
-
-      if (galleryTrack) {
-        for (let i = 1; i <= GALLERY_TOTAL; i++) {
-          const slide = document.createElement("div");
-          slide.className = "gallery-slide" + (i === 1 ? " is-active" : "");
-          slide.setAttribute("role", "group");
-          slide.setAttribute("aria-roledescription", "slide");
-          slide.setAttribute("aria-label", String(i));
-          const img = document.createElement("img");
-          img.src = fillerUrl(i);
-          img.alt = T[lang].galleryAlt + " " + i;
-          img.loading = i <= 2 ? "eager" : "lazy";
-          img.decoding = "async";
-          img.width = 960;
-          img.height = 600;
-          slide.appendChild(img);
-          galleryTrack.appendChild(slide);
-        }
-
-        gallerySlidesPerView = galleryPerView();
-        galleryPrev.setAttribute("aria-label", T[lang].galleryPrev);
-        galleryNext.setAttribute("aria-label", T[lang].galleryNext);
-        updateGalleryCounter();
-
-        galleryPrev.addEventListener("click", function () { galleryStep(-1); resetGalleryAutoplay(); });
-        galleryNext.addEventListener("click", function () { galleryStep(1); resetGalleryAutoplay(); });
-
-        let touchStartX = 0;
-        galleryTrack.parentElement.addEventListener("touchstart", function (e) {
-          touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        galleryTrack.parentElement.addEventListener("touchend", function (e) {
-          const dx = e.changedTouches[0].screenX - touchStartX;
-          if (Math.abs(dx) > 40) galleryStep(dx < 0 ? 1 : -1);
-          resetGalleryAutoplay();
-        }, { passive: true });
-
-        window.addEventListener("resize", function () {
-          const next = galleryPerView();
-          if (next !== gallerySlidesPerView) {
-            gallerySlidesPerView = next;
-            setGallerySlide(galleryIndex);
-          }
-        });
-
-        resetGalleryAutoplay();
-      }
-
-      applyLang(lang);
-
-      const animated = document.querySelectorAll("[data-animate], [data-animate-stagger]");
-      const isMobile = window.matchMedia("(max-width: 899px)");
-      if ("IntersectionObserver" in window) {
-        const io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) {
-              e.target.classList.add("is-in");
-              io.unobserve(e.target);
-            }
-          });
-        }, {
-          threshold: isMobile.matches ? 0.08 : 0.12,
-          rootMargin: isMobile.matches ? "0px 0px -20px 0px" : "0px 0px -30px 0px"
-        });
-        animated.forEach(function (el) { io.observe(el); });
-      } else {
-        animated.forEach(function (el) { el.classList.add("is-in"); });
-      }
-    })();
-  </script>
+/* WhatsApp flotante — aparece al hacer scroll */
+var waFloat = document.getElementById("waFloat");
+window.addEventListener("scroll", function(){
+  waFloat.classList.toggle("show", window.scrollY > 600);
+}, {passive:true});
+</script>
 </body>
 </html>
