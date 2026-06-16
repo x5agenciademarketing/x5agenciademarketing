@@ -103,6 +103,168 @@
     [data-animate="left"].is-in { transform: translateX(0); }
     [data-animate="scale"] { transform: scale(0.97); }
     [data-animate="scale"].is-in { transform: scale(1); }
+    [data-animate="right"] { transform: translateX(24px); }
+    [data-animate="right"].is-in { transform: translateX(0); }
+    [data-animate="zoom"] { transform: scale(0.92); }
+    [data-animate="zoom"].is-in { transform: scale(1); }
+
+    /* Gallery carousel */
+    .gallery {
+      padding-block: clamp(2rem, 5vw, var(--gap));
+      background: var(--bg);
+      overflow: hidden;
+    }
+    .gallery-carousel {
+      position: relative;
+      max-width: var(--container);
+      margin-inline: auto;
+    }
+    .gallery-viewport {
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .gallery-track {
+      display: flex;
+      transition: transform 0.55s var(--ease);
+      will-change: transform;
+    }
+    .gallery-slide {
+      flex: 0 0 100%;
+      aspect-ratio: 16 / 10;
+      max-height: 280px;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (min-width: 640px) {
+      .gallery-slide { flex: 0 0 50%; max-height: 320px; }
+    }
+    @media (min-width: 900px) {
+      .gallery-slide { flex: 0 0 33.333%; max-height: 340px; }
+    }
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+    .gallery-slide.is-active img { transform: scale(1.02); }
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(10, 9, 8, 0.75);
+      backdrop-filter: blur(8px);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .gallery-nav:hover { border-color: var(--accent); color: var(--accent); }
+    .gallery-nav--prev { left: 0.5rem; }
+    .gallery-nav--next { right: 0.5rem; }
+    .gallery-dots {
+      display: none;
+    }
+    .gallery-progress {
+      margin-top: 0.85rem;
+      height: 2px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      max-width: 160px;
+      margin-inline: auto;
+    }
+    .gallery-progress__bar {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 0.45s var(--ease);
+    }
+    .gallery-counter {
+      text-align: center;
+      margin-top: 0.65rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+    }
+
+    /* Region with thumbs */
+    .region__item {
+      padding: 0;
+      overflow: hidden;
+    }
+    .region__thumb {
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .region__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease);
+    }
+    .region__item:hover .region__thumb img { transform: scale(1.06); }
+    .region__body { padding: 1.15rem; }
+    .region__item:hover { padding-left: 0; }
+    .region__item:hover .region__body { padding-left: 1.35rem; }
+
+    /* Testimonial with image */
+    .quote-wrap {
+      display: grid;
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+    @media (min-width: 768px) {
+      .quote-wrap { grid-template-columns: 0.95fr 1.05fr; }
+    }
+    .quote-visual {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      min-height: 220px;
+      max-height: 320px;
+    }
+    @media (max-width: 767px) {
+      .quote-visual {
+        aspect-ratio: 16 / 10;
+        max-height: 200px;
+        min-height: auto;
+      }
+    }
+    .quote-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .quote-block { max-width: none; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+
+    /* Stagger groups */
+    [data-animate-stagger] > * {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+    }
+    [data-animate-stagger].is-in > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    [data-animate-stagger].is-in > *:nth-child(1) { transition-delay: 0.04s; }
+    [data-animate-stagger].is-in > *:nth-child(2) { transition-delay: 0.1s; }
+    [data-animate-stagger].is-in > *:nth-child(3) { transition-delay: 0.16s; }
+    [data-animate-stagger].is-in > *:nth-child(4) { transition-delay: 0.22s; }
+    [data-animate-stagger].is-in > *:nth-child(5) { transition-delay: 0.28s; }
+    [data-animate-stagger].is-in > *:nth-child(6) { transition-delay: 0.34s; }
 
     .header {
       position: fixed;
@@ -374,13 +536,12 @@
       .region__grid { grid-template-columns: repeat(4, 1fr); }
     }
     .region__item {
-      padding: 1.15rem;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       background: var(--bg-card);
-      transition: border-color 0.3s, padding-left 0.35s var(--ease);
+      transition: border-color 0.3s;
     }
-    .region__item:hover { border-color: var(--accent-warm); padding-left: 1.35rem; }
+    .region__item:hover { border-color: var(--accent-warm); }
     .region__item h3 {
       font-family: var(--font-display);
       font-size: 1.2rem;
@@ -445,7 +606,9 @@
       text-align: center;
       padding-block: clamp(2.5rem, 8vw, 4rem);
       border-top: 1px solid var(--border);
-      background: radial-gradient(ellipse at 50% 0%, rgba(122, 158, 142, 0.08), transparent 60%);
+      background:
+        linear-gradient(180deg, rgba(10, 9, 8, 0.88) 0%, rgba(10, 9, 8, 0.94) 100%),
+        url("/globalexperiencevip/images/imagenes-de-relleno/imagen%20(30).jpeg") center / cover no-repeat;
     }
     .cta-final .title { max-width: none; margin-inline: auto; }
     .cta-final .lead { margin-inline: auto; }
@@ -543,6 +706,15 @@
       .section-head .lead { display: none; }
       .why .section-head .lead { display: block; font-size: 0.85rem; }
       body.menu-open { overflow: hidden; }
+      [data-animate] {
+        transform: translateY(26px);
+        transition-duration: 0.85s;
+      }
+      [data-animate="left"] { transform: translateX(-22px); }
+      [data-animate="right"] { transform: translateX(22px); }
+      [data-animate="zoom"] { transform: scale(0.94); }
+      [data-animate="fade"] { transform: translateY(12px); }
+      .gallery-slide { max-height: 240px; }
     }
     @media (min-width: 900px) {
       .menu-toggle { display: none; }
@@ -558,6 +730,7 @@
         <ul class="nav__list">
           <li><a href="#inicio" class="nav__link" data-i18n="navHome">Inicio</a></li>
           <li><a href="#experiencias" class="nav__link" data-i18n="navExp">Experiencias</a></li>
+          <li><a href="#galeria" class="nav__link" data-i18n="navGallery">Galería</a></li>
           <li><a href="#region" class="nav__link" data-i18n="navRegion">Alrededores</a></li>
           <li><a href="#contacto" class="nav__link" data-i18n="navContact">Contacto</a></li>
         </ul>
@@ -576,6 +749,7 @@
     <ul class="mobile-drawer__list">
       <li><a href="#inicio" class="mobile-drawer__link" data-i18n="navHome">Inicio</a></li>
       <li><a href="#experiencias" class="mobile-drawer__link" data-i18n="navExp">Experiencias</a></li>
+      <li><a href="#galeria" class="mobile-drawer__link" data-i18n="navGallery">Galería</a></li>
       <li><a href="#region" class="mobile-drawer__link" data-i18n="navRegion">Alrededores</a></li>
       <li><a href="#contacto" class="mobile-drawer__link" data-i18n="navContact">Contacto</a></li>
     </ul>
@@ -614,12 +788,11 @@
         <h2 class="title" data-i18n="expTitle">Experiencias que solo Medellín puede dar</h2>
         <p class="lead" data-i18n="expLead">Curamos lo esencial para que no pierdas tiempo eligiendo: solo vivir la ciudad con estándar premium.</p>
       </div>
-      <div class="exp-track">
-        <article class="exp-card" data-animate style="transition-delay: 0.05s">
+      <div class="exp-track" data-animate-stagger>
+        <article class="exp-card">
           <div class="exp-card__img">
             <picture>
-              <source srcset="/globalexperiencevip/images/exp-ciudad.webp" type="image/webp">
-              <img src="/globalexperiencevip/images/exp-ciudad.jpg" data-i18n-alt="exp1Alt" alt="Arte urbano y calles de la Comuna 13 en Medellín" loading="lazy" width="800" height="600" decoding="async">
+              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(5).jpeg" data-i18n-alt="exp1Alt" alt="Arte urbano y calles de la Comuna 13 en Medellín" loading="lazy" width="800" height="600" decoding="async">
             </picture>
           </div>
           <div class="exp-card__body">
@@ -628,11 +801,10 @@
             <p data-i18n="exp1Text">Comuna 13, museos, miradores y barrios con guía local que cuenta la historia sin folleto turístico.</p>
           </div>
         </article>
-        <article class="exp-card" data-animate style="transition-delay: 0.1s">
+        <article class="exp-card">
           <div class="exp-card__img">
             <picture>
-              <source srcset="/globalexperiencevip/images/exp-noche.webp" type="image/webp">
-              <img src="/globalexperiencevip/images/exp-noche.jpg" data-i18n-alt="exp2Alt" alt="Metrocable sobre el barrio y el valle de Medellín" loading="lazy" width="800" height="600" decoding="async">
+              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(6).jpeg" data-i18n-alt="exp2Alt" alt="Metrocable sobre el barrio y el valle de Medellín" loading="lazy" width="800" height="600" decoding="async">
             </picture>
           </div>
           <div class="exp-card__body">
@@ -641,11 +813,10 @@
             <p data-i18n="exp2Text">Reservas en restaurantes de autor, rooftops en Provenza y noches con trato preferencial.</p>
           </div>
         </article>
-        <article class="exp-card" data-animate style="transition-delay: 0.15s">
+        <article class="exp-card">
           <div class="exp-card__img">
             <picture>
-              <source srcset="/globalexperiencevip/images/exp-naturaleza.webp" type="image/webp">
-              <img src="/globalexperiencevip/images/exp-naturaleza.jpg" data-i18n-alt="exp3Alt" alt="Plantación de café en las montañas de Antioquia" loading="lazy" width="800" height="600" decoding="async">
+              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(7).jpeg" data-i18n-alt="exp3Alt" alt="Plantación de café en las montañas de Antioquia" loading="lazy" width="800" height="600" decoding="async">
             </picture>
           </div>
           <div class="exp-card__body">
@@ -654,11 +825,10 @@
             <p data-i18n="exp3Text">Fincas cafeteras, reservas y vuelos en helicóptero o rutas escénicas sin logística que te quite el disfrute.</p>
           </div>
         </article>
-        <article class="exp-card" data-animate style="transition-delay: 0.2s">
+        <article class="exp-card">
           <div class="exp-card__img">
             <picture>
-              <source srcset="/globalexperiencevip/images/exp-estancia.webp" type="image/webp">
-              <img src="/globalexperiencevip/images/exp-estancia.jpg" data-i18n-alt="exp4Alt" alt="Vista urbana de Medellín desde las lomas" loading="lazy" width="800" height="600" decoding="async">
+              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(8).jpeg" data-i18n-alt="exp4Alt" alt="Vista urbana de Medellín desde las lomas" loading="lazy" width="800" height="600" decoding="async">
             </picture>
           </div>
           <div class="exp-card__body">
@@ -670,6 +840,24 @@
       </div>
     </section>
 
+    <section class="gallery" id="galeria">
+      <div class="container section-head" data-animate="fade">
+        <p class="eyebrow" data-i18n="galleryEyebrow">Momentos</p>
+        <h2 class="title" data-i18n="galleryTitle">Medellín en imágenes</h2>
+        <p class="lead" data-i18n="galleryLead">Un vistazo a la ciudad, sus sabores y los paisajes de Antioquia que curamos para ti.</p>
+      </div>
+      <div class="gallery-carousel" data-animate="zoom" aria-roledescription="carousel" aria-label="Galería de imágenes">
+        <button type="button" class="gallery-nav gallery-nav--prev" id="gallery-prev" aria-label="Imagen anterior">‹</button>
+        <div class="gallery-viewport">
+          <div class="gallery-track" id="gallery-track"></div>
+        </div>
+        <button type="button" class="gallery-nav gallery-nav--next" id="gallery-next" aria-label="Imagen siguiente">›</button>
+        <div class="gallery-dots" id="gallery-dots" hidden></div>
+        <div class="gallery-progress" aria-hidden="true"><span class="gallery-progress__bar" id="gallery-progress"></span></div>
+        <p class="gallery-counter" id="gallery-counter" aria-live="polite"></p>
+      </div>
+    </section>
+
     <section class="region" id="region">
       <div class="container">
         <div class="section-head" data-animate>
@@ -677,26 +865,46 @@
           <h2 class="title" data-i18n="regionTitle">Antioquia, a tu ritmo</h2>
           <p class="lead" data-i18n="regionLead">Medellín es la base. Desde aquí diseñamos escapadas de un día o fin de semana con transporte y detalle resueltos.</p>
         </div>
-        <div class="region__grid">
-          <article class="region__item" data-animate="left">
-            <h3 data-i18n="reg1Title">Guatapé &amp; Peñol</h3>
-            <p data-i18n="reg1Text">Lancha privada, almuerzo en la orilla y subida al peñón sin colas ni improvisos.</p>
-            <span class="region__dist" data-i18n="reg1Dist">~90 min desde Medellín</span>
+        <div class="region__grid" data-animate-stagger>
+          <article class="region__item">
+            <div class="region__thumb">
+              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(25).jpeg" data-i18n-alt="reg1Alt" alt="Embalse de Guatapé y piedra del Peñol" loading="lazy" width="640" height="360" decoding="async">
+            </div>
+            <div class="region__body">
+              <h3 data-i18n="reg1Title">Guatapé &amp; Peñol</h3>
+              <p data-i18n="reg1Text">Lancha privada, almuerzo en la orilla y subida al peñón sin colas ni improvisos.</p>
+              <span class="region__dist" data-i18n="reg1Dist">~90 min desde Medellín</span>
+            </div>
           </article>
-          <article class="region__item" data-animate style="transition-delay: 0.06s">
-            <h3 data-i18n="reg2Title">Santa Fe de Antioquia</h3>
-            <p data-i18n="reg2Text">Patrimonio colonial, puente colgante y almuerzo en patio con cocina tradicional elevada.</p>
-            <span class="region__dist" data-i18n="reg2Dist">~1 h 15 min</span>
+          <article class="region__item">
+            <div class="region__thumb">
+              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(26).jpeg" data-i18n-alt="reg2Alt" alt="Calles coloniales de Santa Fe de Antioquia" loading="lazy" width="640" height="360" decoding="async">
+            </div>
+            <div class="region__body">
+              <h3 data-i18n="reg2Title">Santa Fe de Antioquia</h3>
+              <p data-i18n="reg2Text">Patrimonio colonial, puente colgante y almuerzo en patio con cocina tradicional elevada.</p>
+              <span class="region__dist" data-i18n="reg2Dist">~1 h 15 min</span>
+            </div>
           </article>
-          <article class="region__item" data-animate style="transition-delay: 0.12s">
-            <h3 data-i18n="reg3Title">Jardín &amp; café</h3>
-            <p data-i18n="reg3Text">Pueblos del suroeste, cascadas y cata de café en finca con dueños locales.</p>
-            <span class="region__dist" data-i18n="reg3Dist">~3 h · ideal 2 días</span>
+          <article class="region__item">
+            <div class="region__thumb">
+              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(27).jpeg" data-i18n-alt="reg3Alt" alt="Paisaje cafetero y montañas de Jardín" loading="lazy" width="640" height="360" decoding="async">
+            </div>
+            <div class="region__body">
+              <h3 data-i18n="reg3Title">Jardín &amp; café</h3>
+              <p data-i18n="reg3Text">Pueblos del suroeste, cascadas y cata de café en finca con dueños locales.</p>
+              <span class="region__dist" data-i18n="reg3Dist">~3 h · ideal 2 días</span>
+            </div>
           </article>
-          <article class="region__item" data-animate style="transition-delay: 0.18s">
-            <h3 data-i18n="reg4Title">Rionegro &amp; Llanogrande</h3>
-            <p data-i18n="reg4Text">Cerca al aeropuerto: golf, cenas de llegada o salida y hoteles para conexiones ejecutivas.</p>
-            <span class="region__dist" data-i18n="reg4Dist">~40 min · MDE</span>
+          <article class="region__item">
+            <div class="region__thumb">
+              <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(28).jpeg" data-i18n-alt="reg4Alt" alt="Zona verde y aeropuerto de Rionegro" loading="lazy" width="640" height="360" decoding="async">
+            </div>
+            <div class="region__body">
+              <h3 data-i18n="reg4Title">Rionegro &amp; Llanogrande</h3>
+              <p data-i18n="reg4Text">Cerca al aeropuerto: golf, cenas de llegada o salida y hoteles para conexiones ejecutivas.</p>
+              <span class="region__dist" data-i18n="reg4Dist">~40 min · MDE</span>
+            </div>
           </article>
         </div>
       </div>
@@ -709,16 +917,16 @@
           <h2 class="title" data-i18n="whyTitle">Lujo con cara humana</h2>
           <p class="lead" data-i18n="whyLead">No somos una agencia genérica: somos equipo local que habla claro, cumple y te trata por nombre.</p>
         </div>
-        <ul class="why__list">
-          <li class="why__item" data-animate>
+        <ul class="why__list" data-animate-stagger>
+          <li class="why__item">
             <h3 data-i18n="why1Title">Conocimiento real</h3>
             <p data-i18n="why1Text">Vivimos Medellín. Sabemos qué mesa reservar un martes y qué ruta evitar en temporada alta.</p>
           </li>
-          <li class="why__item" data-animate style="transition-delay: 0.08s">
+          <li class="why__item">
             <h3 data-i18n="why2Title">Todo resuelto</h3>
             <p data-i18n="why2Text">Traslados, entradas, cambios de último minuto: un solo WhatsApp, una sola respuesta.</p>
           </li>
-          <li class="why__item" data-animate style="transition-delay: 0.16s">
+          <li class="why__item">
             <h3 data-i18n="why3Title">Estilo sin rigidez</h3>
             <p data-i18n="why3Text">Hospitalidad premium sin protocolos fríos. Exigencia en el detalle, cercanía en el trato.</p>
           </li>
@@ -727,11 +935,16 @@
     </section>
 
     <section id="testimonio">
-      <div class="container" data-animate="scale">
-        <blockquote class="quote-block">
-          <p data-i18n="quote">«Llegamos sin plan y salimos con una semana perfecta: Provenza, Guatapé en lancha privada y una cena que aún comentamos. Se sintió como viajar con un amigo que además tiene contactos de sobra.»</p>
-          <footer data-i18n="quoteAuthor">James &amp; Sarah · Viajeros desde Londres</footer>
-        </blockquote>
+      <div class="container">
+        <div class="quote-wrap" data-animate="right">
+          <div class="quote-visual">
+            <img src="/globalexperiencevip/images/imagenes-de-relleno/imagen%20(29).jpeg" data-i18n-alt="quoteImgAlt" alt="Experiencia premium en Medellín al atardecer" loading="lazy" width="800" height="600" decoding="async">
+          </div>
+          <blockquote class="quote-block">
+            <p data-i18n="quote">«Llegamos sin plan y salimos con una semana perfecta: Provenza, Guatapé en lancha privada y una cena que aún comentamos. Se sintió como viajar con un amigo que además tiene contactos de sobra.»</p>
+            <footer data-i18n="quoteAuthor">James &amp; Sarah · Viajeros desde Londres</footer>
+          </blockquote>
+        </div>
       </div>
     </section>
 
@@ -775,6 +988,7 @@
           navAria: "Navegación principal",
           navHome: "Inicio",
           navExp: "Experiencias",
+          navGallery: "Galería",
           navRegion: "Alrededores",
           navContact: "Contacto",
           navCta: "Reservar experiencia",
@@ -810,21 +1024,32 @@
           exp4Tag: "Estancia",
           exp4Title: "Hospedaje con sello",
           exp4Text: "Hoteles boutique en El Poblado y Las Palmas, con beneficios negociados y check-in sin fricción.",
+          galleryEyebrow: "Momentos",
+          galleryTitle: "Medellín en imágenes",
+          galleryLead: "Un vistazo a la ciudad, sus sabores y los paisajes de Antioquia que curamos para ti.",
+          galleryAlt: "Experiencia en Medellín y Antioquia",
+          galleryPrev: "Imagen anterior",
+          galleryNext: "Imagen siguiente",
+          galleryCounter: "Imagen {n} de {total}",
           regionEyebrow: "Alrededores",
           regionTitle: "Antioquia, a tu ritmo",
           regionLead: "Medellín es la base. Desde aquí diseñamos escapadas de un día o fin de semana con transporte y detalle resueltos.",
           reg1Title: "Guatapé & Peñol",
           reg1Text: "Lancha privada, almuerzo en la orilla y subida al peñón sin colas ni improvisos.",
           reg1Dist: "~90 min desde Medellín",
+          reg1Alt: "Embalse de Guatapé y piedra del Peñol",
           reg2Title: "Santa Fe de Antioquia",
           reg2Text: "Patrimonio colonial, puente colgante y almuerzo en patio con cocina tradicional elevada.",
           reg2Dist: "~1 h 15 min",
+          reg2Alt: "Calles coloniales de Santa Fe de Antioquia",
           reg3Title: "Jardín & café",
           reg3Text: "Pueblos del suroeste, cascadas y cata de café en finca con dueños locales.",
           reg3Dist: "~3 h · ideal 2 días",
+          reg3Alt: "Paisaje cafetero y montañas de Jardín",
           reg4Title: "Rionegro & Llanogrande",
           reg4Text: "Cerca al aeropuerto: golf, cenas de llegada o salida y hoteles para conexiones ejecutivas.",
           reg4Dist: "~40 min · MDE",
+          reg4Alt: "Zona verde y aeropuerto de Rionegro",
           whyEyebrow: "Por qué con nosotros",
           whyTitle: "Lujo con cara humana",
           whyLead: "No somos una agencia genérica: somos equipo local que habla claro, cumple y te trata por nombre.",
@@ -835,6 +1060,7 @@
           why3Title: "Estilo sin rigidez",
           why3Text: "Hospitalidad premium sin protocolos fríos. Exigencia en el detalle, cercanía en el trato.",
           quote: "«Llegamos sin plan y salimos con una semana perfecta: Provenza, Guatapé en lancha privada y una cena que aún comentamos. Se sintió como viajar con un amigo que además tiene contactos de sobra.»",
+          quoteImgAlt: "Experiencia premium en Medellín al atardecer",
           quoteAuthor: "James & Sarah · Viajeros desde Londres",
           ctaEyebrow: "Empecemos",
           ctaTitle: "Cuéntanos cuándo llegas a Medellín",
@@ -855,6 +1081,7 @@
           navAria: "Main navigation",
           navHome: "Home",
           navExp: "Experiences",
+          navGallery: "Gallery",
           navRegion: "Beyond the city",
           navContact: "Contact",
           navCta: "Book experience",
@@ -890,21 +1117,32 @@
           exp4Tag: "Stay",
           exp4Title: "Signature lodging",
           exp4Text: "Boutique hotels in El Poblado and Las Palmas with negotiated perks and seamless check-in.",
+          galleryEyebrow: "Moments",
+          galleryTitle: "Medellín in images",
+          galleryLead: "A glimpse of the city, its flavors and the Antioquia landscapes we curate for you.",
+          galleryAlt: "Experience in Medellín and Antioquia",
+          galleryPrev: "Previous image",
+          galleryNext: "Next image",
+          galleryCounter: "Image {n} of {total}",
           regionEyebrow: "Beyond Medellín",
           regionTitle: "Antioquia, at your pace",
           regionLead: "Medellín is your base. From here we design day trips or weekend escapes with transport and details covered.",
           reg1Title: "Guatapé & El Peñol",
           reg1Text: "Private boat, lakeside lunch and rock climb without queues or guesswork.",
           reg1Dist: "~90 min from Medellín",
+          reg1Alt: "Guatapé reservoir and El Peñol rock",
           reg2Title: "Santa Fe de Antioquia",
           reg2Text: "Colonial heritage, suspension bridge and courtyard lunch with elevated traditional cuisine.",
           reg2Dist: "~1 h 15 min",
+          reg2Alt: "Colonial streets of Santa Fe de Antioquia",
           reg3Title: "Jardín & coffee",
           reg3Text: "Southwestern towns, waterfalls and farm tastings with local owners.",
           reg3Dist: "~3 h · ideal 2 days",
+          reg3Alt: "Coffee landscape and mountains of Jardín",
           reg4Title: "Rionegro & Llanogrande",
           reg4Text: "Near the airport: golf, arrival or departure dinners and hotels for executive connections.",
           reg4Dist: "~40 min · MDE",
+          reg4Alt: "Green area near Rionegro airport",
           whyEyebrow: "Why travel with us",
           whyTitle: "Luxury with a human face",
           whyLead: "We are not a generic agency: a local team that speaks plainly, delivers and knows you by name.",
@@ -915,6 +1153,7 @@
           why3Title: "Style without stiffness",
           why3Text: "Premium hospitality without cold protocol. High standards, warm treatment.",
           quote: "«We arrived with no plan and left with a perfect week: Provenza, private boat in Guatapé and a dinner we still talk about. It felt like traveling with a well-connected friend.»",
+          quoteImgAlt: "Premium Medellín experience at sunset",
           quoteAuthor: "James & Sarah · Travelers from London",
           ctaEyebrow: "Let's begin",
           ctaTitle: "Tell us when you arrive in Medellín",
@@ -975,6 +1214,14 @@
           const k = el.dataset.i18nWa;
           if (d[k] != null) el.href = waUrl(k);
         });
+        if (galleryPrev) galleryPrev.setAttribute("aria-label", d.galleryPrev);
+        if (galleryNext) galleryNext.setAttribute("aria-label", d.galleryNext);
+        if (galleryTrack) {
+          galleryTrack.querySelectorAll(".gallery-slide img").forEach(function (img, idx) {
+            img.alt = d.galleryAlt + " " + (idx + 1);
+          });
+        }
+        updateGalleryCounter();
         menuToggle.setAttribute("aria-label", d[mobileDrawer.classList.contains("is-open") ? "menuClose" : "menuOpen"]);
       }
 
@@ -997,7 +1244,6 @@
       langToggle.addEventListener("click", function () {
         applyLang(lang === "es" ? "en" : "es");
       });
-      applyLang(lang);
 
       header.classList.toggle("is-scrolled", window.scrollY > 20);
       window.addEventListener("scroll", function () {
@@ -1019,7 +1265,115 @@
         a.addEventListener("click", closeMenu);
       });
 
-      const animated = document.querySelectorAll("[data-animate]");
+      const IMG_FILLER = "/globalexperiencevip/images/imagenes-de-relleno/";
+      function fillerUrl(n) {
+        return IMG_FILLER + encodeURIComponent("imagen (" + n + ").jpeg");
+      }
+
+      const galleryTrack = document.getElementById("gallery-track");
+      const galleryCounter = document.getElementById("gallery-counter");
+      const galleryProgress = document.getElementById("gallery-progress");
+      const galleryPrev = document.getElementById("gallery-prev");
+      const galleryNext = document.getElementById("gallery-next");
+      const GALLERY_TOTAL = 24;
+      let galleryIndex = 0;
+      let galleryTimer = null;
+      let gallerySlidesPerView = 1;
+
+      function galleryPerView() {
+        if (window.matchMedia("(min-width: 900px)").matches) return 3;
+        if (window.matchMedia("(min-width: 640px)").matches) return 2;
+        return 1;
+      }
+
+      function galleryMaxIndex() {
+        return Math.max(0, GALLERY_TOTAL - gallerySlidesPerView);
+      }
+
+      function updateGalleryCounter() {
+        if (!galleryCounter) return;
+        const tpl = T[lang].galleryCounter || "Imagen {n} de {total}";
+        galleryCounter.textContent = tpl.replace("{n}", String(galleryIndex + 1)).replace("{total}", String(GALLERY_TOTAL));
+      }
+
+      function setGallerySlide(i) {
+        galleryIndex = Math.max(0, Math.min(i, galleryMaxIndex()));
+        if (galleryTrack) {
+          galleryTrack.style.transform = "translateX(-" + (galleryIndex * (100 / gallerySlidesPerView)) + "%)";
+          galleryTrack.querySelectorAll(".gallery-slide").forEach(function (slide, idx) {
+            slide.classList.toggle("is-active", idx >= galleryIndex && idx < galleryIndex + gallerySlidesPerView);
+          });
+        }
+        if (galleryProgress) {
+          const pct = galleryMaxIndex() === 0 ? 100 : (galleryIndex / galleryMaxIndex()) * 100;
+          galleryProgress.style.width = pct + "%";
+        }
+        updateGalleryCounter();
+      }
+
+      function galleryStep(dir) {
+        setGallerySlide(galleryIndex + dir);
+      }
+
+      function resetGalleryAutoplay() {
+        if (galleryTimer) clearInterval(galleryTimer);
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        galleryTimer = setInterval(function () {
+          setGallerySlide(galleryIndex >= galleryMaxIndex() ? 0 : galleryIndex + 1);
+        }, 4500);
+      }
+
+      if (galleryTrack) {
+        for (let i = 1; i <= GALLERY_TOTAL; i++) {
+          const slide = document.createElement("div");
+          slide.className = "gallery-slide" + (i === 1 ? " is-active" : "");
+          slide.setAttribute("role", "group");
+          slide.setAttribute("aria-roledescription", "slide");
+          slide.setAttribute("aria-label", String(i));
+          const img = document.createElement("img");
+          img.src = fillerUrl(i);
+          img.alt = T[lang].galleryAlt + " " + i;
+          img.loading = i <= 2 ? "eager" : "lazy";
+          img.decoding = "async";
+          img.width = 960;
+          img.height = 600;
+          slide.appendChild(img);
+          galleryTrack.appendChild(slide);
+        }
+
+        gallerySlidesPerView = galleryPerView();
+        galleryPrev.setAttribute("aria-label", T[lang].galleryPrev);
+        galleryNext.setAttribute("aria-label", T[lang].galleryNext);
+        updateGalleryCounter();
+
+        galleryPrev.addEventListener("click", function () { galleryStep(-1); resetGalleryAutoplay(); });
+        galleryNext.addEventListener("click", function () { galleryStep(1); resetGalleryAutoplay(); });
+
+        let touchStartX = 0;
+        galleryTrack.parentElement.addEventListener("touchstart", function (e) {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        galleryTrack.parentElement.addEventListener("touchend", function (e) {
+          const dx = e.changedTouches[0].screenX - touchStartX;
+          if (Math.abs(dx) > 40) galleryStep(dx < 0 ? 1 : -1);
+          resetGalleryAutoplay();
+        }, { passive: true });
+
+        window.addEventListener("resize", function () {
+          const next = galleryPerView();
+          if (next !== gallerySlidesPerView) {
+            gallerySlidesPerView = next;
+            setGallerySlide(galleryIndex);
+          }
+        });
+
+        resetGalleryAutoplay();
+      }
+
+      applyLang(lang);
+
+      const animated = document.querySelectorAll("[data-animate], [data-animate-stagger]");
+      const isMobile = window.matchMedia("(max-width: 899px)");
       if ("IntersectionObserver" in window) {
         const io = new IntersectionObserver(function (entries) {
           entries.forEach(function (e) {
@@ -1028,7 +1382,10 @@
               io.unobserve(e.target);
             }
           });
-        }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+        }, {
+          threshold: isMobile.matches ? 0.08 : 0.12,
+          rootMargin: isMobile.matches ? "0px 0px -20px 0px" : "0px 0px -30px 0px"
+        });
         animated.forEach(function (el) { io.observe(el); });
       } else {
         animated.forEach(function (el) { el.classList.add("is-in"); });
