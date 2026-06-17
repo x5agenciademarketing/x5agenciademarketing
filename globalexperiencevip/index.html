@@ -379,6 +379,7 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
   display:flex;align-items:center;justify-content:center;gap:10px;min-height:74px;
 }
 .tp-slot .tp-logo{font-weight:800;color:var(--gold-soft);letter-spacing:.02em}
+.tp-widget-wrap{max-width:480px;margin:0 auto;min-height:52px}
 
 /* ============================================================
    CTA FINAL
@@ -563,6 +564,11 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
   .hero-bg{transform:none}
 }
 </style>
+
+<!-- ============================================================
+     TRUSTPILOT — script del widget (TrustBox)
+     ============================================================ -->
+<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
 </head>
 <body>
 
@@ -904,11 +910,22 @@ em{font-style:normal;font-weight:800;color:var(--gold-soft)}
         <span><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></span>
       </div>
       <h3 data-i18n="tp_title">Confiado por viajeros de todo el mundo</h3>
-      <p data-i18n="tp_sub">Pronto podrás ver aquí nuestras reseñas verificadas en Trustpilot. Tu tranquilidad es nuestra prioridad.</p>
-      <!-- ESPACIO RESERVADO: pega aquí el widget/badge oficial de Trustpilot cuando esté listo -->
-      <div class="tp-slot" id="trustpilotSlot">
-        <span class="tp-logo">Trustpilot</span>
-        <span data-i18n="tp_slot">Widget de reseñas próximamente</span>
+      <p data-i18n="tp_sub">Sé de los primeros en compartir tu experiencia. Tu opinión nos ayuda a crecer y da confianza a otros viajeros.</p>
+      <!-- ============================================================
+           TRUSTPILOT — TrustBox "Review Collector"
+           El idioma (data-locale) se sincroniza con el selector ES/EN.
+           Cuando cambies de dominio, actualiza solo el href de abajo.
+           ============================================================ -->
+      <div class="tp-widget-wrap">
+        <div id="trustbox" class="trustpilot-widget"
+             data-locale="es-ES"
+             data-template-id="56278e9abfbbba0bdcd568bc"
+             data-businessunit-id="6a32f42dcfa505ebb77c3eb7"
+             data-style-height="52px"
+             data-style-width="100%"
+             data-token="1dd96c71-73ad-482d-8f29-c2d47151583e">
+          <a href="https://es.trustpilot.com/review/x5agenciademarketing.lat" target="_blank" rel="noopener">Trustpilot</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1043,7 +1060,7 @@ var I18N = {
     safe_badge_d:"Hablamos tu idioma y cuidamos cada detalle para que solo te ocupes de disfrutar.",
     testi_eyebrow:"Voces de viajeros", testi_title:"Lo que dicen quienes ya viajaron",
     tp_title:"Confiado por viajeros de todo el mundo",
-    tp_sub:"Pronto podrás ver aquí nuestras reseñas verificadas en Trustpilot. Tu tranquilidad es nuestra prioridad.",
+    tp_sub:"Sé de los primeros en compartir tu experiencia. Tu opinión nos ayuda a crecer y da confianza a otros viajeros.",
     tp_slot:"Widget de reseñas próximamente",
     final_title:"Tu viaje privado por Medellín empieza con un mensaje",
     final_sub:"Cuéntanos qué te gustaría vivir. Del resto nos encargamos nosotros.",
@@ -1099,7 +1116,7 @@ var I18N = {
     safe_badge_d:"We speak your language and handle every detail so you can simply enjoy.",
     testi_eyebrow:"Traveler voices", testi_title:"What past travelers say",
     tp_title:"Trusted by travelers worldwide",
-    tp_sub:"Soon you'll see our verified Trustpilot reviews right here. Your peace of mind is our priority.",
+    tp_sub:"Be among the first to share your experience. Your feedback helps us grow and reassures fellow travelers.",
     tp_slot:"Reviews widget coming soon",
     final_title:"Your private Medellín journey starts with a message",
     final_sub:"Tell us what you'd love to experience. We'll design the rest.",
@@ -1159,6 +1176,13 @@ function applyLang(lang, animate){
   });
 
   try { localStorage.setItem("gev_lang", lang); } catch(e){}
+
+  // sincronizar idioma del widget de Trustpilot
+  var tb = document.getElementById("trustbox");
+  if(tb){
+    tb.setAttribute("data-locale", lang === "en" ? "en-US" : "es-ES");
+    if(window.Trustpilot){ window.Trustpilot.loadFromElement(tb, true); }
+  }
 
   // transición suave
   if(animate){
